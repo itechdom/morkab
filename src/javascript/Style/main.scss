@@ -1,0 +1,153 @@
+@import "../../../node_modules/react-vis/dist/style";
+
+h1,h2,h3,h4,h5,h6{
+}
+h3,h4,h5,h6{
+    font-weight:normal;
+}
+
+
+/*-------------
+ 	General
+-------------*/
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul, nav{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+	opacity: 0.9;
+	color:rgb(94, 53, 177);
+}
+
+a:hover{
+	opacity: 1;
+}
+
+a.btn{
+	color: #fff;
+	border-radius: 4px;
+	text-transform: uppercase;
+	background-color: #2196F3;
+	font-weight: 800;
+	text-align: center;
+}
+
+.content{
+	margin:1em 10em!important;
+}
+
+section{
+	margin-bottom:2em;
+}
+
+section h1{
+	margin-bottom:0.5em;
+}
+
+section h2{
+	margin-bottom:0.5em;
+}
+
+section p{
+	display:block;
+	margin:0.5em 0;
+}
+
+.list{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.list-item{
+	padding:10px;
+	margin:10px;
+}
+
+.grid{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+.center{
+	justify-content: center;
+}
+.grid.start{
+	justify-content:flex-start;
+}
+.grid-item{
+	border-radius: 3px;
+	background-clip: content-box;
+	background-size: cover;
+	background-position: center;
+	margin:10px!important;
+}
+.grid-item.small{
+	flex-basis:40%;
+}
+
+@media (max-width: 1000px){
+	.content{
+		margin:0px!important;
+	}
+	section{
+		padding: 0px 0px;
+	}
+	section p{
+		text-align:left;
+	}
+	h1.title{
+		font-size:1em;
+	}
+	h3.sub-title{
+		font-size:0.4em;
+	}
+}
+
+@media (max-width: 600px){
+	.content{
+		margin:0px!important;
+	}
+	section{
+		padding: 0px 0px;
+	}
+	section p{
+		text-align:left;
+	}
+	h1.title{
+		font-size:1em;
+	}
+	h3.sub-title{
+		font-size:0.35em;
+	}
+}
+
+/** UTILS
+**/
+.bold{
+	font-weight:bold;
+}
+.text-center{
+	text-align:center;
+}
+.capital{
+	transform:uppercase;
+}
+.basis-10{
+	flex-basis:10%;
+}
+.top-1{
+	margin-top:1em;
+}

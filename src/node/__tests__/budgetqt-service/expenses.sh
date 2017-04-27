@@ -1,0 +1,2 @@
+curl -v -F key1=value1 -F upload=@data/CapitalOne.csv http://0.0.0.0:8081/api/v1/expenses/upload/csv
+curl -v -F key1=value1 -F upload=@data/Chase-Southwest-9019.csv http://0.0.0.0:8081/api/v1/expenses/upload/csv
