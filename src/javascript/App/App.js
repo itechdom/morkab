@@ -122,6 +122,9 @@ const styles = {
   }
 };
 
+import { DragSource } from 'react-dnd';
+
+
 @observer class App extends React.Component {
 
   constructor(props){
