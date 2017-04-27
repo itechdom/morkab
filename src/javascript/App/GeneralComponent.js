@@ -20,7 +20,7 @@ const GeneralComponent = ({
     }
     return <div>
       <Comp
-        props={properties}
+        {...properties}
       />
       {children.length > 0 ? children.map(child=><GeneralComponent library={child.library} type={child.type} properties={child.properties} children={child.children} />):<div>No More Children Left</div>}
     </div>
