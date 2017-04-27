@@ -1,12 +1,14 @@
 export default [
   {
-    "type":"Material.AppBar",
-    "props":{
+    "library":"Material",
+    "type":"AppBar",
+    "properties":{
       "title":"hello"
     },
     children:{
+      "library":"default",
       "type":"div",
-      "props":{
+      "properties":{
         "title":"child!"
       }
     }

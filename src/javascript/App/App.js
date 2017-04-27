@@ -147,6 +147,8 @@ const styles = {
               return <GeneralComponent
                 type={comp.type}
                 children={comp.children}
+                library={comp.library}
+                properties={comp.properties}
               />
             })
           }
