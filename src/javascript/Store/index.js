@@ -14,7 +14,7 @@ export class Component {
   id;
   props;
   children;
-  location;
+  type;
   constructor(date){
     this.id = uuidV4();
   }

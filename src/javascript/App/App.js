@@ -44,6 +44,7 @@ import {
   CardText
 }
 from 'material-ui/Card';
+import Material from 'material-ui';
 import Chip from 'material-ui/Chip';
 import AppBar from 'material-ui/AppBar';
 import FontIcon from 'material-ui/FontIcon';
@@ -67,7 +68,6 @@ import {
 }
 from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
-import Stats from '../Stats';
 
 import DevTools from 'mobx-react-devtools';
 
@@ -75,6 +75,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import 'normalize.css';
 import '../Style/main.scss';
+
+import data from '../component-list';
+import GeneralComponent from './GeneralComponent';
 
 injectTapEventPlugin();
 
@@ -124,6 +127,7 @@ const styles = {
   constructor(props){
     super(props);
     this.state = {
+      data:data
     }
   }
 
@@ -138,8 +142,16 @@ const styles = {
               <div style={styles.title}><h1 className="title">Morkab</h1>
             </div>}
           />
+          {
+            this.state.data.map((comp)=>{
+              return <GeneralComponent
+                type={comp.type}
+                children={comp.children}
+              />
+            })
+          }
+
           <DevTools />
-          <Footer/>
         </div>
       </MuiThemeProvider>
     );
