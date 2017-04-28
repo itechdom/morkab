@@ -78,6 +78,7 @@ import '../Style/main.scss';
 
 import data from '../component-list';
 import GeneralComponent from './GeneralComponent';
+import UIElement from './UIElement';
 
 injectTapEventPlugin();
 
@@ -144,20 +145,23 @@ const styles = {
             </div>}
           />
           <div style={{display:'flex'}}>
-            <Paper zDepth={3} style={{flex:1,padding:10,overflowY:'scroll',height:800}}>
-              {
-                this.state.data.map((comp)=>{
-                  return <div style={{marginTop:10}}>
-                  <GeneralComponent
-                    type={comp.type}
-                    children={comp.children}
-                    library={comp.library}
-                    properties={comp.properties}
-                  />
-                </div>
-                })
-              }
-            </Paper>
+            <Paper
+              zDepth={3}
+              style={{flex:1,padding:10,overflowY:'scroll',overflowX:'hidden',height:800}}
+              >
+                {
+                  this.state.data.map((comp)=>{
+                    return <div style={{marginTop:10}}>
+                      <GeneralComponent
+                        type={comp.type}
+                        children={comp.children}
+                        library={comp.library}
+                        properties={comp.properties}
+                      />
+                    </div>
+                  })
+                }
+              </Paper>
             <div style={{flex:3}}>
               <h1>Hello</h1>
             </div>
