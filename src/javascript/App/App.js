@@ -144,10 +144,10 @@ const styles = {
             </div>}
           />
           <div style={{display:'flex'}}>
-            <Paper zDepth={3} style={{flex:1,padding:10}}>
+            <Paper zDepth={3} style={{flex:1,padding:10,overflowY:'scroll',height:800}}>
               {
                 this.state.data.map((comp)=>{
-                  return <div style={{marginTop:10}}> 
+                  return <div style={{marginTop:10}}>
                   <GeneralComponent
                     type={comp.type}
                     children={comp.children}
