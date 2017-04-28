@@ -19,6 +19,7 @@ const GeneralComponent = ({
       Comp = type;
     }
     return <div>
+      <h1>{type}</h1>
       <Comp
         {...properties}
       />

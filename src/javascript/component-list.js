@@ -1,3 +1,6 @@
+import React from 'react';
+import IconButton from 'material-ui/IconButton';
+
 export default [
   {
     "library":"Material",
@@ -10,7 +13,7 @@ export default [
     "library":"Material",
     "type":"AutoComplete",
     "properties":{
-      "title":"hello"
+      "dataSource":[]
     }
   },
   {
@@ -24,7 +27,7 @@ export default [
     "library":"Material",
     "type":"Badge",
     "properties":{
-      "title":"hello"
+      "badgeContent":1
     }
   },
   {
@@ -38,7 +41,7 @@ export default [
     "library":"Material",
     "type":"FlatButton",
     "properties":{
-      "title":"hello"
+      "label":"hello"
     }
   },
   {
@@ -50,7 +53,7 @@ export default [
   },
   {
     "library":"Material",
-    "type":"",
+    "type":"Chip",
     "properties":{
       "title":"hello"
     }
@@ -66,7 +69,8 @@ export default [
     "library":"Material",
     "type":"Dialog",
     "properties":{
-      "title":"hello"
+      "title":"hello",
+      "open":false
     }
   },
   {
@@ -80,7 +84,8 @@ export default [
     "library":"Material",
     "type":"Drawer",
     "properties":{
-      "title":"hello"
+      "title":"hello",
+      "open":false
     }
   },
   {
@@ -122,7 +127,8 @@ export default [
     "library":"Material",
     "type":"IconMenu",
     "properties":{
-      "title":"hello"
+      "title":"hello",
+      "iconButtonElement":<IconButton>Hello</IconButton>
     }
   },
   {
