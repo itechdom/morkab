@@ -143,17 +143,25 @@ const styles = {
               <div style={styles.title}><h1 className="title">Morkab</h1>
             </div>}
           />
-          {
-            this.state.data.map((comp)=>{
-              return <GeneralComponent
-                type={comp.type}
-                children={comp.children}
-                library={comp.library}
-                properties={comp.properties}
-              />
-            })
-          }
-
+          <div style={{display:'flex'}}>
+            <Paper zDepth={3} style={{flex:1,padding:10}}>
+              {
+                this.state.data.map((comp)=>{
+                  return <div style={{marginTop:10}}> 
+                  <GeneralComponent
+                    type={comp.type}
+                    children={comp.children}
+                    library={comp.library}
+                    properties={comp.properties}
+                  />
+                </div>
+                })
+              }
+            </Paper>
+            <div style={{flex:3}}>
+              <h1>Hello</h1>
+            </div>
+          </div>
           <DevTools />
         </div>
       </MuiThemeProvider>
