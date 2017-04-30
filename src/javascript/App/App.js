@@ -157,6 +157,7 @@ const styles = {
                         children={comp.children}
                         library={comp.library}
                         properties={comp.properties}
+                        link={comp.link}
                       />
                     </div>
                   })

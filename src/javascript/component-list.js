@@ -18,6 +18,8 @@ import Subheader from 'material-ui/Subheader';
 import Paper from 'material-ui/Paper';
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 
+const docWebsite = "http://www.material-ui.com/#/components/";
+
 const listData = [
   "item 1",
   "item 2",
@@ -33,6 +35,7 @@ export default [
   {
     "library":"Material",
     "type":"AppBar",
+    "link":`${docWebsite}app-bar`,
     "properties":{
       "title":"hello",
       iconElementRight:<FlatButton label="Save" />
@@ -134,13 +137,6 @@ export default [
   },
   {
     "library":"Material",
-    "type":"Menu",
-    "properties":{
-      "title":"hello"
-    }
-  },
-  {
-    "library":"Material",
     "type":"IconMenu",
     "properties":{
       iconButtonElement:<FontIcon className="material-icons">add</FontIcon>,
@@ -193,13 +189,6 @@ export default [
     "properties":{
       activeStep:1,
       children:listData.map((x,index)=><Step><StepLabel>{x}</StepLabel></Step>)
-    }
-  },
-  {
-    "library":"Material",
-    "type":"Subheader",
-    "properties":{
-      "title":"hello"
     }
   },
   {

@@ -9,7 +9,8 @@ const GeneralComponent = ({
   type,
   properties,
   children,
-  library
+  library,
+  link
 }) => {
     let Comp;
     if(library !== "default"){
@@ -20,6 +21,7 @@ const GeneralComponent = ({
     }
     return <div>
       <h1>{type}</h1>
+      <a target="_blank" href={link}>{link}</a>
       <Comp
         {...properties}
       />
