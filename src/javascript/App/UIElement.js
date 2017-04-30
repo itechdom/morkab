@@ -32,4 +32,4 @@ const UIElement = ({
     </div>
   }
 
-  export default GeneralComponent;
+  export default UIElement;
