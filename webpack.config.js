@@ -14,6 +14,7 @@ module.exports = {
         rules: [
         {
             test: /\.js$/, //Check for all js files
+            exclude: /(node_modules|bower_components)/,
             use: [{
                 loader: 'babel-loader'
             }]
@@ -26,8 +27,8 @@ module.exports = {
                 'sass-loader',
             ]
         },
-        { 
-            test: /\.json$/, 
+        {
+            test: /\.json$/,
             loader: "json-loader"  //JSON loader
         },
         {

@@ -1,11 +1,39 @@
 import React from 'react';
 import * as Material from 'material-ui';
+import { DragSource } from 'react-dnd';
 
 let compList = {
   Material : Material
 }
 
-const GeneralComponent = ({
+const generalComponentSource = {
+  beginDrag(props) {
+    return {};
+  }
+};
+
+function collect(connect, monitor) {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  }
+}
+
+@DragSource('generalcomponent', generalComponentSource, collect)
+export default class GeneralComponent extends React.Component{
+
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+    const { connectDragSource, isDragging, type, properties, children, library, link } = this.props;
+    return connectDragSource(<div><RecursiveComponent library={library} type={type} properties={properties} children={children} link={link} /></div>);
+  }
+
+}
+
+const RecursiveComponent = ({
   type,
   properties,
   children,
@@ -24,8 +52,6 @@ const GeneralComponent = ({
       <Comp
         {...properties}
       />
-      {children && children.length > 0 ? children.map(child=><GeneralComponent library={child.library} type={child.type} properties={child.properties} children={child.children} />):<div></div>}
+      {children && children.length > 0 ? children.map(child=><RecursiveComponent library={child.library} type={child.type} properties={child.properties} children={child.children} />):<div></div>}
     </div>
 }
-
-export default GeneralComponent;

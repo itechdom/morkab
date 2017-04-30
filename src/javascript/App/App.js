@@ -80,6 +80,9 @@ import data from '../component-list';
 import GeneralComponent from './GeneralComponent';
 import UIElement from './UIElement';
 
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
+
 injectTapEventPlugin();
 
 const muiTheme = getMuiTheme({
@@ -123,7 +126,7 @@ const styles = {
   }
 };
 
-
+@DragDropContext(HTML5Backend)
 @observer class App extends React.Component {
 
   constructor(props){
@@ -164,7 +167,6 @@ const styles = {
                 }
               </Paper>
             <div style={{flex:3}}>
-              <h1>Hello</h1>
             </div>
           </div>
           <DevTools />
