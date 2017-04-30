@@ -43,6 +43,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}auto-complete`,
     "type":"AutoComplete",
     "properties":{
       "dataSource":["Anas","Becky","Chaim David","David","Evalyn","Fouad"]
@@ -50,6 +51,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}avatar`,
     "type":"Avatar",
     "properties":{
       icon:<FontIcon className="material-icons">folder</FontIcon>
@@ -57,6 +59,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}badge`,
     "type":"Badge",
     "properties":{
       "badgeContent":1,
@@ -66,6 +69,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}bottom-navigation`,
     "type":"BottomNavigation",
     "properties":{
       selectedIndex:0,
@@ -74,6 +78,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}flat-button`,
     "type":"FlatButton",
     "properties":{
       "label":"hello"
@@ -81,6 +86,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}card`,
     "type":"Card",
     "properties":{
       children:[(<CardHeader
@@ -108,6 +114,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}chip`,
     "type":"Chip",
     "properties":{
       children:"hello"
@@ -115,6 +122,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}date-picker`,
     "type":"DatePicker",
     "properties":{
       "title":"hello"
@@ -122,6 +130,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}divider`,
     "type":"Divider",
     "properties":{
       "title":"hello"
@@ -129,6 +138,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}list`,
     "type":"List",
     "properties":{
       "title":"hello",
@@ -137,6 +147,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}icon-menu`,
     "type":"IconMenu",
     "properties":{
       iconButtonElement:<FontIcon className="material-icons">add</FontIcon>,
@@ -147,6 +158,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}dropdown-menu`,
     "type":"DropDownMenu",
     "properties":{
       value:1,
@@ -155,6 +167,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}circular-progress`,
     "type":"CircularProgress",
     "properties":{
       "title":"hello"
@@ -162,6 +175,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}select-field`,
     "type":"SelectField",
     "properties":{
       floatingLabelText:"floatingLabelText",
@@ -171,6 +185,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}slider`,
     "type":"Slider",
     "properties":{
       "title":"hello"
@@ -178,6 +193,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}checkbox`,
     "type":"Checkbox",
     "properties":{
       "title":"hello"
@@ -185,6 +201,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}stepper`,
     "type":"Stepper",
     "properties":{
       activeStep:1,
@@ -193,6 +210,7 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}table`,
     "type":"Table",
     "properties":{
       children:[
@@ -233,6 +251,7 @@ export default [
 },
 {
   "library":"Material",
+  "link":`${docWebsite}tabs`,
   "type":"Tabs",
   "properties":{
     children:listData.map((x,index) => <Tab label={x} >
@@ -241,6 +260,7 @@ export default [
 },
 {
   "library":"Material",
+  "link":`${docWebsite}text-field`,
   "type":"TextField",
   "properties":{
     "title":"hello"
@@ -248,6 +268,7 @@ export default [
 },
 {
   "library":"Material",
+  "link":`${docWebsite}time-picker`,
   "type":"TimePicker",
   "properties":{
     "title":"hello"
@@ -255,9 +276,9 @@ export default [
 },
 {
   "library":"Material",
+  "link":`${docWebsite}toolbar`,
   "type":"Toolbar",
   "properties":{
-    "title":"hello"
   }
 },
 ];
