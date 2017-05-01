@@ -86,6 +86,24 @@ export default [
   },
   {
     "library":"Material",
+    "link":`${docWebsite}flat-button`,
+    "type":"RaisedButton",
+    "properties":{
+      "label":"primary",
+      "primary":true
+    }
+  },
+  {
+    "library":"Material",
+    "link":`${docWebsite}flat-button`,
+    "type":"RaisedButton",
+    "properties":{
+      "label":"secondary",
+      "secondary":true
+    }
+  },
+  {
+    "library":"Material",
     "link":`${docWebsite}card`,
     "type":"Card",
     "properties":{

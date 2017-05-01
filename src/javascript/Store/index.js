@@ -1,20 +1,19 @@
 import {observable, computed, autorun, action, reaction} from 'mobx';
 import uuidV4 from 'uuid/v4';
-import superagent from 'superagent';
-const HOST = "http://localhost:8082";
 
 export class Morkab {
-  components = [];
+  @observable components = [];
   constructor() {
 
+  }
+  @action addComponent(comp){
+    components.push(comp);
   }
 }
 
 export class Component {
-  id;
-  props;
-  children;
-  type;
+  @observable id;
+  @observable position;
   constructor(date){
     this.id = uuidV4();
   }

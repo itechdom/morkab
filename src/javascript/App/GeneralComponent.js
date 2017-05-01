@@ -1,6 +1,10 @@
 import React from 'react';
 import * as Material from 'material-ui';
 import { DragSource } from 'react-dnd';
+import {
+  observer
+}
+from "mobx-react";
 
 let compList = {
   Material : Material
@@ -20,7 +24,7 @@ function collect(connect, monitor) {
 }
 
 @DragSource('generalcomponent', generalComponentSource, collect)
-export default class GeneralComponent extends React.Component{
+@observer export default class GeneralComponent extends React.Component{
 
   constructor(props){
     super(props);
