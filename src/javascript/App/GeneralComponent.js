@@ -32,12 +32,12 @@ function collect(connect, monitor) {
 
   render(){
     const { connectDragSource, isDragging, type, properties, children, library, link } = this.props;
-    return connectDragSource(<div><RecursiveComponent library={library} type={type} properties={properties} children={children} link={link} isDragging={isDragging} /></div>);
+    return connectDragSource(<div><DraggableComponent library={library} type={type} properties={properties} children={children} link={link} isDragging={isDragging} /></div>);
   }
 
 }
 
-const RecursiveComponent = ({
+const DraggableComponent = ({
   type,
   properties,
   children,
@@ -59,6 +59,6 @@ const RecursiveComponent = ({
       <Comp
         {...properties}
       />
-      {children && children.length > 0 ? children.map(child=><RecursiveComponent library={child.library} type={child.type} properties={child.properties} children={child.children} />):<div></div>}
+      {children}
     </div>
 }

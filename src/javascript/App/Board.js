@@ -57,16 +57,18 @@ const boardTarget = {
   }
 };
 
-@DropTarget('generalcomponent', boardTarget, (connect, monitor) => ({
-  // Call this function inside render()
-  // to let React DnD handle the drag events:
-  connectDropTarget: connect.dropTarget(),
-  // You can ask the monitor about the current drag state:
-  isOver: monitor.isOver(),
-  isOverCurrent: monitor.isOver({ shallow: true }),
-  canDrop: monitor.canDrop(),
-  itemType: monitor.getItemType()
-}))
+@DropTarget('generalcomponent', boardTarget, (connect, monitor) => {
+  return {
+    // Call this function inside render()
+    // to let React DnD handle the drag events:
+    connectDropTarget: connect.dropTarget(),
+    // You can ask the monitor about the current drag state:
+    isOver: monitor.isOver(),
+    isOverCurrent: monitor.isOver({ shallow: true }),
+    canDrop: monitor.canDrop(),
+    itemType: monitor.getItemType()
+  }
+})
 @observer export default class Board extends React.Component{
   constructor(props){
     super(props);
