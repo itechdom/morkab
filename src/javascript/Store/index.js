@@ -3,25 +3,39 @@ import uuidV4 from 'uuid/v4';
 
 export class Morkab {
   @observable componentList = [];
+  @observable page = [];
   @observable draggedComponent = {};
   constructor() {
   }
-  @action addComponent(comp){
-    components.push(comp);
-  }
-  @action setDraggedComponent(comp){
+  @action setDraggedComponent(type){
     //we have to find the component
-    console.log("setting dragged component",comp);
+    let comp = this.componentList.find((x)=>{
+      return x.type === type;
+    })
     this.draggedComponent = comp;
   }
-  @action setDroppedComponent(){
+  @action updateDraggedComponentPosition(position){
+    this.draggedComponent.position = position;
+  }
+  @action addComponentToPage(){
+    console.log("DRAGGED COMPONENT",this.draggedComponent);
+    this.page.push(this.draggedComponent);
   }
 }
 
 export class Component {
   id;
-  position;
-  constructor(date){
+  @observable position;
+  library;
+  type;
+  link;
+  properties;
+  constructor(library,type,link,properties){
     this.id = uuidV4();
+    this.position = {};
+    this.library = library;
+    this.type = type;
+    this.link = link;
+    this.properties = properties;
   }
 }

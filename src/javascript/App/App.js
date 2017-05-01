@@ -117,7 +117,7 @@ const styles = {
               style={{flex:1,padding:10,overflowY:'scroll',overflowX:'hidden',height:800}}
               >
                 {
-                  this.state.data.map((comp)=>{
+                  this.props.store.componentList.map((comp)=>{
                     return <div style={{marginTop:10}}>
                       <GeneralComponent
                         type={comp.type}
@@ -132,7 +132,12 @@ const styles = {
                 }
               </Paper>
               <div style={{flex:3}}>
-                <Board/>
+                <Board
+                  componentList={this.props.store.page}
+                  handlePageComponentDrag={(comp)=>console.log(comp)}
+                  handleComponentHover={(position)=>this.props.store.updateDraggedComponentPosition(position)}
+                  handleComponentDrop={()=>this.props.store.addComponentToPage()}
+                />
               </div>
             </div>
             <DevTools />
@@ -146,6 +151,11 @@ const styles = {
 
 
   let morkabStore = new Morkab();
+
+  data.map((x,index)=>{
+    let comp = new Component(x.library,x.type,x.link,x.properties);
+    morkabStore.componentList.push(comp);
+  })
 
   ReactDOM.render(
     <IntlProvider locale="en">

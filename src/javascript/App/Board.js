@@ -1,6 +1,7 @@
 import React from 'react';
 import { DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
+import GeneralComponent from './GeneralComponent';
 import {
   observer
 }
@@ -15,7 +16,6 @@ const boardTarget = {
     // You can disallow drop based on props or item
     const item = monitor.getItem();
     return true;
-    //return canMakeChessMove(item.fromPosition, props.position);
   },
 
   hover(props, monitor, component) {
@@ -28,10 +28,7 @@ const boardTarget = {
     const clientOffset = monitor.getClientOffset();
     const componentRect = findDOMNode(component).getBoundingClientRect();
 
-
-    console.log("HOVERING!",props);
-
-    console.log(clientOffset,componentRect);
+    props.handleComponentHover(clientOffset);
 
     // You can check whether we're over a nested drop target
     const isJustOverThisOne = monitor.isOver({ shallow: true });
@@ -41,7 +38,6 @@ const boardTarget = {
   },
 
   drop(props, monitor, component) {
-    console.log("DROPPED!",props);
     if (monitor.didDrop()) {
       // If you want, you can check whether some nested
       // target already handled drop
@@ -51,8 +47,7 @@ const boardTarget = {
     // Obtain the dragged item
     const item = monitor.getItem();
 
-    // You can do something with it
-    console.log("DROP:",item.fromPosition,props.position);
+    props.handleComponentDrop();
 
     // You can also do nothing and return a drop result,
     // which will be available as monitor.getDropResult()
@@ -96,13 +91,25 @@ const boardTarget = {
   render(){
     // These props are injected by React DnD,
     // as defined by your `collect` function above:
-    const { isOver, canDrop, connectDropTarget } = this.props;
+    const { isOver, canDrop, connectDropTarget, componentList } = this.props;
 
     return connectDropTarget(
       <div className="board">
         {isOver && canDrop && <div className='green' />}
         {!isOver && canDrop && <div className='yellow' />}
         {isOver && !canDrop && <div className='red' />}
+        {
+          componentList.map((comp)=>{
+            return <GeneralComponent
+              type={comp.type}
+              children={comp.children}
+              library={comp.library}
+              properties={comp.properties}
+              link={comp.link}
+              handleComponentDrag={(comp)=>this.props.handlePageComponentDrag(comp)}
+            />
+          })
+        }
       </div>
     );
   }
