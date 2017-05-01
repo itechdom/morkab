@@ -18,7 +18,6 @@ export class Morkab {
     this.draggedComponent.position = position;
   }
   @action addComponentToPage(){
-    console.log("DRAGGED COMPONENT",this.draggedComponent);
     this.page.push(this.draggedComponent);
   }
 }
