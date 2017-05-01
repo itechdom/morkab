@@ -28,6 +28,9 @@ const boardTarget = {
     const clientOffset = monitor.getClientOffset();
     const componentRect = findDOMNode(component).getBoundingClientRect();
 
+
+    console.log("HOVERING!",props);
+
     console.log(clientOffset,componentRect);
 
     // You can check whether we're over a nested drop target
@@ -38,6 +41,7 @@ const boardTarget = {
   },
 
   drop(props, monitor, component) {
+    console.log("DROPPED!",props);
     if (monitor.didDrop()) {
       // If you want, you can check whether some nested
       // target already handled drop
@@ -76,10 +80,12 @@ const boardTarget = {
   componentWillReceiveProps(nextProps) {
     if (!this.props.isOver && nextProps.isOver) {
       // You can use this as enter handler
+      console.log("ENTERED!",this.props);
     }
 
     if (this.props.isOver && !nextProps.isOver) {
       // You can use this as leave handler
+      console.log("LEFT!",this.props);
     }
 
     if (this.props.isOverCurrent && !nextProps.isOverCurrent) {

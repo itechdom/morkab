@@ -7,12 +7,14 @@ import {
 from "mobx-react";
 
 let compList = {
-  Material : Material
+  Material
 }
 
 const generalComponentSource = {
   beginDrag(props) {
-    return {};
+    return {
+      type:props.type
+    }
   }
 };
 
