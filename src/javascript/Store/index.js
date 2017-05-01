@@ -10,6 +10,7 @@ export class Morkab {
     components.push(comp);
   }
   @action setDraggedComponent(comp){
+    //we have to find the component
     console.log("setting dragged component",comp);
     this.draggedComponent = comp;
   }
