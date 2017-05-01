@@ -1,2 +1,1 @@
-# BudgetQT
-My personal budgeting app
+# Morkab
