@@ -28,7 +28,7 @@ export default class GeneralComponent extends React.Component{
 
   render(){
     const { connectDragSource, isDragging, type, properties, children, library, link } = this.props;
-    return connectDragSource(<div><RecursiveComponent library={library} type={type} properties={properties} children={children} link={link} /></div>);
+    return connectDragSource(<div><RecursiveComponent library={library} type={type} properties={properties} children={children} link={link} isDragging={isDragging} /></div>);
   }
 
 }
@@ -38,7 +38,8 @@ const RecursiveComponent = ({
   properties,
   children,
   library,
-  link
+  link,
+  isDragging
 }) => {
     let Comp;
     if(library !== "default"){
@@ -47,7 +48,9 @@ const RecursiveComponent = ({
     else{
       Comp = type;
     }
-    return <div>
+    return <div style={{
+        opacity: isDragging ? 0.2 : 1
+      }}>
       <h1><a target="_blank" href={link}>{type}</a></h1>
       <Comp
         {...properties}

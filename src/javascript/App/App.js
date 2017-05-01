@@ -16,34 +16,13 @@ import {
 from 'react-intl';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {
-  fade
-}
-from 'material-ui/utils/colorManipulator';
 import * as colors from 'material-ui/styles/colors';
-
 import {
   BrowserRouter as Router,
   Route,
   Link
 }
 from 'react-router-dom'
-
-import {
-  Tabs,
-  Tab
-}
-from 'material-ui/Tabs';
-import Dialog from 'material-ui/Dialog';
-import {
-  Card,
-  CardActions,
-  CardHeader,
-  CardMedia,
-  CardTitle,
-  CardText
-}
-from 'material-ui/Card';
 import Material from 'material-ui';
 import Chip from 'material-ui/Chip';
 import AppBar from 'material-ui/AppBar';
@@ -52,21 +31,6 @@ import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
-import AutoComplete from 'material-ui/AutoComplete';
-import {
-  BottomNavigation,
-  BottomNavigationItem
-}
-from 'material-ui/BottomNavigation';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn
-}
-from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
 
 import DevTools from 'mobx-react-devtools';
@@ -78,6 +42,7 @@ import '../Style/main.scss';
 
 import data from '../component-list';
 import GeneralComponent from './GeneralComponent';
+import Board from './Board';
 import UIElement from './UIElement';
 
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -98,7 +63,6 @@ const muiTheme = getMuiTheme({
     alternateTextColor: colors.white,
     canvasColor: colors.white,
     borderColor: colors.grey300,
-    disabledColor: fade(colors.darkBlack, 0.3),
     pickerHeaderColor: colors.cyan500,
     shadowColor: colors.fullBlack
   },
@@ -167,6 +131,7 @@ const styles = {
                 }
               </Paper>
             <div style={{flex:3}}>
+              <Board/>
             </div>
           </div>
           <DevTools />
@@ -176,6 +141,8 @@ const styles = {
   }
 
 };
+
+
 
 let morkabStore = new Morkab();
 
