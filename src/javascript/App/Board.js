@@ -48,7 +48,7 @@ const boardTarget = {
     const item = monitor.getItem();
 
     // You can do something with it
-    console.log(item.fromPosition,props.position);
+    console.log("DROP:",item.fromPosition,props.position);
 
     // You can also do nothing and return a drop result,
     // which will be available as monitor.getDropResult()

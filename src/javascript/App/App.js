@@ -130,25 +130,25 @@ const styles = {
                   })
                 }
               </Paper>
-            <div style={{flex:3}}>
-              <Board/>
+              <div style={{flex:3}}>
+                <Board/>
+              </div>
             </div>
+            <DevTools />
           </div>
-          <DevTools />
-        </div>
-      </MuiThemeProvider>
-    );
-  }
+        </MuiThemeProvider>
+      );
+    }
 
-};
+  };
 
 
 
-let morkabStore = new Morkab();
+  let morkabStore = new Morkab();
 
-ReactDOM.render(
-  <IntlProvider locale="en">
-    <App store={morkabStore} />
-  </IntlProvider>,
-  document.getElementById('app')
-);
+  ReactDOM.render(
+    <IntlProvider locale="en">
+      <App store={morkabStore} />
+    </IntlProvider>,
+    document.getElementById('app')
+  );
