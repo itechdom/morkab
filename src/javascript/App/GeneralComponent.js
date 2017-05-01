@@ -12,9 +12,7 @@ let compList = {
 
 const generalComponentSource = {
   beginDrag(props) {
-    return {
-      type:props.type
-    }
+    return props;
   }
 };
 
@@ -33,8 +31,8 @@ function collect(connect, monitor) {
   }
 
   render(){
-    const { connectDragSource, isDragging, type, properties, children, library, link } = this.props;
-    return connectDragSource(<div><DraggableComponent library={library} type={type} properties={properties} children={children} link={link} isDragging={isDragging} /></div>);
+    const { connectDragSource, isDragging, type, properties, children, library, link, handleComponentDrag } = this.props;
+    return connectDragSource(<div><DraggableComponent library={library} type={type} properties={properties} children={children} link={link} isDragging={isDragging} handleComponentDrag={handleComponentDrag} /></div>);
   }
 
 }
@@ -45,7 +43,8 @@ const DraggableComponent = ({
   children,
   library,
   link,
-  isDragging
+  isDragging,
+  handleComponentDrag
 }) => {
     let Comp;
     if(library !== "default"){
@@ -53,6 +52,9 @@ const DraggableComponent = ({
     }
     else{
       Comp = type;
+    }
+    if(isDragging){
+      handleComponentDrag(type);
     }
     return <div style={{
         opacity: isDragging ? 0.2 : 1

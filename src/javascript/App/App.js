@@ -125,6 +125,7 @@ const styles = {
                         library={comp.library}
                         properties={comp.properties}
                         link={comp.link}
+                        handleComponentDrag={(comp)=>this.props.store.setDraggedComponent(comp)}
                       />
                     </div>
                   })
