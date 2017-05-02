@@ -23,8 +23,8 @@ function collect(connect, monitor) {
   }
 }
 
-@DragSource('generalcomponent', generalComponentSource, collect)
-@observer export default class GeneralComponent extends React.Component{
+@DragSource('pagecomponent', generalComponentSource, collect)
+@observer export default class PageComponent extends React.Component{
 
   constructor(props){
     super(props);

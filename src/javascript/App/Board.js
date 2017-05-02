@@ -1,7 +1,7 @@
 import React from 'react';
 import { DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
-import GeneralComponent from './GeneralComponent';
+import PageComponent from './PageComponent';
 import {
   observer
 }
@@ -30,6 +30,11 @@ const boardTarget = {
 
     props.handleComponentHover(clientOffset);
 
+    let item = monitor.getItem();
+    let itemType = monitor.getItemType();
+
+    console.log("ITEM HOVERING IS:",item,itemType);
+
     // You can check whether we're over a nested drop target
     const isJustOverThisOne = monitor.isOver({ shallow: true });
 
@@ -56,7 +61,7 @@ const boardTarget = {
   }
 };
 
-@DropTarget('generalcomponent', boardTarget, (connect, monitor) => {
+@DropTarget(['generalcomponent','pagecomponent'], boardTarget, (connect, monitor) => {
   return {
     // Call this function inside render()
     // to let React DnD handle the drag events:
@@ -75,12 +80,10 @@ const boardTarget = {
   componentWillReceiveProps(nextProps) {
     if (!this.props.isOver && nextProps.isOver) {
       // You can use this as enter handler
-      console.log("ENTERED!",this.props);
     }
 
     if (this.props.isOver && !nextProps.isOver) {
       // You can use this as leave handler
-      console.log("LEFT!",this.props);
     }
 
     if (this.props.isOverCurrent && !nextProps.isOverCurrent) {
@@ -91,7 +94,7 @@ const boardTarget = {
   render(){
     // These props are injected by React DnD,
     // as defined by your `collect` function above:
-    const { isOver, canDrop, connectDropTarget, componentList } = this.props;
+    const { isOver, canDrop, connectDropTarget, componentList, itemType } = this.props;
 
     return connectDropTarget(
       <div className="board">
@@ -100,12 +103,14 @@ const boardTarget = {
         {isOver && !canDrop && <div className='red' />}
         {
           componentList.map((comp)=>{
-            return <GeneralComponent
+            return <PageComponent
+              id={comp.id}
               type={comp.type}
               children={comp.children}
               library={comp.library}
               properties={comp.properties}
               link={comp.link}
+              position={comp.position}
               handleComponentDrag={(comp)=>this.props.handlePageComponentDrag(comp)}
             />
           })

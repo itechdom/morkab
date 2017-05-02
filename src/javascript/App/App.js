@@ -120,6 +120,7 @@ const styles = {
                   this.props.store.componentList.map((comp)=>{
                     return <div style={{marginTop:10}}>
                       <GeneralComponent
+                        id={comp.id}
                         type={comp.type}
                         children={comp.children}
                         library={comp.library}
@@ -134,7 +135,7 @@ const styles = {
               <div style={{flex:3}}>
                 <Board
                   componentList={this.props.store.page}
-                  handlePageComponentDrag={(comp)=>console.log(comp)}
+                  handlePageComponentDrag={(comp)=>this.props.store.setDraggedComponent(comp)}
                   handleComponentHover={(position)=>this.props.store.updateDraggedComponentPosition(position)}
                   handleComponentDrop={()=>this.props.store.addComponentToPage()}
                 />
