@@ -77,7 +77,7 @@ const DraggableComponent = ({
         top:position.y,
         left:position.x
       }}>
-      <h1><a target="_blank" href={link}>{type}</a></h1>
+      <h4><a target="_blank" href={link}>{type}</a></h4>
       <Comp
         {...properties}
       />

@@ -72,7 +72,7 @@ const DraggableComponent = ({
     return <div style={{
         opacity: isDragging ? 0.2 : 1
       }}>
-      <h1><a target="_blank" href={link}>{type}</a></h1>
+      <h4><a target="_blank" href={link}>{type}</a></h4>
       <Comp
         {...properties}
       />
