@@ -7,12 +7,22 @@ export class Morkab {
   @observable draggedComponent = {};
   constructor() {
   }
-  @action setDraggedComponent(type,id){
-    //we have to find the component
-    let comp = this.componentList.find((x)=>{
-      return x.type === type ;
-    });
-    this.draggedComponent = comp;
+  @action setDraggedComponent(id,dragType){
+    if(dragType === 'generalcomponent'){
+      //we have to find the component
+      let comp = this.componentList.find((x)=>{
+        return x.id === id ;
+      });
+      this.draggedComponent = comp;
+    }
+    else if(dragType === 'pagecomponent'){
+      //we have to find the component
+      let comp = this.page.find((x)=>{
+        return x.id === id ;
+      });
+      comp.page = true;
+      this.draggedComponent = comp;
+    }
   }
   @action updateDraggedComponentPosition(position){
     this.draggedComponent.tempPosition = position;

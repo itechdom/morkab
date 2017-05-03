@@ -33,8 +33,6 @@ const boardTarget = {
     let item = monitor.getItem();
     let itemType = monitor.getItemType();
 
-    console.log("ITEM HOVERING IS:",item,itemType);
-
     // You can check whether we're over a nested drop target
     const isJustOverThisOne = monitor.isOver({ shallow: true });
 

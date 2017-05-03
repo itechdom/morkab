@@ -126,7 +126,7 @@ const styles = {
                         library={comp.library}
                         properties={comp.properties}
                         link={comp.link}
-                        handleComponentDrag={(comp)=>this.props.store.setDraggedComponent(comp)}
+                        handleComponentDrag={(id,type)=>this.props.store.setDraggedComponent(id,type)}
                       />
                     </div>
                   })
@@ -135,7 +135,7 @@ const styles = {
               <div style={{flex:3}}>
                 <Board
                   componentList={this.props.store.page}
-                  handlePageComponentDrag={(comp)=>this.props.store.setDraggedComponent(comp)}
+                  handlePageComponentDrag={(id,type)=>this.props.store.setDraggedComponent(id,type)}
                   handleComponentHover={(position)=>this.props.store.updateDraggedComponentPosition(position)}
                   handleComponentDrop={()=>this.props.store.addComponentToPage()}
                 />

@@ -31,8 +31,9 @@ function collect(connect, monitor) {
   }
 
   render(){
-    const { connectDragSource, isDragging, type, properties, children, library, link, handleComponentDrag, tempPosition, id } = this.props;
+    const { connectDragSource, isDragging, type, properties, children, library, link, handleComponentDrag, tempPosition, id, component } = this.props;
     return connectDragSource(<div><DraggableComponent
+      component={component}
       id={id}
       library={library}
       type={type}
@@ -66,7 +67,7 @@ const DraggableComponent = ({
       Comp = type;
     }
     if(isDragging){
-      handleComponentDrag(type,id);
+      handleComponentDrag(id,'generalcomponent');
     }
     return <div style={{
         opacity: isDragging ? 0.2 : 1
