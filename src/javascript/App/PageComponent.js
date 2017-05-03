@@ -31,7 +31,7 @@ function collect(connect, monitor) {
   }
 
   render(){
-    const { connectDragSource, isDragging, type, properties, children, library, link, handleComponentDrag, tempPosition, id, component } = this.props;
+    const { connectDragSource, isDragging, type, properties, children, library, link, handleComponentDrag, tempPosition, id, component, position } = this.props;
     return connectDragSource(<div><DraggableComponent
       component={component}
       id={id}
@@ -43,6 +43,7 @@ function collect(connect, monitor) {
       isDragging={isDragging}
       handleComponentDrag={handleComponentDrag}
       tempPosition={tempPosition}
+      position={position}
     />
     </div>);
 }
@@ -57,7 +58,8 @@ const DraggableComponent = ({
   library,
   link,
   isDragging,
-  handleComponentDrag
+  handleComponentDrag,
+  position
 }) => {
     let Comp;
     if(library !== "default"){
@@ -70,7 +72,10 @@ const DraggableComponent = ({
       handleComponentDrag(id,'pagecomponent');
     }
     return <div style={{
-        opacity: isDragging ? 0.2 : 1
+        opacity: isDragging ? 0.2 : 1,
+        position:'absolute',
+        top:position.y,
+        left:position.x
       }}>
       <h1><a target="_blank" href={link}>{type}</a></h1>
       <Comp

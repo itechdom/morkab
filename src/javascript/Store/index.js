@@ -20,7 +20,8 @@ export class Morkab {
       let comp = this.page.find((x)=>{
         return x.id === id ;
       });
-      comp.page = true;
+      comp.dropped = true;
+      console.log(comp);
       this.draggedComponent = comp;
     }
   }
@@ -30,11 +31,14 @@ export class Morkab {
   @action applyDraggedComponentPosition(){
     this.draggedComponent.position = this.draggedComponent.tempPosition;
   }
-  @action addComponentToPage(){
-    //already there
-    //let foundComponent = this.page.find(this.draggedComponent);
+  @action addComponentToPage(dragType){
     let {library,type,link,properties,dropped} = this.draggedComponent;
-    (dropped)?this.applyDraggedComponentPosition():this.page.push(new Component(library,type,link,properties,true));
+    if(dragType === 'generalcomponent'){
+      this.page.push(new Component(library,type,link,properties,true));
+    }
+    else if(dragType === 'pagecomponent'){
+      this.applyDraggedComponentPosition();
+    }
   }
 }
 

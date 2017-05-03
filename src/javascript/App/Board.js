@@ -49,8 +49,9 @@ const boardTarget = {
 
     // Obtain the dragged item
     const item = monitor.getItem();
+    const itemType = monitor.getItemType();
 
-    props.handleComponentDrop();
+    props.handleComponentDrop(itemType);
 
     // You can also do nothing and return a drop result,
     // which will be available as monitor.getDropResult()
@@ -92,7 +93,7 @@ const boardTarget = {
   render(){
     // These props are injected by React DnD,
     // as defined by your `collect` function above:
-    const { isOver, canDrop, connectDropTarget, componentList, itemType } = this.props;
+    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag } = this.props;
 
     return connectDropTarget(
       <div className="board">
@@ -109,7 +110,7 @@ const boardTarget = {
               properties={comp.properties}
               link={comp.link}
               position={comp.position}
-              handleComponentDrag={(comp)=>this.props.handlePageComponentDrag(comp)}
+              handleComponentDrag={handlePageComponentDrag}
             />
           })
         }

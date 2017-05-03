@@ -137,7 +137,7 @@ const styles = {
                   componentList={this.props.store.page}
                   handlePageComponentDrag={(id,type)=>this.props.store.setDraggedComponent(id,type)}
                   handleComponentHover={(position)=>this.props.store.updateDraggedComponentPosition(position)}
-                  handleComponentDrop={()=>this.props.store.addComponentToPage()}
+                  handleComponentDrop={(type)=>this.props.store.addComponentToPage(type)}
                 />
               </div>
             </div>
