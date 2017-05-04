@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Material from 'material-ui';
+import * as Layout from '../Library/Layout.js';
 import { DragSource } from 'react-dnd';
 import {
   observer
@@ -7,7 +8,8 @@ import {
 from "mobx-react";
 
 let compList = {
-  Material
+  Material,
+  Layout
 }
 
 const generalComponentSource = {

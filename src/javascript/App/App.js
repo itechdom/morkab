@@ -43,7 +43,6 @@ import '../Style/main.scss';
 import data from '../component-list';
 import GeneralComponent from './GeneralComponent';
 import Board from './Board';
-import UIElement from './UIElement';
 
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
