@@ -80,7 +80,8 @@ const DraggableComponent = ({
     opacity: isDragging ? 0.2 : 1,
     position:'absolute',
     top:position.y,
-    left:position.x
+    left:position.x,
+    width:'100%'
   }}>
   <h4><a target="_blank" href={link}>{type}</a></h4>
   {

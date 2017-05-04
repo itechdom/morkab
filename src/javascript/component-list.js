@@ -305,12 +305,5 @@ export default [
     "type":"Row",
     "properties":{
     }
-  },
-  {
-    "library":"Layout",
-    "link":`${docWebsite}toolbar`,
-    "type":"Column",
-    "properties":{
-    }
   }
 ];

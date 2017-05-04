@@ -21,7 +21,6 @@ export class Morkab {
         return x.id === id ;
       });
       comp.dropped = true;
-      console.log(comp);
       this.draggedComponent = comp;
     }
   }
