@@ -19,6 +19,7 @@ const generalComponentSource = {
 function collect(connect, monitor) {
   return {
     connectDragSource: connect.dragSource(),
+    connectDragPreview: connect.dragPreview(),
     isDragging: monitor.isDragging()
   }
 }
@@ -31,7 +32,7 @@ function collect(connect, monitor) {
   }
 
   render(){
-    const { connectDragSource, isDragging, type, properties, children, library, link, handleComponentDrag, tempPosition, id, component, position } = this.props;
+    const { connectDragSource, connectDragPreview, isDragging, type, properties, children, library, link, handleComponentDrag, tempPosition, id, component, position } = this.props;
     return connectDragSource(<div><DraggableComponent
       component={component}
       id={id}
@@ -44,8 +45,9 @@ function collect(connect, monitor) {
       handleComponentDrag={handleComponentDrag}
       tempPosition={tempPosition}
       position={position}
+      connectDragPreview={connectDragPreview}
     />
-    </div>);
+  </div>);
 }
 
 }
@@ -59,28 +61,35 @@ const DraggableComponent = ({
   link,
   isDragging,
   handleComponentDrag,
-  position
+  position,
+  connectDragPreview
 }) => {
-    let Comp;
-    if(library !== "default"){
-      Comp = compList[library][type];
-    }
-    else{
-      Comp = type;
-    }
-    if(isDragging){
-      handleComponentDrag(id,'pagecomponent');
-    }
-    return <div style={{
-        opacity: isDragging ? 0.2 : 1,
-        position:'absolute',
-        top:position.y,
-        left:position.x
-      }}>
-      <h4><a target="_blank" href={link}>{type}</a></h4>
-      <Comp
-        {...properties}
-      />
-      {children}
-    </div>
+  let Comp;
+  if(library !== "default"){
+    Comp = compList[library][type];
+  }
+  else{
+    Comp = type;
+  }
+  if(isDragging){
+    handleComponentDrag(id,'pagecomponent');
+  }
+  return <div style={{
+    opacity: isDragging ? 0.2 : 1,
+    position:'absolute',
+    top:position.y,
+    left:position.x
+  }}>
+  <h4><a target="_blank" href={link}>{type}</a></h4>
+  {
+    connectDragPreview(
+      <div>
+        <Comp
+          {...properties}
+        />
+        {children}
+      </div>
+    )
+  }
+</div>
 }
