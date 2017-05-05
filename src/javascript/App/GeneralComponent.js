@@ -1,16 +1,9 @@
 import React from 'react';
-import * as Material from 'material-ui';
-import * as Layout from '../Library/Layout.js';
 import { DragSource } from 'react-dnd';
 import {
   observer
 }
 from "mobx-react";
-
-let compList = {
-  Material,
-  Layout
-}
 
 const generalComponentSource = {
   beginDrag(props) {
@@ -34,12 +27,12 @@ function collect(connect, monitor) {
   }
 
   render(){
-    const { connectDragSource, connectDragPreview, isDragging, type, properties, children, library, link, handleComponentDrag, tempPosition, id, component } = this.props;
+    const { connectDragSource, connectDragPreview, isDragging, element , properties, children, library, link, handleComponentDrag, tempPosition, id, component } = this.props;
     return connectDragSource(<div><DraggableComponent
       component={component}
       id={id}
       library={library}
-      type={type}
+      Element={element}
       properties={properties}
       children={children}
       link={link}
@@ -55,7 +48,7 @@ function collect(connect, monitor) {
 
 const DraggableComponent = ({
   id,
-  type,
+  Element,
   properties,
   children,
   library,
@@ -64,24 +57,17 @@ const DraggableComponent = ({
   handleComponentDrag,
   connectDragPreview
 }) => {
-    let Comp;
-    if(library !== "default"){
-      Comp = compList[library][type];
-    }
-    else{
-      Comp = type;
-    }
     if(isDragging){
       handleComponentDrag(id,'generalcomponent');
     }
     return <div style={{
         opacity: isDragging ? 0.2 : 1
       }}>
-      <h4><a target="_blank" href={link}>{type}</a></h4>
+      <h4><a target="_blank" href={link}>{Element.name}</a></h4>
       {
         connectDragPreview(
           <div>
-            <Comp
+            <Element
               {...properties}
             />
             {children}

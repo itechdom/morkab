@@ -26,7 +26,7 @@ const boardTarget = {
 
     let item = monitor.getItem();
     let itemType = monitor.getItemType();
-    console.log("hello");
+    console.log(item);
     // You can check whether we're over a nested drop target
     const isJustOverThisOne = monitor.isOver({ shallow: true });
 

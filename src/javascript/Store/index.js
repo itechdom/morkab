@@ -31,13 +31,23 @@ export class Morkab {
     this.draggedComponent.position = this.draggedComponent.tempPosition;
   }
   @action addComponentToPage(dragType){
-    let {library,type,link,properties,dropped} = this.draggedComponent;
+    let {library,element,link,properties,dropped} = this.draggedComponent;
     if(dragType === 'generalcomponent'){
-      this.page.push(new Component(library,type,link,properties,true));
+      this.page.push(new Component(library,element,link,properties,true));
     }
     else if(dragType === 'pagecomponent'){
       this.applyDraggedComponentPosition();
     }
+  }
+  @action addComponentToComponent(comp){
+    //get the draggedComponent and comp (drop target)
+    //and add the former to children list of comp
+    let component = this.page.find((x)=>{
+      return x.id === comp.id ;
+    });
+    //we have to make sure that we make comp draggable again (pass in the drag source)
+    component.properties.children.push(comp);
+    this.page.remove(component);
   }
 }
 
@@ -46,14 +56,14 @@ export class Component {
   tempPosition;
   @observable position;
   library;
-  type;
+  element;
   link;
   properties;
-  constructor(library,type,link,properties,dropped=false){
+  constructor(library,element,link,properties,dropped=false){
     this.id = uuidV4();
     this.position = {};
     this.library = library;
-    this.type = type;
+    this.element = element;
     this.link = link;
     this.properties = properties;
     this.dropped = dropped;

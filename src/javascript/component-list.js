@@ -1,22 +1,6 @@
 import React from 'react';
-import IconButton from 'material-ui/IconButton';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import FontIcon from 'material-ui/FontIcon';
-import FlatButton from 'material-ui/FlatButton';
-import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
-import {List, ListItem} from 'material-ui/List';
-import {
-  Step,
-  Stepper,
-  StepLabel,
-} from 'material-ui/Stepper';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import MenuItem from 'material-ui/MenuItem';
-import Subheader from 'material-ui/Subheader';
-import Paper from 'material-ui/Paper';
-import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
+import * as Material from 'material-ui';
+import * as Layout from './Library/Layout.js';
 
 const docWebsite = "http://www.material-ui.com/#/components/";
 
@@ -33,276 +17,251 @@ const iconData = [
 
 export default [
   {
-    "library":"Material",
-    "type":"AppBar",
+    "element":Material.AppBar,
     "link":`${docWebsite}app-bar`,
     "properties":{
       "title":"hello",
-      iconElementRight:<FlatButton label="Save" />
+      iconElementRight:<Material.FlatButton label="Save" />
     }
   },
   {
-    "library":"Material",
+    "element":Material.AutoComplete,
     "link":`${docWebsite}auto-complete`,
-    "type":"AutoComplete",
     "properties":{
       "dataSource":["Anas","Becky","Chaim David","David","Evalyn","Fouad"]
     }
   },
   {
-    "library":"Material",
+    "element":Material.Avatar,
     "link":`${docWebsite}avatar`,
-    "type":"Avatar",
     "properties":{
-      icon:<FontIcon className="material-icons">folder</FontIcon>
+      icon:<Material.FontIcon className="material-icons">folder</Material.FontIcon>
     }
   },
   {
-    "library":"Material",
+    "element":Material.Badge,
     "link":`${docWebsite}badge`,
-    "type":"Badge",
     "properties":{
       "badgeContent":1,
       primary:true,
-      children:<NotificationsIcon />
+      children:[]
     }
   },
   {
-    "library":"Material",
+    "element":Material.BottomNavigation,
     "link":`${docWebsite}bottom-navigation`,
-    "type":"BottomNavigation",
     "properties":{
       selectedIndex:0,
-      children:iconData.map((x,index) => <BottomNavigationItem style={{marginTop:0}} label={x} icon={<FontIcon className="material-icons">{x}</FontIcon>}></BottomNavigationItem>)
+      children:iconData.map((x,index) => <Material.BottomNavigationItem style={{marginTop:0}} label={x} icon={<Material.FontIcon className="material-icons">{x}</Material.FontIcon>}></Material.BottomNavigationItem>)
     }
   },
   {
-    "library":"Material",
+    "element":Material.FlatButton,
     "link":`${docWebsite}flat-button`,
-    "type":"FlatButton",
     "properties":{
       "label":"hello"
     }
   },
   {
-    "library":"Material",
+    "element":Material.RaisedButton,
     "link":`${docWebsite}flat-button`,
-    "type":"RaisedButton",
     "properties":{
       "label":"primary",
       "primary":true
     }
   },
   {
-    "library":"Material",
+    "element":Material.RaisedButton,
     "link":`${docWebsite}flat-button`,
-    "type":"RaisedButton",
     "properties":{
       "label":"secondary",
       "secondary":true
     }
   },
   {
-    "library":"Material",
     "link":`${docWebsite}card`,
-    "type":"Card",
+    "element":Material.Card,
     "properties":{
-      children:[(<CardHeader
+      children:[(<Material.CardHeader
         title="URL Avatar"
         subtitle="Subtitle"
         avatar="images/jsa-128.jpg"
       />),
-      (<CardMedia
-        overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
+      (<Material.CardMedia
+        overlay={<Material.CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
         >
           <img src="images/nature-600-337.jpg" />
-        </CardMedia>),
-        (<CardTitle title="Card title" subtitle="Card subtitle" />),
-        (<CardText>
+        </Material.CardMedia>),
+        (<Material.CardTitle title="Card title" subtitle="Card subtitle" />),
+        (<Material.CardText>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
           Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
           Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-        </CardText>),
-        (<CardActions>
-          <FlatButton label="Action1" />
-          <FlatButton label="Action2" />
-        </CardActions>)]
+        </Material.CardText>),
+        (<Material.CardActions>
+          <Material.FlatButton label="Action1" />
+          <Material.FlatButton label="Action2" />
+        </Material.CardActions>)]
       }
     },
     {
-      "library":"Material",
+      "element":Material.Chip,
       "link":`${docWebsite}chip`,
-      "type":"Chip",
       "properties":{
         children:"hello"
       }
     },
     {
-      "library":"Material",
+      "element":Material.DatePicker,
       "link":`${docWebsite}date-picker`,
-      "type":"DatePicker",
       "properties":{
         "title":"hello"
       }
     },
     {
-      "library":"Material",
-      "link":`${docWebsite}divider`,
-      "type":"Divider",
-      "properties":{
-        "title":"hello"
-      }
+      "element":Material.Divider,
+      "link":`${docWebsite}divider`
     },
     {
-      "library":"Material",
+      "element":Material.List,
       "link":`${docWebsite}list`,
-      "type":"List",
       "properties":{
         "title":"hello",
-        "children":iconData.map((x,index) => <ListItem primaryText={x} leftIcon={<FontIcon className="material-icons">{x}</FontIcon>} />)
+        "children":iconData.map((x,index) => <Material.ListItem
+          primaryText={x}
+          leftIcon={<Material.FontIcon className="material-icons">{x} </Material.FontIcon>}
+        />
+        )
       }
     },
     {
-      "library":"Material",
+      "element":Material.IconMenu,
       "link":`${docWebsite}icon-menu`,
-      "type":"IconMenu",
       "properties":{
-        iconButtonElement:<FontIcon className="material-icons">add</FontIcon>,
+        iconButtonElement:<Material.FontIcon className="material-icons">add</Material.FontIcon>,
         anchorOrigin:{horizontal: 'left', vertical: 'top'},
         targetOrigin:{horizontal: 'left', vertical: 'top'},
-        children:listData.map((x,index) => <MenuItem primaryText={x} />)
+        children:listData.map((x,index) => <Material.MenuItem primaryText={x} />)
       }
     },
     {
-      "library":"Material",
+      "element":Material.DropDownMenu,
       "link":`${docWebsite}dropdown-menu`,
-      "type":"DropDownMenu",
       "properties":{
         value:1,
-        children:listData.map((x,index) => <MenuItem value={index} primaryText={x} />)
+        children:listData.map((x,index) => <Material.MenuItem value={index} primaryText={x} />)
       }
     },
     {
-      "library":"Material",
+      "element":Material.CircularProgress,
       "link":`${docWebsite}circular-progress`,
-      "type":"CircularProgress",
       "properties":{
         "title":"hello"
       }
     },
     {
-      "library":"Material",
+      "element":Material.SelectField,
       "link":`${docWebsite}select-field`,
-      "type":"SelectField",
       "properties":{
         floatingLabelText:"floatingLabelText",
         value:1,
-        children:listData.map((x,index) => <MenuItem value={index} primaryText={x} />)
+        children:listData.map((x,index) => <Material.MenuItem value={index} primaryText={x} />)
       }
     },
     {
-      "library":"Material",
+      "element":Material.Slider,
       "link":`${docWebsite}slider`,
-      "type":"Slider",
       "properties":{
         "title":"hello"
       }
     },
     {
-      "library":"Material",
+      "element":Material.Checkbox,
       "link":`${docWebsite}checkbox`,
-      "type":"Checkbox",
       "properties":{
         "title":"hello"
       }
     },
     {
-      "library":"Material",
+      "element":Material.Stepper,
       "link":`${docWebsite}stepper`,
-      "type":"Stepper",
       "properties":{
         activeStep:1,
-        children:listData.map((x,index)=><Step><StepLabel>{x}</StepLabel></Step>)
+        children:listData.map((x,index)=><Material.Step><Material.StepLabel>{x}</Material.StepLabel></Material.Step>)
       }
     },
     {
-      "library":"Material",
+      "element":Material.Table,
       "link":`${docWebsite}table`,
-      "type":"Table",
       "properties":{
         children:[
-          (<TableHeader>
-            <TableRow>
-              <TableHeaderColumn>ID</TableHeaderColumn>
-              <TableHeaderColumn>Name</TableHeaderColumn>
-              <TableHeaderColumn>Status</TableHeaderColumn>
-            </TableRow>
-          </TableHeader>
+          (<Material.TableHeader>
+            <Material.TableRow>
+              <Material.TableHeaderColumn>ID</Material.TableHeaderColumn>
+              <Material.TableHeaderColumn>Name</Material.TableHeaderColumn>
+              <Material.TableHeaderColumn>Status</Material.TableHeaderColumn>
+            </Material.TableRow>
+          </Material.TableHeader>
         ),
         (
-          <TableBody>
-            <TableRow>
-              <TableRowColumn>1</TableRowColumn>
-              <TableRowColumn>John Smith</TableRowColumn>
-              <TableRowColumn>Employed</TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn>2</TableRowColumn>
-              <TableRowColumn>Randal White</TableRowColumn>
-              <TableRowColumn>Unemployed</TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn>3</TableRowColumn>
-              <TableRowColumn>Stephanie Sanders</TableRowColumn>
-              <TableRowColumn>Employed</TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn>4</TableRowColumn>
-              <TableRowColumn>Steve Brown</TableRowColumn>
-              <TableRowColumn>Employed</TableRowColumn>
-            </TableRow>
-          </TableBody>
+          <Material.TableBody>
+            <Material.TableRow>
+              <Material.TableRowColumn>1</Material.TableRowColumn>
+              <Material.TableRowColumn>John Smith</Material.TableRowColumn>
+              <Material.TableRowColumn>Employed</Material.TableRowColumn>
+            </Material.TableRow>
+            <Material.TableRow>
+              <Material.TableRowColumn>2</Material.TableRowColumn>
+              <Material.TableRowColumn>Randal White</Material.TableRowColumn>
+              <Material.TableRowColumn>Unemployed</Material.TableRowColumn>
+            </Material.TableRow>
+            <Material.TableRow>
+              <Material.TableRowColumn>3</Material.TableRowColumn>
+              <Material.TableRowColumn>Stephanie Sanders</Material.TableRowColumn>
+              <Material.TableRowColumn>Employed</Material.TableRowColumn>
+            </Material.TableRow>
+            <Material.TableRow>
+              <Material.TableRowColumn>4</Material.TableRowColumn>
+              <Material.TableRowColumn>Steve Brown</Material.TableRowColumn>
+              <Material.TableRowColumn>Employed</Material.TableRowColumn>
+            </Material.TableRow>
+          </Material.TableBody>
         )
       ]
     }
   },
   {
-    "library":"Material",
+    "element":Material.Tabs,
     "link":`${docWebsite}tabs`,
-    "type":"Tabs",
     "properties":{
-      children:listData.map((x,index) => <Tab label={x} >
-      </Tab>)
+      children:listData.map((x,index) => <Material.Tab label={x} >
+      </Material.Tab>)
     }
   },
   {
-    "library":"Material",
+    "element":Material.TextField,
     "link":`${docWebsite}text-field`,
-    "type":"TextField",
     "properties":{
       "title":"hello"
     }
   },
   {
-    "library":"Material",
+    "element":Material.TimePicker,
     "link":`${docWebsite}time-picker`,
-    "type":"TimePicker",
     "properties":{
       "title":"hello"
     }
   },
   {
-    "library":"Material",
+    "element":Material.Toolbar,
     "link":`${docWebsite}toolbar`,
-    "type":"Toolbar",
     "properties":{
     }
   },
   {
-    "library":"Layout",
+    "element":Layout.Row,
     "link":`${docWebsite}toolbar`,
-    "type":"Row",
     "properties":{
     }
   }
