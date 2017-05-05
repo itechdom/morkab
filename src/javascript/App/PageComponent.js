@@ -62,7 +62,6 @@ const DraggableComponent = ({
   }
   return <div style={{
     opacity: isDragging ? 0.2 : 1,
-    position:'absolute',
     top:position.y,
     left:position.x,
     width:'100%'
