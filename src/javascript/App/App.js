@@ -153,7 +153,7 @@ const styles = {
   let morkabStore = new Morkab();
 
   data.map((x,index)=>{
-    let comp = new Component(x.library,x.element,x.link,x.properties);
+    let comp = new Component(x.element,x.link,x.properties);
     morkabStore.componentList.push(comp);
   })
 

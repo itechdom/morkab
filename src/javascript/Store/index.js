@@ -31,9 +31,9 @@ export class Morkab {
     this.draggedComponent.position = this.draggedComponent.tempPosition;
   }
   @action addComponentToPage(dragType){
-    let {library,element,link,properties,dropped} = this.draggedComponent;
+    let {element,link,properties,dropped} = this.draggedComponent;
     if(dragType === 'generalcomponent'){
-      this.page.push(new Component(library,element,link,properties,true));
+      this.page.push(new Component(element,link,properties,true));
     }
     else if(dragType === 'pagecomponent'){
       this.applyDraggedComponentPosition();
@@ -59,10 +59,9 @@ export class Component {
   element;
   link;
   properties;
-  constructor(library,element,link,properties,dropped=false){
+  constructor(element,link,properties,dropped=false){
     this.id = uuidV4();
     this.position = {};
-    this.library = library;
     this.element = element;
     this.link = link;
     this.properties = properties;

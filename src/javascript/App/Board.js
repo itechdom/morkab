@@ -104,11 +104,9 @@ const boardTarget = {
           componentList.map((comp)=>{
             return <PageComponent
               id={comp.id}
-              type={comp.type}
+              element={comp.element}
               children={comp.children}
-              library={comp.library}
               properties={comp.properties}
-              link={comp.link}
               position={comp.position}
               handleComponentDrag={handlePageComponentDrag}
             />

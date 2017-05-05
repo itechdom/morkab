@@ -27,11 +27,9 @@ function collect(connect, monitor) {
   }
 
   render(){
-    const { connectDragSource, connectDragPreview, isDragging, element , properties, children, library, link, handleComponentDrag, tempPosition, id, component } = this.props;
+    const { connectDragSource, connectDragPreview, isDragging, element , properties, children, link, handleComponentDrag, tempPosition, id} = this.props;
     return connectDragSource(<div><DraggableComponent
-      component={component}
       id={id}
-      library={library}
       Element={element}
       properties={properties}
       children={children}
@@ -51,7 +49,6 @@ const DraggableComponent = ({
   Element,
   properties,
   children,
-  library,
   link,
   isDragging,
   handleComponentDrag,
