@@ -73,8 +73,14 @@ const boardTarget = {
 export class Row extends React.Component{
 
   render(){
-    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, children } = this.props;
+    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, children, childProps } = this.props;
+    let Arr = children.map((Child,index)=>{
+      return <Child
+        {...childProps[index]}
+      />
+    });
     return connectDropTarget(<div style={{display:'flex',backgroundColor:'grey',height:'200px'}}>
+      {Arr}
     </div>);
   }
 
