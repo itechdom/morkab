@@ -263,6 +263,7 @@ export default [
     "element":Layout.Row,
     "link":`${docWebsite}toolbar`,
     "properties":{
+      children:[]
     }
   }
 ];

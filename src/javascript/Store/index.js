@@ -39,15 +39,10 @@ export class Morkab {
       this.applyDraggedComponentPosition();
     }
   }
-  @action addComponentToComponent(comp){
-    //get the draggedComponent and comp (drop target)
-    //and add the former to children list of comp
-    let component = this.page.find((x)=>{
-      return x.id === comp.id ;
-    });
+  @action addItemToComponent(item,component){
     //we have to make sure that we make comp draggable again (pass in the drag source)
-    component.properties.children.push(comp);
-    this.page.remove(component);
+    component.props.children.push(item.element);
+    this.page.remove(item);
   }
 }
 

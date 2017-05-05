@@ -47,6 +47,8 @@ import Board from './Board';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 
+import {Provider, inject} from 'mobx-react';
+
 injectTapEventPlugin();
 
 const muiTheme = getMuiTheme({
@@ -89,6 +91,9 @@ const styles = {
   }
 };
 
+@inject((allStores) => ({
+    store: allStores.userStore
+}))
 @DragDropContext(HTML5Backend)
 @observer class App extends React.Component {
 
@@ -101,48 +106,50 @@ const styles = {
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <div>
-          <AppBar
-            iconElementLeft={<span></span>}
-            style={{textAlign:"center"}}
-            title={
-              <div style={styles.title}><h1 className="title">Morkab</h1>
-            </div>}
-          />
-          <div style={{display:'flex'}}>
-            <Paper
-              zDepth={3}
-              style={{flex:1,padding:10,overflowY:'scroll',overflowX:'hidden',height:800}}
-              >
-                {
-                  this.props.store.componentList.map((comp)=>{
-                    return <div style={{marginTop:10}}>
-                      <GeneralComponent
-                        id={comp.id}
-                        element={comp.element}
-                        children={comp.children}
-                        library={comp.library}
-                        properties={comp.properties}
-                        link={comp.link}
-                        handleComponentDrag={(id,type)=>this.props.store.setDraggedComponent(id,type)}
-                      />
-                    </div>
-                  })
-                }
-              </Paper>
-              <div style={{flex:3}}>
-                <Board
-                  componentList={this.props.store.page}
-                  handlePageComponentDrag={(id,type)=>this.props.store.setDraggedComponent(id,type)}
-                  handleComponentHover={(position)=>this.props.store.updateDraggedComponentPosition(position)}
-                  handleComponentDrop={(type)=>this.props.store.addComponentToPage(type)}
-                />
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <div>
+            <AppBar
+              iconElementLeft={<span></span>}
+              style={{textAlign:"center"}}
+              title={
+                <div style={styles.title}><h1 className="title">Morkab</h1>
+              </div>}
+            />
+            <div style={{display:'flex'}}>
+              <Paper
+                zDepth={3}
+                style={{flex:1,padding:10,overflowY:'scroll',overflowX:'hidden',height:800}}
+                >
+                  {
+                    this.props.store.componentList.map((comp)=>{
+                      return <div style={{marginTop:10}}>
+                        <GeneralComponent
+                          id={comp.id}
+                          element={comp.element}
+                          children={comp.children}
+                          library={comp.library}
+                          properties={comp.properties}
+                          link={comp.link}
+                          handleComponentDrag={(id,type)=>this.props.store.setDraggedComponent(id,type)}
+                          store={this.props.store}
+                        />
+                      </div>
+                    })
+                  }
+                </Paper>
+                <div style={{flex:3}}>
+                  <Board
+                    componentList={this.props.store.page}
+                    handlePageComponentDrag={(id,type)=>this.props.store.setDraggedComponent(id,type)}
+                    handleComponentHover={(position)=>this.props.store.updateDraggedComponentPosition(position)}
+                    handleComponentDrop={(type)=>this.props.store.addComponentToPage(type)}
+                    store={this.props.store}
+                  />
+                </div>
               </div>
+              <DevTools />
             </div>
-            <DevTools />
-          </div>
-        </MuiThemeProvider>
+          </MuiThemeProvider>
       );
     }
 
@@ -158,8 +165,11 @@ const styles = {
   })
 
   ReactDOM.render(
-    <IntlProvider locale="en">
-      <App store={morkabStore} />
-    </IntlProvider>,
+    <Provider userStore={morkabStore}>
+      <IntlProvider locale="en">
+        <App />
+      </IntlProvider>
+    </Provider>
+      ,
     document.getElementById('app')
   );

@@ -1,5 +1,9 @@
 import React from 'react';
 import { DropTarget } from 'react-dnd';
+import {
+  observer
+}
+from "mobx-react";
 
 /**
  * Specifies the drop target contract.
@@ -26,7 +30,6 @@ const boardTarget = {
 
     let item = monitor.getItem();
     let itemType = monitor.getItemType();
-    console.log(item);
     // You can check whether we're over a nested drop target
     const isJustOverThisOne = monitor.isOver({ shallow: true });
 
@@ -45,9 +48,7 @@ const boardTarget = {
     const item = monitor.getItem();
     const itemType = monitor.getItemType();
 
-    console.log("hello");
-
-    //props.handleComponentDrop(itemType);
+    props.store.addItemToComponent(item,component);
 
     // You can also do nothing and return a drop result,
     // which will be available as monitor.getDropResult()
@@ -68,12 +69,12 @@ const boardTarget = {
     itemType: monitor.getItemType()
   }
 })
+@observer
 export class Row extends React.Component{
 
   render(){
-    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag } = this.props;
-    return connectDropTarget(<div style={{width:'100%',height:'400px',backgroundColor:'grey'}}>
-      Row
+    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, children } = this.props;
+    return connectDropTarget(<div style={{display:'flex',backgroundColor:'grey',height:'200px'}}>
     </div>);
   }
 

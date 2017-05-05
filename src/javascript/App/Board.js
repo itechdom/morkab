@@ -93,7 +93,7 @@ const boardTarget = {
   render(){
     // These props are injected by React DnD,
     // as defined by your `collect` function above:
-    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag } = this.props;
+    const { store, isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag } = this.props;
 
     return connectDropTarget(
       <div className="board">
@@ -109,6 +109,7 @@ const boardTarget = {
               properties={comp.properties}
               position={comp.position}
               handleComponentDrag={handlePageComponentDrag}
+              store={store}
             />
           })
         }
