@@ -51,7 +51,7 @@ export class Morkab {
     });
     let childComponent = new Component(item.element,item.link,item.properties,true);
     comp.properties.children.push(childComponent);
-    console.log(comp);
+    comp.subChildren.push(childComponent);
     this.page.remove(item);
   }
 }
@@ -64,12 +64,34 @@ export class Component {
   element;
   link;
   properties;
-  constructor(element,link,properties,dropped=false){
+  subChildren;
+  constructor(element,link,properties={},dropped=false,subChildren=[]){
     this.id = uuidV4();
     this.position = {};
     this.element = element;
     this.link = link;
     this.properties = properties;
     this.dropped = dropped;
+    this.subChildren = subChildren;
   }
 }
+
+// function clone(obj) {
+//   if (obj === null || typeof(obj) !== 'object' || 'isActiveClone' in obj)
+//     return obj;
+
+//   if (obj instanceof Date)
+//     var temp = new obj.constructor(); //or new Date(obj);
+//   else
+//     var temp = obj.constructor();
+
+//   for (var key in obj) {
+//     if (Object.prototype.hasOwnProperty.call(obj, key)) {
+//       obj['isActiveClone'] = null;
+//       temp[key] = clone(obj[key]);
+//       delete obj['isActiveClone'];
+//     }
+//   }
+
+//   return temp;
+// }

@@ -73,8 +73,9 @@ const boardTarget = {
 export class Row extends React.Component{
 
   render(){
-    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, children, id} = this.props;
-    let Arr = children.map((Child,index)=>{
+    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, children, id, subChildren} = this.props;
+    console.log(subChildren);
+    let Arr = subChildren.map((Child,index)=>{
       return <Child.element
         key={Child.id}
         id={Child.id}

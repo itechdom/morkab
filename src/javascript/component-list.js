@@ -264,6 +264,7 @@ export default [
     "link":`${docWebsite}toolbar`,
     "properties":{
       children:[]
-    }
+    },
+    subChildren:[]
   }
 ];

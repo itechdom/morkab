@@ -105,9 +105,9 @@ const boardTarget = {
             return <PageComponent
               id={comp.id}
               element={comp.element}
-              children={comp.children}
               properties={comp.properties}
               position={comp.position}
+              subChildren={comp.subChildren}
               handleComponentDrag={handlePageComponentDrag}
               store={store}
             />

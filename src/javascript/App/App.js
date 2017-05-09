@@ -127,6 +127,7 @@ const styles = {
                           id={comp.id}
                           element={comp.element}
                           children={comp.children}
+                          subChildren={comp.subChildren}
                           library={comp.library}
                           properties={comp.properties}
                           link={comp.link}
