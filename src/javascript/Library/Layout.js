@@ -77,9 +77,10 @@ export class Row extends React.Component{
     let Arr = children.map((Child,index)=>{
       return <Child.element
         {...Child.properties}
+        key={Child.id}
       />
     });
-    return connectDropTarget(<div style={{display:'flex',backgroundColor:'grey',height:'200px'}}>
+    return connectDropTarget(<div key={id} style={{display:'flex',backgroundColor:'grey',height:'200px'}}>
       {Arr}
     </div>);
   }
