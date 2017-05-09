@@ -74,8 +74,9 @@ const DraggableComponent = ({
       <div>
         <Element
           {...properties}
-          id={id}
+          key={id}
           store={store}
+          id={id}
         />
         {children}
       </div>

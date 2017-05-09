@@ -1,5 +1,6 @@
 import {observable, computed, autorun, action, reaction} from 'mobx';
 import uuidV4 from 'uuid/v4';
+import React from 'react';
 
 export class Morkab {
   @observable componentList = [];
@@ -39,13 +40,14 @@ export class Morkab {
       this.applyDraggedComponentPosition();
     }
   }
-  @action addItemToComponent(item,component){
+  @action addItemToComponent(item,componentId){
     //we have to make sure that we make comp draggable again (pass in the drag source)
     //TODO: replace this with normal data instead of accessing React directly
     let comp = this.page.find((x)=>{
-        return x.id === component.id;
+        return x.id === componentId;
     });
-    comp.properties.children.push(item);
+    //item.element = React.cloneElement()
+    comp.properties.children.push(new Component(item.element,item.link,item.properties,true));
     this.page.remove(item);
   }
 }
