@@ -46,7 +46,11 @@ export class Morkab {
     let comp = this.page.find((x)=>{
         return x.id === componentId;
     });
+    let originalComp = this.componentList.find((x)=>{
+      return comp.element.name === x.element.name;
+    });
     let childComponent = new Component(item.element,item.link,item.properties,true);
+    //console.log(originalComp.properties.children === comp.properties.children);
     comp.properties.children.push(childComponent);
     this.page.remove(item);
   }
