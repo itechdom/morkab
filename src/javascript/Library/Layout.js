@@ -74,6 +74,7 @@ export class Row extends React.Component{
 
   render(){
     const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, children, id} = this.props;
+    console.log("Layout",id);
     let Arr = children.map((Child,index)=>{
       return <Child.element
         key={Child.id}

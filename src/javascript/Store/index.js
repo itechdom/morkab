@@ -46,8 +46,8 @@ export class Morkab {
     let comp = this.page.find((x)=>{
         return x.id === componentId;
     });
-    //item.element = React.cloneElement()
-    comp.properties.children.push(new Component(item.element,item.link,item.properties,true));
+    let childComponent = new Component(item.element,item.link,item.properties,true);
+    comp.properties.children.push(childComponent);
     this.page.remove(item);
   }
 }
