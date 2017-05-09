@@ -42,6 +42,7 @@ export class Morkab {
   @action addItemToComponent(item,component){
     //we have to make sure that we make comp draggable again (pass in the drag source)
     //TODO: replace this with normal data instead of accessing React directly
+    console.log(component);
     component.props.children.push(item.element);
     component.props.childProps = [];
     this.page.remove(item);
