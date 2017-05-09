@@ -48,7 +48,7 @@ const boardTarget = {
     const item = monitor.getItem();
     const itemType = monitor.getItemType();
 
-    props.store.addItemToComponent(item,component);
+    props.store.addItemToComponent(item,props);
 
     // You can also do nothing and return a drop result,
     // which will be available as monitor.getDropResult()
@@ -73,10 +73,10 @@ const boardTarget = {
 export class Row extends React.Component{
 
   render(){
-    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, children, childProps } = this.props;
+    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, children, id } = this.props;
     let Arr = children.map((Child,index)=>{
-      return <Child
-        {...childProps[index]}
+      return <Child.element
+        {...Child.properties}
       />
     });
     return connectDropTarget(<div style={{display:'flex',backgroundColor:'grey',height:'200px'}}>
