@@ -79,7 +79,6 @@ const DraggableComponent = ({
           store={store}
           id={id}
         />
-        {children}
       </div>
     )
   }

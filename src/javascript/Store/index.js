@@ -12,7 +12,7 @@ export class Morkab {
     if(dragType === 'generalcomponent'){
       //we have to find the component
       let comp = this.componentList.find((x)=>{
-        return x.id === id ;
+        return x.id === id;
       });
       this.draggedComponent = comp;
     }
@@ -50,8 +50,8 @@ export class Morkab {
       return comp.element.name === x.element.name;
     });
     let childComponent = new Component(item.element,item.link,item.properties,true);
-    //console.log(originalComp.properties.children === comp.properties.children);
     comp.properties.children.push(childComponent);
+    console.log(comp);
     this.page.remove(item);
   }
 }
