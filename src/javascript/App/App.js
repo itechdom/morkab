@@ -146,13 +146,14 @@ const styles = {
                     handlePageComponentDrag={(id,type)=>this.props.store.setDraggedComponent(id,type)}
                     handleComponentHover={(position)=>this.props.store.updateDraggedComponentPosition(position)}
                     handleComponentDrop={(type)=>this.props.store.addComponentToPage(type)}
-                    handleComponentEdit={(id)=>this.props.store.editComponent(id)}
+                    handleComponentEdit={(id,parentId)=>this.props.store.editComponent(id,parentId)}
                     store={this.props.store}
                   />
                 </div>
               </div>
               <EditComponentDialog
                 open={this.props.store.editDialogOpen}
+                edittedComponent={this.props.store.edittedComponent}
                 handleToggle={()=>{this.props.store.editDialogOpen = !this.props.store.editDialogOpen}}
               />
             </div>

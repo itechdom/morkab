@@ -33,10 +33,17 @@ export class Morkab {
   @action applyDraggedComponentPosition(){
     this.draggedComponent.position = this.draggedComponent.tempPosition;
   }
-  @action editComponent(componentId){
+  @action editComponent(componentId,parentId){
+    let id = (parentId)?parentId:componentId;
+    //you are a layout component=
     let comp = this.page.find((x)=>{
-        return x.id === componentId;
+        return x.id === id;
     });
+    if(parentId){
+      comp = comp.subChildren.find((x)=>{
+        return x.id === componentId;
+      });
+    }
     this.edittedComponent = comp;
     this.editDialogOpen = true;
   }

@@ -7,8 +7,9 @@ export default class EditComponentDialog extends React.Component{
     super(props);
   }
   render(){
+    console.log(this.props.edittedComponent);
     return <div>
-      <Drawer width={200} openSecondary={true} open={this.props.open} >
+      <Drawer width={300} openSecondary={true} open={this.props.open} >
         <RaisedButton
           label="Toggle Drawer"
           secondary={true}
