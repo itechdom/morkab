@@ -72,7 +72,7 @@ const DraggableComponent = ({
     left:position.x,
     width:'100%'
   }}>
-  <h4><a target="_blank" href={link}>{(title)?title:Element.name}</a></h4>
+  <h4 style={{float:'right'}}><a target="_blank" href={link}>{(title)?title:Element.name}</a></h4>
   {
     connectDragPreview(
       <div>

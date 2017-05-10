@@ -17,6 +17,26 @@ const iconData = [
 
 export default [
   {
+    "element":Layout.Row,
+    "title":"Row",
+    "link":`${docWebsite}toolbar`,
+    "properties":{
+      children:[],
+      direction:'row'
+    },
+    subChildren:[]
+  },
+  {
+    "element":Layout.Row,
+    "title":"Column",
+    "link":`${docWebsite}toolbar`,
+    "properties":{
+      children:[],
+      direction:'column'
+    },
+    subChildren:[]
+  },
+  {
     "element":Material.AppBar,
     "link":`${docWebsite}app-bar`,
     "properties":{
@@ -258,25 +278,5 @@ export default [
     "link":`${docWebsite}toolbar`,
     "properties":{
     }
-  },
-  {
-    "element":Layout.Row,
-    "title":"Row",
-    "link":`${docWebsite}toolbar`,
-    "properties":{
-      children:[],
-      direction:'row'
-    },
-    subChildren:[]
-  },
-  {
-    "element":Layout.Row,
-    "title":"Column",
-    "link":`${docWebsite}toolbar`,
-    "properties":{
-      children:[],
-      direction:'column'
-    },
-    subChildren:[]
   }
 ];
