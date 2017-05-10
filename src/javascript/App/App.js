@@ -156,9 +156,7 @@ const styles = {
     }
 
   };
-
-
-
+  
   let morkabStore = new Morkab();
 
   data.map((x,index)=>{
