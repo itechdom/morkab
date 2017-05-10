@@ -48,7 +48,8 @@ export class Morkab {
     this.editDialogOpen = true;
   }
 
-  @action applyPropertiesUpdate(key,value){
+  @action applyPropertiesUpdate(key,jsonString){
+    let value = JSON.parse(jsonString).value;
     this.edittedComponent.properties[key] = value;
   }
 
