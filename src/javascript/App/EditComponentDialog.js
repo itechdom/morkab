@@ -11,7 +11,8 @@ export default class EditComponentDialog extends React.Component{
     let comp = this.props.edittedComponent;
     let properties;
     if(comp && comp.element){
-      properties = Object.keys(comp.element.propTypes).map((key)=>{
+      let propTypes = (comp.element.DecoratedComponent)?comp.element.DecoratedComponent.propTypes:comp.element.propTypes;
+      properties = Object.keys(propTypes).map((key)=>{
         return key;
       });
     }

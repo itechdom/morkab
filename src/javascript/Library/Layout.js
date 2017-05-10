@@ -1,6 +1,7 @@
 import React from 'react';
 import { DropTarget } from 'react-dnd';
 import {RaisedButton} from 'material-ui';
+import PropTypes from 'prop-types';
 import {
   observer
 }
@@ -72,9 +73,15 @@ const boardTarget = {
 })
 @observer
 export class Row extends React.Component{
-
+  static propTypes = {
+    direction: PropTypes.string,
+    justifyContent: PropTypes.string
+  }
+  constructor(props){
+    super(props);
+  }
   render(){
-    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, direction} = this.props;
+    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, direction, justifyContent} = this.props;
     let minHeight;
     let Arr = subChildren.map((Child,index)=>{
       return <div>
@@ -87,7 +94,7 @@ export class Row extends React.Component{
       </div>
     });
     (subChildren.length>0)?minHeight="0px":minHeight="100px";
-    return connectDropTarget(<div key={id} style={{display:'flex', flexDirection:`${direction}`, border:'1px solid black', minHeight:`${minHeight}`}}>
+    return connectDropTarget(<div key={id} style={{display:'flex', flexDirection:`${direction}`, justifyContent:`${justifyContent}`, border:'1px solid black', minHeight:`${minHeight}`}}>
       {Arr}
     </div>);
   }

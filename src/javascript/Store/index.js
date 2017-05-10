@@ -97,7 +97,7 @@ export class Component {
   library;
   element;
   link;
-  @observable properties;
+  properties;
   subChildren;
   constructor(element,link,properties={},title,dropped=false,subChildren=[]){
     this.id = uuidV4();
