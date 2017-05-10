@@ -10,7 +10,7 @@ export class Morkab {
   @observable edittedComponent = {};
   constructor() {
   }
-  
+
   @action setDraggedComponent(id,dragType){
     if(dragType === 'generalcomponent'){
       //we have to find the component
@@ -28,15 +28,15 @@ export class Morkab {
       this.draggedComponent = comp;
     }
   }
-  
+
   @action updateDraggedComponentPosition(position){
     this.draggedComponent.tempPosition = position;
   }
-  
+
   @action applyDraggedComponentPosition(){
     this.draggedComponent.position = this.draggedComponent.tempPosition;
   }
-  
+
   @action editComponent(componentId,parentId){
     let id = (parentId)?parentId:componentId;
     //you are a layout component
@@ -53,8 +53,13 @@ export class Morkab {
   }
 
   @action applyPropertiesUpdate(key,value){
-    let val = JSON.parse(`{"value":${value}}`).value
-    this.edittedComponent.properties[key] = val;
+    try{
+      //JSON.parse(`{"value":${value}}`)
+      let val = JSON.parse(`{"value":${value}}`).value;
+      this.edittedComponent.properties[key] = val;
+    }catch(err){
+      console.log("ERROOOORRR",err);
+    }
   }
 
   @action addComponentToPage(dragType){
@@ -66,7 +71,7 @@ export class Morkab {
       this.applyDraggedComponentPosition();
     }
   }
-  
+
   @action addItemToComponent(item,componentId){
     //we have to make sure that we make comp draggable again (pass in the drag source)
     //TODO: replace this with normal data instead of accessing React directly
@@ -81,7 +86,7 @@ export class Morkab {
     comp.subChildren.push(childComponent);
     this.page.remove(item);
   }
-  
+
 }
 
 export class Component {
@@ -92,7 +97,7 @@ export class Component {
   library;
   element;
   link;
-  properties;
+  @observable properties;
   subChildren;
   constructor(element,link,properties={},title,dropped=false,subChildren=[]){
     this.id = uuidV4();
