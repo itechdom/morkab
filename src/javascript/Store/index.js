@@ -35,7 +35,7 @@ export class Morkab {
   }
   @action editComponent(componentId,parentId){
     let id = (parentId)?parentId:componentId;
-    //you are a layout component=
+    //you are a layout component
     let comp = this.page.find((x)=>{
         return x.id === id;
     });
@@ -47,6 +47,11 @@ export class Morkab {
     this.edittedComponent = comp;
     this.editDialogOpen = true;
   }
+
+  @action applyPropertiesUpdate(key,value){
+    this.edittedComponent.properties[key] = value;
+  }
+
   @action addComponentToPage(dragType){
     let {element,link,properties,dropped,title} = this.draggedComponent;
     if(dragType === 'generalcomponent'){
