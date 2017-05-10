@@ -126,6 +126,7 @@ const styles = {
                         <GeneralComponent
                           id={comp.id}
                           element={comp.element}
+                          title={comp.title}
                           children={comp.children}
                           subChildren={comp.subChildren}
                           library={comp.library}
@@ -161,7 +162,7 @@ const styles = {
   let morkabStore = new Morkab();
 
   data.map((x,index)=>{
-    let comp = new Component(x.element,x.link,x.properties);
+    let comp = new Component(x.element,x.link,x.properties,x.title);
     morkabStore.componentList.push(comp);
   })
 

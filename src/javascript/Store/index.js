@@ -32,9 +32,9 @@ export class Morkab {
     this.draggedComponent.position = this.draggedComponent.tempPosition;
   }
   @action addComponentToPage(dragType){
-    let {element,link,properties,dropped} = this.draggedComponent;
+    let {element,link,properties,dropped,title} = this.draggedComponent;
     if(dragType === 'generalcomponent'){
-      this.page.push(new Component(element,link,properties,true));
+      this.page.push(new Component(element,link,properties,title,true));
     }
     else if(dragType === 'pagecomponent'){
       this.applyDraggedComponentPosition();
@@ -58,6 +58,7 @@ export class Morkab {
 
 export class Component {
   id;
+  title;
   tempPosition;
   @observable position;
   library;
@@ -65,7 +66,7 @@ export class Component {
   link;
   properties;
   subChildren;
-  constructor(element,link,properties={},dropped=false,subChildren=[]){
+  constructor(element,link,properties={},title,dropped=false,subChildren=[]){
     this.id = uuidV4();
     this.position = {};
     this.element = element;
@@ -73,25 +74,6 @@ export class Component {
     this.properties = properties;
     this.dropped = dropped;
     this.subChildren = subChildren;
+    this.title = title;
   }
 }
-
-// function clone(obj) {
-//   if (obj === null || typeof(obj) !== 'object' || 'isActiveClone' in obj)
-//     return obj;
-
-//   if (obj instanceof Date)
-//     var temp = new obj.constructor(); //or new Date(obj);
-//   else
-//     var temp = obj.constructor();
-
-//   for (var key in obj) {
-//     if (Object.prototype.hasOwnProperty.call(obj, key)) {
-//       obj['isActiveClone'] = null;
-//       temp[key] = clone(obj[key]);
-//       delete obj['isActiveClone'];
-//     }
-//   }
-
-//   return temp;
-// }

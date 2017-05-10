@@ -104,6 +104,7 @@ const boardTarget = {
           componentList.map((comp)=>{
             return <PageComponent
               id={comp.id}
+              title={comp.title}
               element={comp.element}
               properties={comp.properties}
               position={comp.position}

@@ -261,9 +261,21 @@ export default [
   },
   {
     "element":Layout.Row,
+    "title":"Row",
     "link":`${docWebsite}toolbar`,
     "properties":{
-      children:[]
+      children:[],
+      direction:'row'
+    },
+    subChildren:[]
+  },
+  {
+    "element":Layout.Row,
+    "title":"Column",
+    "link":`${docWebsite}toolbar`,
+    "properties":{
+      children:[],
+      direction:'column'
     },
     subChildren:[]
   }

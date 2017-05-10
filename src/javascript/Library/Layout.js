@@ -47,7 +47,7 @@ const boardTarget = {
     // Obtain the dragged item
     const item = monitor.getItem();
     const itemType = monitor.getItemType();
-    
+
     props.store.addItemToComponent(item,props.id);
 
     // You can also do nothing and return a drop result,
@@ -73,7 +73,7 @@ const boardTarget = {
 export class Row extends React.Component{
 
   render(){
-    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, children, id, subChildren} = this.props;
+    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, children, id, subChildren, direction} = this.props;
     console.log(subChildren);
     let Arr = subChildren.map((Child,index)=>{
       return <Child.element
@@ -82,7 +82,7 @@ export class Row extends React.Component{
         {...Child.properties}
       />
     });
-    return connectDropTarget(<div key={id} style={{display:'flex',backgroundColor:'grey',height:'200px'}}>
+    return connectDropTarget(<div key={id} style={{display:'flex', flexDirection:`${direction}`, border:'1px solid black', minHeight:'100px'}}>
       {Arr}
     </div>);
   }

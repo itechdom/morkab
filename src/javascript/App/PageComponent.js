@@ -28,10 +28,11 @@ function collect(connect, monitor) {
   }
 
   render(){
-    const { store, connectDragSource, connectDragPreview, isDragging, element, properties, link, handleComponentDrag, tempPosition, id, position, subChildren } = this.props;
+    const { store, connectDragSource, connectDragPreview, isDragging, element, properties, link, handleComponentDrag, tempPosition, id, position, subChildren, title } = this.props;
     return connectDragSource(<div><DraggableComponent
       id={id}
       key={id}
+      title={title}
       Element={element}
       properties={properties}
       link={link}
@@ -59,7 +60,8 @@ const DraggableComponent = ({
   position,
   connectDragPreview,
   store,
-  subChildren
+  subChildren,
+  title
 }) => {
   if(isDragging){
     handleComponentDrag(id,'pagecomponent');
@@ -70,7 +72,7 @@ const DraggableComponent = ({
     left:position.x,
     width:'100%'
   }}>
-  <h4><a target="_blank" href={link}>{Element.name}</a></h4>
+  <h4><a target="_blank" href={link}>{(title)?title:Element.name}</a></h4>
   {
     connectDragPreview(
       <div>
