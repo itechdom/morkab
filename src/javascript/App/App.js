@@ -155,7 +155,7 @@ const styles = {
                 open={this.props.store.editDialogOpen}
                 edittedComponent={this.props.store.edittedComponent}
                 handleToggle={()=>{this.props.store.editDialogOpen = !this.props.store.editDialogOpen}}
-                handlePropertiesUpdate={(jsonString)=>{this.props.store.applyPropertiesUpdate(jsonString)}}
+                handlePropertiesUpdate={(key,value)=>{this.props.store.applyPropertiesUpdate(key,value)}}
               />
             </div>
           </MuiThemeProvider>
