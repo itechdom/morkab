@@ -6,6 +6,8 @@ export class Morkab {
   @observable componentList = [];
   @observable page = [];
   @observable draggedComponent = {};
+  @observable editDialogOpen = false;
+  @observable edittedComponent = {};
   constructor() {
   }
   @action setDraggedComponent(id,dragType){
@@ -30,6 +32,13 @@ export class Morkab {
   }
   @action applyDraggedComponentPosition(){
     this.draggedComponent.position = this.draggedComponent.tempPosition;
+  }
+  @action editComponent(componentId){
+    let comp = this.page.find((x)=>{
+        return x.id === componentId;
+    });
+    this.edittedComponent = comp;
+    this.editDialogOpen = true;
   }
   @action addComponentToPage(dragType){
     let {element,link,properties,dropped,title} = this.draggedComponent;

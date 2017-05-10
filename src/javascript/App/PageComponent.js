@@ -1,4 +1,5 @@
 import React from 'react';
+import {RaisedButton} from 'material-ui';
 import { DragSource } from 'react-dnd';
 import {
   observer
@@ -28,7 +29,7 @@ function collect(connect, monitor) {
   }
 
   render(){
-    const { store, connectDragSource, connectDragPreview, isDragging, element, properties, link, handleComponentDrag, tempPosition, id, position, subChildren, title } = this.props;
+    const { store, connectDragSource, connectDragPreview, isDragging, element, properties, link, handleComponentDrag, handleComponentEdit, tempPosition, id, position, subChildren, title } = this.props;
     return <div><DraggableComponent
       id={id}
       key={id}
@@ -38,6 +39,7 @@ function collect(connect, monitor) {
       link={link}
       isDragging={isDragging}
       handleComponentDrag={handleComponentDrag}
+      handleComponentEdit={handleComponentEdit}
       tempPosition={tempPosition}
       position={position}
       connectDragPreview={connectDragPreview}
@@ -57,6 +59,7 @@ const DraggableComponent = ({
   link,
   isDragging,
   handleComponentDrag,
+  handleComponentEdit,
   position,
   connectDragPreview,
   store,
@@ -76,12 +79,14 @@ const DraggableComponent = ({
   {
     connectDragPreview(
       <div>
+        <RaisedButton style={{float:'right'}} label="Edit" onClick={()=>handleComponentEdit(id)} />
         <Element
           {...properties}
           key={id}
           store={store}
           id={id}
           subChildren={subChildren}
+          handleComponentEdit={handleComponentEdit}
         />
       </div>
     )

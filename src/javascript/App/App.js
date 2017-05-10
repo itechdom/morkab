@@ -43,6 +43,7 @@ import '../Style/main.scss';
 import data from '../component-list';
 import GeneralComponent from './GeneralComponent';
 import Board from './Board';
+import EditComponentDialog from './EditComponentDialog';
 
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
@@ -145,18 +146,22 @@ const styles = {
                     handlePageComponentDrag={(id,type)=>this.props.store.setDraggedComponent(id,type)}
                     handleComponentHover={(position)=>this.props.store.updateDraggedComponentPosition(position)}
                     handleComponentDrop={(type)=>this.props.store.addComponentToPage(type)}
+                    handleComponentEdit={(id)=>this.props.store.editComponent(id)}
                     store={this.props.store}
                   />
                 </div>
               </div>
-              <DevTools />
+              <EditComponentDialog
+                open={this.props.store.editDialogOpen}
+                handleToggle={()=>{this.props.store.editDialogOpen = !this.props.store.editDialogOpen}}
+              />
             </div>
           </MuiThemeProvider>
       );
     }
 
   };
-  
+
   let morkabStore = new Morkab();
 
   data.map((x,index)=>{
