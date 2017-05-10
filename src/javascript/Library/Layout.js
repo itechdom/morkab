@@ -82,7 +82,7 @@ export class Row extends React.Component{
         {...Child.properties}
       />
     });
-    (subChildren.length>0)?minHeight="0px":minHeight="200px";
+    (subChildren.length>0)?minHeight="0px":minHeight="100px";
     return connectDropTarget(<div key={id} style={{display:'flex', flexDirection:`${direction}`, border:'1px solid black', minHeight:`${minHeight}`}}>
       {Arr}
     </div>);
