@@ -1,4 +1,5 @@
 import {observable, computed, autorun, action, reaction} from 'mobx';
+import * as colors from 'material-ui/styles/colors';
 import uuidV4 from 'uuid/v4';
 import React from 'react';
 
@@ -8,6 +9,31 @@ export class Morkab {
   @observable draggedComponent = {};
   @observable editDialogOpen = false;
   @observable edittedComponent = {};
+  @observable themeEditorDialogOpen = false;
+  @observable themeOptions = {
+    fontFamily: 'Roboto,sans-serif',
+    palette: {
+      primary1Color: colors.grey900,
+      primary2Color: colors.teal500,
+      primary3Color: colors.grey400,
+      accent1Color: colors.pinkA200,
+      accent2Color: colors.grey100,
+      accent3Color: colors.grey500,
+      textColor: colors.darkBlack,
+      alternateTextColor: colors.white,
+      canvasColor: colors.white,
+      borderColor: colors.grey300,
+      pickerHeaderColor: colors.cyan500,
+      shadowColor: colors.fullBlack
+    },
+    appBar: {
+      height: 'auto'
+    },
+    tabs: {
+      backgroundColor: colors.grey700
+    }
+  };
+
   constructor() {
   }
 
@@ -26,6 +52,16 @@ export class Morkab {
       });
       comp.dropped = true;
       this.draggedComponent = comp;
+    }
+  }
+
+  @action updateTheme(key,value){
+    try{
+      //JSON.parse(`{"value":${value}}`)
+      let val = JSON.parse(`{"value":${value}}`).value;
+      this.themeOptions[key] = val;
+    }catch(err){
+      console.log("ERROOOORRR",err);
     }
   }
 

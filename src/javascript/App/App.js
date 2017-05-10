@@ -14,9 +14,8 @@ import {
   FormattedDate
 }
 from 'react-intl';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import * as colors from 'material-ui/styles/colors';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {
   BrowserRouter as Router,
   Route,
@@ -44,6 +43,7 @@ import data from '../component-list';
 import GeneralComponent from './GeneralComponent';
 import Board from './Board';
 import EditComponentDialog from './EditComponentDialog';
+import ThemeEditorDialog from './ThemeEditorDialog';
 
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
@@ -51,46 +51,6 @@ import { DragDropContext } from 'react-dnd';
 import {Provider, inject} from 'mobx-react';
 
 injectTapEventPlugin();
-
-const muiTheme = getMuiTheme({
-  fontFamily: 'Roboto,sans-serif',
-  palette: {
-    primary1Color: colors.grey900,
-    primary2Color: colors.teal500,
-    primary3Color: colors.grey400,
-    accent1Color: colors.pinkA200,
-    accent2Color: colors.grey100,
-    accent3Color: colors.grey500,
-    textColor: colors.darkBlack,
-    alternateTextColor: colors.white,
-    canvasColor: colors.white,
-    borderColor: colors.grey300,
-    pickerHeaderColor: colors.cyan500,
-    shadowColor: colors.fullBlack
-  },
-  appBar: {
-    height: 'auto'
-  },
-  tabs: {
-    backgroundColor: colors.grey700
-  }
-});
-
-const styles = {
-  title: {
-    margin: '1em 0'
-  },
-  subTitle: {
-    fontFamily: 'Roboto Slab',
-    margin: '0 0 1em 0'
-  },
-  ctaButton: {
-    width: '200px'
-  },
-  channels: {
-    color: colors.deepPurple900
-  }
-};
 
 @inject((allStores) => ({
     store: allStores.userStore
@@ -107,13 +67,17 @@ const styles = {
 
   render() {
     return (
-        <MuiThemeProvider muiTheme={muiTheme}>
+        <MuiThemeProvider muiTheme={getMuiTheme(this.props.store.themeOptions)}>
           <div>
             <AppBar
               iconElementLeft={<span></span>}
               style={{textAlign:"center"}}
               title={
-                <div style={styles.title}><h1 className="title">Morkab</h1>
+                <div>
+                  <h1 className="title">Morkab</h1>
+                  <RaisedButton label="Edit Theme"
+                    onClick={()=>this.props.store.themeEditorDialogOpen = true}
+                  />
               </div>}
             />
             <div style={{display:'flex'}}>
@@ -156,6 +120,12 @@ const styles = {
                 edittedComponent={this.props.store.edittedComponent}
                 handleToggle={()=>{this.props.store.editDialogOpen = !this.props.store.editDialogOpen}}
                 handlePropertiesUpdate={(key,value)=>{this.props.store.applyPropertiesUpdate(key,value)}}
+              />
+              <ThemeEditorDialog
+                open={this.props.store.themeEditorDialogOpen}
+                themeOptions={this.props.store.themeOptions}
+                handleCancel={()=>this.props.store.themeEditorDialogOpen = false}
+                handleThemeOptionUpdate={(key,value)=>this.props.store.updateTheme(key,value)}
               />
             </div>
           </MuiThemeProvider>
