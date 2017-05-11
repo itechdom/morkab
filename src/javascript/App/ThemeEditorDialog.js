@@ -1,5 +1,5 @@
 import React from 'react';
-import Dialog from 'material-ui/Dialog';
+import Drawer from 'material-ui/Drawer';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { SketchPicker } from 'react-color';
@@ -45,7 +45,10 @@ export default class ThemeEditorDialog extends React.Component{
     ];
 
     return <div>
-      <Dialog actions={actions} width={300} openSecondary={true} open={this.props.open} autoScrollBodyContent={true}>
+      <Drawer width={300} openSecondary={true} open={this.props.open}>
+        {
+          actions.map((action)=>action)
+        }
         {
           (options)?options.map((key,index)=>{
             let keys = key.split(".");
@@ -53,14 +56,14 @@ export default class ThemeEditorDialog extends React.Component{
               <p>{key}:</p>
               <p>{this.props.themeValues[keys[0]][keys[1]].toString()}</p>
               {
-              (this.isColor(key))?<ColorPicker
+                (this.isColor(key))?<ColorPicker
                   onColorChange={(color)=>{this.handleTextChange(key,`"${color}"`)}}
                 />:<TextField id={index} key={index} onChange={(event,newValue)=>this.handleTextChange(key,newValue)} />
               }
             </div>
           }):""
         }
-      </Dialog>
+      </Drawer>
     </div>
   }
 }
