@@ -2,6 +2,8 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import { SketchPicker } from 'react-color';
+import {ColorPicker} from './ColorPicker.js';
 
 export default class ThemeEditorDialog extends React.Component{
   state = {
@@ -15,6 +17,10 @@ export default class ThemeEditorDialog extends React.Component{
   handleTextChange(key,value){
     this.setState({value:value});
     this.setState({key:key});
+  }
+  isColor(key){
+    let reg = /[cC]olor/;
+    return !!key.match(reg);
   }
   render(){
     let options = [];
@@ -46,7 +52,11 @@ export default class ThemeEditorDialog extends React.Component{
             return <div>
               <p>{key}:</p>
               <p>{this.props.themeValues[keys[0]][keys[1]].toString()}</p>
-              <TextField id={index} key={index} onChange={(event,newValue)=>this.handleTextChange(key,newValue)} />
+              {
+              (this.isColor(key))?<ColorPicker
+                  onColorChange={(color)=>{this.handleTextChange(key,`"${color}"`)}}
+                />:<TextField id={index} key={index} onChange={(event,newValue)=>this.handleTextChange(key,newValue)} />
+              }
             </div>
           }):""
         }

@@ -2,6 +2,7 @@ import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import {ColorPicker} from './ColorPicker.js';
 
 export default class EditComponentDialog extends React.Component{
   constructor(props){
@@ -9,7 +10,7 @@ export default class EditComponentDialog extends React.Component{
   }
   isColor(key){
     let reg = /[cC]olor/;
-    return key.match(reg);
+    return !!key.match(reg);
   }
   render(){
     let comp = this.props.edittedComponent;
@@ -32,9 +33,11 @@ export default class EditComponentDialog extends React.Component{
             return <div>
               <p>{key}:</p>
               {
-              (this.isColor(key))?<TextField 
-              onChange={(event,newValue)=>this.props.handlePropertiesUpdate(key,newValue)} 
-              />:<p>{key}</p>
+                (this.isColor(key))?<ColorPicker
+                  onColorChange={(color)=>{this.props.handlePropertiesUpdate(key,`"${color}"`)}}
+                />:<TextField
+                  onChange={(event,newValue)=>this.props.handlePropertiesUpdate(key,newValue)}
+                />
               }
             </div>
           }):""
