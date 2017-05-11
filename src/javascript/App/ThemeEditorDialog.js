@@ -6,7 +6,8 @@ import TextField from 'material-ui/TextField';
 export default class ThemeEditorDialog extends React.Component{
   state = {
     key:"",
-    value:""
+    value:"",
+    searchText:""
   }
   constructor(props){
     super(props);

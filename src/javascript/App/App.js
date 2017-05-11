@@ -31,6 +31,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
+import Drawer from 'material-ui/Drawer';
 
 import DevTools from 'mobx-react-devtools';
 
@@ -70,7 +71,9 @@ injectTapEventPlugin();
         <MuiThemeProvider muiTheme={this.props.store.themeValues}>
           <div>
             <AppBar
-              iconElementLeft={<span></span>}
+              iconElementLeft={<RaisedButton label="Toggle Toolbox"
+                    onClick={()=>(this.props.store.toolboxOpen === 'none')?this.props.store.toolboxOpen = 'block':this.props.store.toolboxOpen='none'}
+                  />}
               iconElementRight={<RaisedButton label="Edit Global Theme"
                     onClick={()=>this.props.store.themeEditorDialogOpen = true}
                   />}
@@ -83,7 +86,7 @@ injectTapEventPlugin();
             <div style={{display:'flex'}}>
               <Paper
                 zDepth={3}
-                style={{flex:1,padding:10,overflowY:'scroll',overflowX:'hidden',height:800}}
+                style={{flex:1,padding:10,overflowY:'scroll',overflowX:'hidden',height:1500,display:this.props.store.toolboxOpen}}
                 >
                   {
                     this.props.store.componentList.map((comp)=>{

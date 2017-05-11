@@ -13,6 +13,7 @@ export class Morkab {
   @observable themeEditorDialogOpen = false;
   @observable themeOptions = {};
   @observable themeValues = {};
+  @observable toolboxOpen = 'none';
   constructor() {
     let obj = getMuiTheme({});
     this.themeValues = getMuiTheme({appBar:{
@@ -108,7 +109,8 @@ export class Morkab {
     let originalComp = this.componentList.find((x)=>{
       return comp.element.name === x.element.name;
     });
-    let childComponent = new Component(item.element,item.link,item.properties,true);
+    let newProp = Object.assign({},item.properties);
+    let childComponent = new Component(item.element,item.link,newProp,true);
     comp.properties.children.push(childComponent);
     comp.subChildren.push(childComponent);
     this.page.remove(item);
