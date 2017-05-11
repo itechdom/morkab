@@ -2,6 +2,7 @@ import {observable, computed, autorun, action, reaction} from 'mobx';
 import * as colors from 'material-ui/styles/colors';
 import uuidV4 from 'uuid/v4';
 import React from 'react';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 export class Morkab {
   @observable componentList = [];
@@ -10,31 +11,18 @@ export class Morkab {
   @observable editDialogOpen = false;
   @observable edittedComponent = {};
   @observable themeEditorDialogOpen = false;
-  @observable themeOptions = {
-    fontFamily: 'Roboto,sans-serif',
-    palette: {
-      primary1Color: colors.grey900,
-      primary2Color: colors.teal500,
-      primary3Color: colors.grey400,
-      accent1Color: colors.pinkA200,
-      accent2Color: colors.grey100,
-      accent3Color: colors.grey500,
-      textColor: colors.darkBlack,
-      alternateTextColor: colors.white,
-      canvasColor: colors.white,
-      borderColor: colors.grey300,
-      pickerHeaderColor: colors.cyan500,
-      shadowColor: colors.fullBlack
-    },
-    appBar: {
-      height: 'auto'
-    },
-    tabs: {
-      backgroundColor: colors.grey700
-    }
-  };
-
+  @observable themeOptions = {};
+  @observable themeValues = {};
   constructor() {
+    let obj = getMuiTheme({});
+    this.themeValues = getMuiTheme({appBar:{
+      height:150
+    }});
+    Object.keys(obj).map((key)=>{
+      Object.keys(obj[key]).map((childKey)=>{
+        this.themeOptions[`${key}.${childKey}`] = "";
+      })
+    });
   }
 
   @action setDraggedComponent(id,dragType){
@@ -59,7 +47,8 @@ export class Morkab {
     try{
       //JSON.parse(`{"value":${value}}`)
       let val = JSON.parse(`{"value":${value}}`).value;
-      this.themeOptions[key] = val;
+      let keys = key.split(".");
+      this.themeValues[keys[0]][keys[1]] = val;
     }catch(err){
       console.log("ERROOOORRR",err);
     }
@@ -100,8 +89,10 @@ export class Morkab {
 
   @action addComponentToPage(dragType){
     let {element,link,properties,dropped,title} = this.draggedComponent;
+    //to prevent properties from being updated
+    let newProp = Object.assign({},properties);
     if(dragType === 'generalcomponent'){
-      this.page.push(new Component(element,link,properties,title,true));
+      this.page.push(new Component(element,link,newProp,title,true));
     }
     else if(dragType === 'pagecomponent'){
       this.applyDraggedComponentPosition();

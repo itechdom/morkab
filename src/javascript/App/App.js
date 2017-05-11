@@ -67,17 +67,17 @@ injectTapEventPlugin();
 
   render() {
     return (
-        <MuiThemeProvider muiTheme={getMuiTheme(this.props.store.themeOptions)}>
+        <MuiThemeProvider muiTheme={this.props.store.themeValues}>
           <div>
             <AppBar
               iconElementLeft={<span></span>}
+              iconElementRight={<RaisedButton label="Edit Theme"
+                    onClick={()=>this.props.store.themeEditorDialogOpen = true}
+                  />}
               style={{textAlign:"center"}}
               title={
                 <div>
                   <h1 className="title">Morkab</h1>
-                  <RaisedButton label="Edit Theme"
-                    onClick={()=>this.props.store.themeEditorDialogOpen = true}
-                  />
               </div>}
             />
             <div style={{display:'flex'}}>
@@ -124,8 +124,9 @@ injectTapEventPlugin();
               <ThemeEditorDialog
                 open={this.props.store.themeEditorDialogOpen}
                 themeOptions={this.props.store.themeOptions}
+                themeValues={this.props.store.themeValues}
                 handleCancel={()=>this.props.store.themeEditorDialogOpen = false}
-                handleThemeOptionUpdate={(key,value)=>this.props.store.updateTheme(key,value)}
+                handleThemeOptionUpdate={(key,value)=>{this.props.store.updateTheme(key,value);this.props.store.themeEditorDialogOpen=false}}
               />
             </div>
           </MuiThemeProvider>

@@ -48,6 +48,7 @@
     "react": "^15.4.2",
     "react-addons-shallow-compare": "^15.5.2",
     "react-blocks": "^1.1.4",
+    "react-color": "^2.11.7",
     "react-dnd": "^2.3.0",
     "react-dnd-html5-backend": "^2.3.0",
     "react-dom": "^15.4.2",
