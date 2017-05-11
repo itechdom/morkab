@@ -17,6 +17,7 @@ export default class ThemeEditorDialog extends React.Component{
   handleTextChange(key,value){
     this.setState({value:value});
     this.setState({key:key});
+    this.props.handleThemeOptionUpdate(this.state.key,this.state.value);
   }
   isColor(key){
     let reg = /[cC]olor/;
@@ -56,9 +57,12 @@ export default class ThemeEditorDialog extends React.Component{
               <p>{key}:</p>
               <p>{this.props.themeValues[keys[0]][keys[1]].toString()}</p>
               {
-                (this.isColor(key))?<ColorPicker
+                (this.isColor(key))?<div><ColorPicker
                   onColorChange={(color)=>{this.handleTextChange(key,`"${color}"`)}}
-                />:<TextField id={index} key={index} onChange={(event,newValue)=>this.handleTextChange(key,newValue)} />
+                />
+                </div>
+                :
+                <TextField id={index} key={index} onChange={(event,newValue)=>this.handleTextChange(key,newValue)} />
               }
             </div>
           }):""
