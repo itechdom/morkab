@@ -7,6 +7,10 @@ export default class EditComponentDialog extends React.Component{
   constructor(props){
     super(props);
   }
+  isColor(key){
+    let reg = /[cC]olor/;
+    return key.match(reg);
+  }
   render(){
     let comp = this.props.edittedComponent;
     let properties;
@@ -27,7 +31,11 @@ export default class EditComponentDialog extends React.Component{
           (properties)?properties.map((key)=>{
             return <div>
               <p>{key}:</p>
-              <TextField onChange={(event,newValue)=>this.props.handlePropertiesUpdate(key,newValue)} />
+              {
+              (this.isColor(key))?<TextField 
+              onChange={(event,newValue)=>this.props.handlePropertiesUpdate(key,newValue)} 
+              />:<p>{key}</p>
+              }
             </div>
           }):""
         }
