@@ -71,7 +71,7 @@ injectTapEventPlugin();
           <div>
             <AppBar
               iconElementLeft={<span></span>}
-              iconElementRight={<RaisedButton label="Edit Theme"
+              iconElementRight={<RaisedButton label="Edit Global Theme"
                     onClick={()=>this.props.store.themeEditorDialogOpen = true}
                   />}
               style={{textAlign:"center"}}
