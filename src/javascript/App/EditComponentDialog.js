@@ -29,13 +29,15 @@ export default class EditComponentDialog extends React.Component{
           onClick={this.props.handleToggle}
         />
         {
-          (properties)?properties.map((key)=>{
+          (properties)?properties.map((key,index)=>{
             return <div>
               <p>{key}:</p>
               {
                 (this.isColor(key))?<ColorPicker
                   onColorChange={(color)=>{this.props.handlePropertiesUpdate(key,`"${color}"`)}}
+                  key={index}
                 />:<TextField
+                  id={index}
                   onChange={(event,newValue)=>this.props.handlePropertiesUpdate(key,newValue)}
                 />
               }
