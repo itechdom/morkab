@@ -83,9 +83,9 @@ export class Row extends React.Component{
   render(){
     const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, direction, justifyContent, store, comp, level} = this.props;
     let minHeight;
-    console.log(level);
     let Arr = subChildren.map((Child,index)=>{
-      return <div>
+      let flexStyle = (Child.properties.style && Child.properties.style.flex)?Child.properties.style.flex:0;
+      return <div style={{flex:flexStyle}}>
         <Child.element
           key={Child.id}
           id={Child.id}
