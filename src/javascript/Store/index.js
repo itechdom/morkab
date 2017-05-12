@@ -21,6 +21,13 @@ export class Morkab {
   @observable themeValues = {};
   @observable toolboxOpen = 'none';
   @observable libraryList = [];
+  @observable levelColors = [
+    "#003300",
+    "#cc0099",
+    "#993300",
+    "#000099",
+    "#999966"
+  ]
 
   constructor() {
     let obj = getMuiTheme({});
