@@ -85,7 +85,6 @@ export class Row extends React.Component{
     let minHeight;
     let Arr = subChildren.map((Child,index)=>{
       return <div>
-        <RaisedButton style={{float:'right'}} label="Edit" onClick={()=>handleComponentEdit(Child)} />
         <Child.element
           key={Child.id}
           id={Child.id}
@@ -95,6 +94,7 @@ export class Row extends React.Component{
           comp={Child}
           handleComponentEdit={handleComponentEdit}
         />
+        <RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(Child)} />
       </div>
     });
     (subChildren.length>0)?minHeight="0px":minHeight="100px";
