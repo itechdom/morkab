@@ -2,6 +2,7 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import Highlight from 'react-highlight';
 
 export default class ExportedPageDialog extends React.Component{
   constructor(props){
@@ -23,9 +24,11 @@ export default class ExportedPageDialog extends React.Component{
     ];
     return <div>
       <Dialog width={300} openSecondary={true} open={this.props.open} actions={actions} >
-        {
-          this.props.exportedPage
-        }
+        <Highlight className="xml">
+          {
+            this.props.exportedPage
+          }
+        </Highlight>
       </Dialog>
     </div>
   }
