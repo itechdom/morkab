@@ -3,7 +3,8 @@ import * as colors from 'material-ui/styles/colors';
 import uuidV4 from 'uuid/v4';
 import React from 'react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import reactElementToJSXString from 'react-element-to-jsx-string';
+
+import {jsxToString} from '../Export';
 
 export class Morkab {
 
@@ -53,7 +54,7 @@ export class Morkab {
   @action exportPage(){
     this.exportedPageDialog = true;
     let exportedPage = this.page.map((comp)=>{
-      return this.toString(comp);
+      return jsxToString(Object.assign({},comp));
     }).join("/n");
     console.log(exportedPage);
     this.exportedPage = exportedPage;
@@ -111,21 +112,6 @@ export class Morkab {
     comp.properties.children.push(childComponent);
     comp.subChildren.push(childComponent);
     this.page.remove(item);
-  }
-
-  toString(comp){
-    if(comp.subChildren.length > 0){
-      let Layout = comp.title;
-      let props = comp.properties;
-      let childElements = comp.subChildren.map((comp)=>{
-        let Element = comp.element;
-        return <Element {...comp.properties} />;
-      })
-      comp.element = <Layout {...props}>{childElements}</Layout>;
-      return this.toString(comp);
-    }
-    let Element = comp.element;
-    return reactElementToJSXString(<Element {...comp.properties} />);
   }
 
 }
