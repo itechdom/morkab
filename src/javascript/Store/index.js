@@ -52,7 +52,11 @@ export class Morkab {
 
   @action exportPage(){
     this.exportedPageDialog = true;
-    this.exportedPage = this.toJSX(this.page).join("\n");
+    let exportedPage = this.page.map((comp)=>{
+      return this.toString(comp);
+    }).join("/n");
+    console.log(exportedPage);
+    this.exportedPage = exportedPage;
   }
 
   @action updateTheme(key,value){
@@ -109,23 +113,19 @@ export class Morkab {
     this.page.remove(item);
   }
 
-  toJSX(page){
-    let jsxList = page.map((comp)=>{
-      if(comp.subChildren.length > 0){
-        let Layout = comp.title;
-        let props = comp.properties;
-        let childElements = comp.subChildren.map((comp)=>{
-          let Element = comp.element;
-          return <Element {...comp.properties} />;
-        })
-        return reactElementToJSXString(<Layout {...props}>{childElements}</Layout>);
-      }
-      else{
+  toString(comp){
+    if(comp.subChildren.length > 0){
+      let Layout = comp.title;
+      let props = comp.properties;
+      let childElements = comp.subChildren.map((comp)=>{
         let Element = comp.element;
-        return reactElementToJSXString(<Element {...comp.properties} />);
-      }
-    });
-    return jsxList;
+        return <Element {...comp.properties} />;
+      })
+      comp.element = <Layout {...props}>{childElements}</Layout>;
+      return this.toString(comp);
+    }
+    let Element = comp.element;
+    return reactElementToJSXString(<Element {...comp.properties} />);
   }
 
 }
