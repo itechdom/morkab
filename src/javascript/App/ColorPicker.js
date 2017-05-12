@@ -1,7 +1,6 @@
 'use strict'
 
 import React from 'react'
-import reactCSS from 'reactcss'
 import { SketchPicker } from 'react-color'
 
 export class ColorPicker extends React.Component {
