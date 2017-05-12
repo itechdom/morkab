@@ -3,10 +3,13 @@ import * as colors from 'material-ui/styles/colors';
 import uuidV4 from 'uuid/v4';
 import React from 'react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import reactElementToJSXString from 'react-element-to-jsx-string';
 
 export class Morkab {
+  
   @observable componentList = [];
   @observable page = [];
+  @observable exportedPage = "";
   @observable draggedComponent = {};
   @observable editDialogOpen = false;
   @observable edittedComponent = {};
@@ -14,6 +17,7 @@ export class Morkab {
   @observable themeOptions = {};
   @observable themeValues = {};
   @observable toolboxOpen = 'none';
+  
   constructor() {
     let obj = getMuiTheme({});
     this.themeValues = getMuiTheme({appBar:{
@@ -42,6 +46,12 @@ export class Morkab {
       comp.dropped = true;
       this.draggedComponent = comp;
     }
+  }
+  
+  @action exportPage(){
+    this.page.map((comp)=>{
+      console.log(reactElementToJSXString(comp.element));
+    })
   }
 
   @action updateTheme(key,value){

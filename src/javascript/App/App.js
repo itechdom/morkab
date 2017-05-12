@@ -80,6 +80,7 @@ injectTapEventPlugin();
               style={{textAlign:"center"}}
               title={
                 <div>
+                  <RaisedButton label="Export Theme" onClick={()=>this.props.store.exportPage()} />
                   <h1 className="title">Morkab</h1>
               </div>}
             />
