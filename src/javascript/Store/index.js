@@ -22,9 +22,9 @@ export class Morkab {
   @observable toolboxOpen = 'none';
   @observable libraryList = [];
   @observable levelColors = [
-    "#003300",
-    "#cc0099",
-    "#993300",
+    "#00ff00",
+    "#9966ff",
+    "#ffcc66",
     "#000099",
     "#999966"
   ]
