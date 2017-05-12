@@ -10,6 +10,7 @@ export class Morkab {
   @observable componentList = [];
   @observable page = [];
   @observable exportedPage = "";
+  @observable exportedPageDialog = false;
   @observable draggedComponent = {};
   @observable editDialogOpen = false;
   @observable edittedComponent = {};
@@ -17,6 +18,7 @@ export class Morkab {
   @observable themeOptions = {};
   @observable themeValues = {};
   @observable toolboxOpen = 'none';
+  @observable libraryList = [];
 
   constructor() {
     let obj = getMuiTheme({});
@@ -49,9 +51,8 @@ export class Morkab {
   }
 
   @action exportPage(){
-    this.page.map((comp)=>{
-      console.log(reactElementToJSXString(comp.element));
-    })
+    this.exportedPageDialog = true;
+    this.exportedPage = this.toJSX(this.page).join("\n");
   }
 
   @action updateTheme(key,value){
@@ -124,6 +125,25 @@ export class Morkab {
     comp.properties.children.push(childComponent);
     comp.subChildren.push(childComponent);
     this.page.remove(item);
+  }
+
+  toJSX(page){
+    let jsxList = page.map((comp)=>{
+      if(comp.subChildren.length > 0){
+        let Layout = comp.title;
+        let props = comp.properties;
+        let childElements = comp.subChildren.map((comp)=>{
+          let Element = comp.element;
+          return <Element {...comp.properties} />;
+        })
+        return reactElementToJSXString(<Layout {...props}>{childElements}</Layout>);
+      }
+      else{
+        let Element = comp.element;
+        return reactElementToJSXString(<Element {...comp.properties} />);
+      }
+    });
+    return jsxList;
   }
 
 }

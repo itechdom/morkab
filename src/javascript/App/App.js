@@ -45,6 +45,7 @@ import GeneralComponent from './GeneralComponent';
 import Board from './Board';
 import EditComponentDialog from './EditComponentDialog';
 import ThemeEditorDialog from './ThemeEditorDialog';
+import ExportedPageDialog from './ExportedPageDialog';
 
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
@@ -131,6 +132,11 @@ injectTapEventPlugin();
                 themeValues={this.props.store.themeValues}
                 handleCancel={()=>this.props.store.themeEditorDialogOpen = false}
                 handleThemeOptionUpdate={(key,value)=>{this.props.store.updateTheme(key,value);this.props.store.themeEditorDialogOpen=false}}
+              />
+              <ExportedPageDialog
+                open={this.props.store.exportedPageDialog}
+                exportedPage={this.props.store.exportedPage}
+                handleCancel={()=>{this.props.store.exportedPageDialog = false}}
               />
             </div>
           </MuiThemeProvider>
