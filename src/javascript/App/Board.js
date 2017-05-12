@@ -112,6 +112,7 @@ const boardTarget = {
               handleComponentDrag={handlePageComponentDrag}
               handleComponentEdit={handleComponentEdit}
               store={store}
+              comp={comp}
             />
           })
         }

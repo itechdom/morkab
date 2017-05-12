@@ -49,8 +49,8 @@ const boardTarget = {
     // Obtain the dragged item
     const item = monitor.getItem();
     const itemType = monitor.getItemType();
-
-    props.store.addItemToComponent(item,props.id);
+    
+    props.store.addItemToComponent(item,props.comp);
 
     // You can also do nothing and return a drop result,
     // which will be available as monitor.getDropResult()
@@ -81,16 +81,19 @@ export class Row extends React.Component{
     super(props);
   }
   render(){
-    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, direction, justifyContent} = this.props;
+    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, direction, justifyContent, store, comp} = this.props;
     let minHeight;
     let Arr = subChildren.map((Child,index)=>{
       return <div>
-        <RaisedButton style={{float:'right'}} label="Edit" onClick={()=>handleComponentEdit(Child.id,id)} />
+        <RaisedButton style={{float:'right'}} label="Edit" onClick={()=>handleComponentEdit(Child)} />
         <Child.element
           key={Child.id}
           id={Child.id}
           {...Child.properties}
           subChildren={Child.subChildren}
+          store={store}
+          comp={Child}
+          handleComponentEdit={handleComponentEdit}
         />
       </div>
     });

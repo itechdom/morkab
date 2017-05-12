@@ -28,6 +28,11 @@ export default class EditComponentDialog extends React.Component{
           secondary={true}
           onClick={this.props.handleToggle}
         />
+        <h3>
+        {
+          (comp.title)?comp.title:""
+        }
+        </h3>
         {
           (properties)?properties.map((key,index)=>{
             return <div>
