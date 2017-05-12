@@ -214,6 +214,8 @@ export default [
     {
       "element":Material.Table,
       "link":`${docWebsite}table`,
+      "library":"Material",
+      "elementString":"Table",
       "properties":{
         children:[
           (<Material.TableHeader>

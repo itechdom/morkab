@@ -6,7 +6,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
 export class Morkab {
-  
+
   @observable componentList = [];
   @observable page = [];
   @observable exportedPage = "";
@@ -17,7 +17,7 @@ export class Morkab {
   @observable themeOptions = {};
   @observable themeValues = {};
   @observable toolboxOpen = 'none';
-  
+
   constructor() {
     let obj = getMuiTheme({});
     this.themeValues = getMuiTheme({appBar:{
@@ -47,7 +47,7 @@ export class Morkab {
       this.draggedComponent = comp;
     }
   }
-  
+
   @action exportPage(){
     this.page.map((comp)=>{
       console.log(reactElementToJSXString(comp.element));
