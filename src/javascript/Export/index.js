@@ -1,23 +1,16 @@
-import reactElementToJSXString from 'react-element-to-jsx-string';
+import React from 'react';
 
 let count = 0;
 
 export let jsxToString = (comp) => {
-    if(count > 50){
-      return;
-    }
-    if(comp.subChildren.length > 0){
-      console.log("found it");
+    if(comp.subChildren && comp.subChildren.length > 0){
       let Layout = comp.title;
       let props = comp.properties;
-      let childElements = comp.subChildren.map((comp)=>{
-        let Element = comp.element;
-        return <Element {...comp.properties} />;
+      let childElements = comp.subChildren.map((child)=>{
+        return jsxToString(child);
       })
-      comp.element = <Layout {...props}>{childElements}</Layout>;
-      count++;
-      return jsxToString(comp);
+      return <Layout {...props}>{childElements}</Layout>;
     }
     let Element = comp.element;
-    return reactElementToJSXString(<Element {...comp.properties} />);
+    return <Element {...comp.properties} />;
 }

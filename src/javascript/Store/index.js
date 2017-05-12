@@ -5,6 +5,7 @@ import React from 'react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import {jsxToString} from '../Export';
+import reactElementToJSXString from 'react-element-to-jsx-string';
 
 export class Morkab {
 
@@ -54,10 +55,9 @@ export class Morkab {
   @action exportPage(){
     this.exportedPageDialog = true;
     let exportedPage = this.page.map((comp)=>{
-      return jsxToString(Object.assign({},comp));
-    }).join("/n");
-    console.log(exportedPage);
-    this.exportedPage = exportedPage;
+      return jsxToString(comp);
+    });
+    this.exportedPage = reactElementToJSXString(exportedPage[0]);
   }
 
   @action updateTheme(key,value){
