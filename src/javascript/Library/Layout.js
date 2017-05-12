@@ -90,6 +90,7 @@ export class Row extends React.Component{
           key={Child.id}
           id={Child.id}
           {...Child.properties}
+          subChildren={Child.subChildren}
         />
       </div>
     });
