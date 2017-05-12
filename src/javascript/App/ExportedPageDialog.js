@@ -24,11 +24,11 @@ export default class ExportedPageDialog extends React.Component{
     ];
     return <div>
       <Dialog width={300} openSecondary={true} open={this.props.open} actions={actions} autoScrollBodyContent={true} >
-        <Highlight className="html">
-          {
-            this.props.exportedPage
-          }
-        </Highlight>
+          <Highlight className="html">
+            {
+              this.props.exportedPage
+            }
+          </Highlight>
       </Dialog>
     </div>
   }
