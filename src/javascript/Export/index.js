@@ -7,7 +7,6 @@ export class Export extends React.Component {
   };
 
   render() {
-      
     return (
       <div>
         {
