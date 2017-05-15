@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Material from 'material-ui';
 import * as Layout from './Library/Layout.js';
+import {Animation} from './Library/Animation';
 
 const docWebsite = "http://www.material-ui.com/#/components/";
 
@@ -16,6 +17,15 @@ const iconData = [
 ]
 
 export default [
+  {
+    "element":Animation,
+    "title":"Animation",
+    "link":`${docWebsite}toolbar`,
+    "properties":{
+      children:[]
+    },
+    subChildren:[]
+  },
   {
     "element":Layout.Row,
     "title":"Row",
