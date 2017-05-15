@@ -7,6 +7,6 @@ export let download = (githubUrl,location)=>{
   });
 }
 
-export let build = ()=>{
-  console.log("build");
+export let build = (location)=>{
+  //build material library
 }
