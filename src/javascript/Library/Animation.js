@@ -4,6 +4,7 @@ import {RaisedButton} from 'material-ui';
 import PropTypes from 'prop-types';
 import animateCSS from 'animate.css/animate.css';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+var TransitionGroup = require('react-transition-group/TransitionGroup') // ES5 with npm
 import {
   observer
 }
@@ -76,7 +77,14 @@ const boardTarget = {
 @observer
 export class Animation extends React.Component{
   static propTypes = {
-    animationTitle: PropTypes.string
+    enter: PropTypes.string,
+    enterActive: PropTypes.string,
+    leave: PropTypes.string,
+    leaveActive: PropTypes.string,
+    appear: PropTypes.string,
+    appearActive: PropTypes.string,
+    transitionEnterTimeout: PropTypes.number,
+    transitionLeaveTimeout: PropTypes.number
   }
   constructor(props){
     super(props);
@@ -84,11 +92,11 @@ export class Animation extends React.Component{
   animationStyle(){
   }
   render(){
-    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, direction, justifyContent, store, comp, animationTitle} = this.props;
+    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, store, comp, enter, enterActive, leave, leaveActive, appear, appearActive, transitionEnterTimeout, transitionLeaveTimeout} = this.props;
     let minHeight;
     let Arr = subChildren.map((Child,index)=>{
       let flexStyle = (Child.properties.style && Child.properties.style.flex)?Child.properties.style.flex:0;
-      return <div style={{flex:flexStyle}}>
+      return <div style={{flex:flexStyle,animationDuration: "1s",animationFillMode: "both"}}>
         <Child.element
           key={Child.id}
           id={Child.id}
@@ -97,7 +105,7 @@ export class Animation extends React.Component{
           store={store}
           comp={Child}
           handleComponentEdit={handleComponentEdit}
-          className={`animated ${animationTitle}`}
+
         />
         <RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(Child)} />
       </div>
@@ -105,12 +113,21 @@ export class Animation extends React.Component{
     (subChildren.length>0)?minHeight="0px":minHeight="100px";
     return connectDropTarget(<div key={id} style={{display:'flex', flexDirection:'column', border:`2px solid black`, minHeight:`${minHeight}`}}>
       <CSSTransitionGroup
-        transitionName={animationTitle}
-        transitionEnterTimeout={500}
-        transitionLeaveTimeout={300}>
-        {Arr}
-      </CSSTransitionGroup>
-    </div>);
-  }
+        transitionName={{
+          enter,
+          enterActive,
+          leave,
+          leaveActive,
+          appear,
+          appearActive
+        }}
+        transitionEnterTimeout={transitionEnterTimeout}
+        transitionLeaveTimeout={transitionLeaveTimeout}
+        transitionAppear={true}
+        >
+            {Arr}
+        </CSSTransitionGroup>
+      </div>);
+    }
 
-}
+  }

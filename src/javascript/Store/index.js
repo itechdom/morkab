@@ -91,6 +91,15 @@ export class Morkab {
     this.editDialogOpen = true;
   }
 
+  @action deleteComponent(){
+    let removed = this.page.remove(this.edittedComponent);
+    if(!removed){
+      this.page.map((comp)=>{
+        this.recursiveDelete(comp,this.edittedComponent);
+      })
+    }
+  }
+
   @action applyPropertiesUpdate(key,value){
     try{
       //JSON.parse(`{"value":${value}}`)
@@ -119,6 +128,13 @@ export class Morkab {
     comp.properties.children.push(childComponent);
     comp.subChildren.push(childComponent);
     this.page.remove(item);
+  }
+
+  recursiveDelete(comp,removedComponent){
+    let removed = comp.subChildren.splice(comp.subChildren.indexOf(removedComponent),1);
+    if(!removed){
+      return this.recursiveDelete(nextComp);
+    }
   }
 
 }

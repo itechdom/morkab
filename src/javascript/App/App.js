@@ -125,6 +125,7 @@ injectTapEventPlugin();
                 open={this.props.store.editDialogOpen}
                 edittedComponent={this.props.store.edittedComponent}
                 handleToggle={()=>{this.props.store.editDialogOpen = !this.props.store.editDialogOpen}}
+                handleDelete={()=>this.props.store.deleteComponent()}
                 handlePropertiesUpdate={(key,value)=>{this.props.store.applyPropertiesUpdate(key,value)}}
               />
               <ThemeEditorDialog

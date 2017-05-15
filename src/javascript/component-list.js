@@ -22,7 +22,13 @@ export default [
     "title":"Animation",
     "link":`${docWebsite}toolbar`,
     "properties":{
-      children:[]
+      children:[],
+      enter:"fadeIn",
+      enterActive:"fadeIn",
+      leave:"fadeOut",
+      leaveActive:"fadeOut",
+      appear:"bounce",
+      appearActive:"bounce"
     },
     subChildren:[]
   },
