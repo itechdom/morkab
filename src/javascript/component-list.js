@@ -28,7 +28,9 @@ export default [
       leave:"fadeOut",
       leaveActive:"fadeOut",
       appear:"bounce",
-      appearActive:"bounce"
+      appearActive:"bounce",
+      transitionEnterTimeout:500,
+      transitionLeaveTimeout:500
     },
     subChildren:[]
   },
