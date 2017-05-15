@@ -22,7 +22,8 @@ export default [
     "link":`${docWebsite}toolbar`,
     "properties":{
       children:[],
-      direction:'row'
+      direction:'row',
+      level:0
     },
     subChildren:[]
   },
@@ -32,7 +33,8 @@ export default [
     "link":`${docWebsite}toolbar`,
     "properties":{
       children:[],
-      direction:'column'
+      direction:'column',
+      level:0
     },
     subChildren:[]
   },

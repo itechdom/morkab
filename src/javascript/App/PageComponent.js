@@ -77,11 +77,9 @@ const DraggableComponent = ({
     left:position.x,
     width:'100%'
   }}>
-  <h4 style={{float:'right'}}><a target="_blank" href={link}>{(title)?title:Element.name}</a></h4>
   {
     connectDragPreview(
       <div>
-        <RaisedButton style={{float:'right'}} label="Edit" onClick={()=>handleComponentEdit(comp)} />
         <Element
           {...properties}
           key={id}
@@ -91,6 +89,7 @@ const DraggableComponent = ({
           handleComponentEdit={handleComponentEdit}
           comp={comp}
         />
+        <RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(comp)} />
       </div>
     )
   }

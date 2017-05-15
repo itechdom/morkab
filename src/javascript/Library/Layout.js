@@ -81,11 +81,11 @@ export class Row extends React.Component{
     super(props);
   }
   render(){
-    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, direction, justifyContent, store, comp} = this.props;
+    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, direction, justifyContent, store, comp, level} = this.props;
     let minHeight;
     let Arr = subChildren.map((Child,index)=>{
-      return <div>
-        <RaisedButton style={{float:'right'}} label="Edit" onClick={()=>handleComponentEdit(Child)} />
+      let flexStyle = (Child.properties.style && Child.properties.style.flex)?Child.properties.style.flex:0;
+      return <div style={{flex:flexStyle}}>
         <Child.element
           key={Child.id}
           id={Child.id}
@@ -94,11 +94,13 @@ export class Row extends React.Component{
           store={store}
           comp={Child}
           handleComponentEdit={handleComponentEdit}
+          level={level+1}
         />
+        <RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(Child)} />
       </div>
     });
     (subChildren.length>0)?minHeight="0px":minHeight="100px";
-    return connectDropTarget(<div key={id} style={{display:'flex', flexDirection:`${direction}`, justifyContent:`${justifyContent}`, border:'1px solid black', minHeight:`${minHeight}`}}>
+    return connectDropTarget(<div key={id} style={{display:'flex', flexDirection:`${direction}`, justifyContent:`${justifyContent}`, border:`2px solid ${store.levelColors[level]}`, minHeight:`${minHeight}`}}>
       {Arr}
     </div>);
   }
