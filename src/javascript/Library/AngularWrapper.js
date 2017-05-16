@@ -16,28 +16,12 @@ export class AngularWrapper extends React.Component{
     super(props);
   }
   renderAngular(selector){
-    //bootstrap
+    //bootstrap angular? or just change the input value and let the angualr app do the rest?
   }
   render(){
     const { componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, store, comp, selector} = this.props;
-    let Arr = subChildren.map((Child,index)=>{
-      let flexStyle = (Child.properties.style && Child.properties.style.flex)?Child.properties.style.flex:0;
-      return <div style={{flex:flexStyle}}>
-        <Child.element
-          key={Child.id}
-          id={Child.id}
-          {...Child.properties}
-          subChildren={Child.subChildren}
-          store={store}
-          comp={Child}
-          handleComponentEdit={handleComponentEdit}
-
-        />
-        <RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(Child)} />
-      </div>
-    });
-    return <div key={id} style={{display:'flex', flexDirection:'column', border:`2px solid black`, minHeight:`${minHeight}`}}>
-      {Arr}
+    return <div key={id}>
+      <my-app></my-app>
     </div>;
   }
 
