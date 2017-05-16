@@ -3,9 +3,8 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-  <h1>Hello {{name}}</h1>
-  <p>Dynamic loaded HTML below:</p>
-  <dynamic [name]="name" [html]="dynamicHtml"></dynamic>`
+  <input id="selected-component" [ngModel]="selectedComponent" (ngModelChange)="onChange($event)">
+  <dynamic [html]="dynamicHtml"></dynamic>`
 })
 export class AppComponent implements OnInit {
 
@@ -15,6 +14,10 @@ export class AppComponent implements OnInit {
 
   ngOnChanges(changes: any) {
     console.log(changes);
+  }
+
+  onChange(text){
+    this.dynamicHtml = text;
   }
 
   componentChanged(text){

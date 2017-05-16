@@ -16,7 +16,6 @@ export class DynamicComponent {
 
     @Input('html')
     html: string;
-    @Input()name:string;
 
     constructor(private compiler: Compiler) {
     }

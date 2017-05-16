@@ -15,16 +15,14 @@ export class AngularWrapper extends React.Component{
   constructor(props){
     super(props);
   }
-  renderAngular(selector){
-    //change the input of the box here?
-    //inject angualr's script here
-    console.log(selector);
-  }
   render(){
     const { componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, store, comp, selector} = this.props;
     const angularComponent = `<my-app [name]="hello"></my-app>`;
-    this.renderAngular(selector);
-    return <div dangerouslySetInnerHTML={{__html: angularComponent}} key={id}>
+    return <div
+      dangerouslySetInnerHTML={{__html: angularComponent}}
+      key={id}
+      ref={(domElement) => {console.log(domElement)}}
+      >
     </div>;
   }
 

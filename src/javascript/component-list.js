@@ -23,7 +23,8 @@ export default [
     "title":"AngularWrapper",
     "link":`${docWebsite}toolbar`,
     "properties":{
-      selector:"<foo-bar></foo-bar>"
+      selector:"<foo-bar></foo-bar>",
+      externalHTML:""
     }
   },
   {
