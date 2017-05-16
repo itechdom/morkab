@@ -2,9 +2,6 @@ import React from 'react';
 import { DropTarget } from 'react-dnd';
 import {RaisedButton} from 'material-ui';
 import PropTypes from 'prop-types';
-import animateCSS from 'animate.css/animate.css';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
-var TransitionGroup = require('react-transition-group/TransitionGroup') // ES5 with npm
 import {
   observer
 }
@@ -75,24 +72,18 @@ const boardTarget = {
   }
 })
 @observer
-export class Animation extends React.Component{
+export class AngularWrapper extends React.Component{
   static propTypes = {
-    enter: PropTypes.string,
-    enterActive: PropTypes.string,
-    leave: PropTypes.string,
-    leaveActive: PropTypes.string,
-    appear: PropTypes.string,
-    appearActive: PropTypes.string,
-    transitionEnterTimeout: PropTypes.number,
-    transitionLeaveTimeout: PropTypes.number
+    selector: PropTypes.string
   }
   constructor(props){
     super(props);
   }
-  animationStyle(){
+  renderAngular(selector){
+      //bootstrap
   }
   render(){
-    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, store, comp, enter, enterActive, leave, leaveActive, appear, appearActive, transitionEnterTimeout, transitionLeaveTimeout} = this.props;
+    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, store, comp, selector} = this.props;
     let minHeight;
     let Arr = subChildren.map((Child,index)=>{
       let flexStyle = (Child.properties.style && Child.properties.style.flex)?Child.properties.style.flex:0;
@@ -112,21 +103,7 @@ export class Animation extends React.Component{
     });
     (subChildren.length>0)?minHeight="0px":minHeight="100px";
     return connectDropTarget(<div key={id} style={{display:'flex', flexDirection:'column', border:`2px solid black`, minHeight:`${minHeight}`}}>
-      <CSSTransitionGroup
-        transitionName={{
-          enter,
-          enterActive,
-          leave,
-          leaveActive,
-          appear,
-          appearActive
-        }}
-        transitionEnterTimeout={transitionEnterTimeout}
-        transitionLeaveTimeout={transitionLeaveTimeout}
-        transitionAppear={true}
-        >
             {Arr}
-        </CSSTransitionGroup>
       </div>);
     }
 
