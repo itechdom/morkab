@@ -1,16 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'my-app',
   template: `
   <h1>Hello {{name}}</h1>
   <p>Dynamic loaded HTML below:</p>
-  <dynamic [html]="dynamicHtml"></dynamic>`
+  <input [(ngModel)]="selectedComponent" (ngModelChange)="componentChanged($event)" placeholder="name"/>
+  <dynamic [name]="name" [html]="dynamicHtml"></dynamic>`
 })
 export class AppComponent implements OnInit {
 
-  name = 'Angular';
-  dynamicHtml : string;
+  @Input()name:string;
+  @Input()dynamicHtml : string;
+  @Input()selectedComponent: string;
+
+  ngOnChanges(changes: any) {
+    console.log(changes);
+  }
+
+  componentChanged(text){
+    this.dynamicHtml = text;
+  }
 
   ngOnInit() {
     console.log('loading dynamic html');
