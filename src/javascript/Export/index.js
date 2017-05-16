@@ -4,7 +4,6 @@ let count = 0;
 
 export let jsxToString = (comp) => {
     if(comp.subChildren && comp.subChildren.length > 0){
-      console.log("is parent",comp);
       let Layout = comp.title;
       let props = comp.properties;
       let childElements = comp.subChildren.map((child)=>{
