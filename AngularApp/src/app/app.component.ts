@@ -5,7 +5,6 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
   template: `
   <h1>Hello {{name}}</h1>
   <p>Dynamic loaded HTML below:</p>
-  <input [(ngModel)]="selectedComponent" (ngModelChange)="componentChanged($event)" placeholder="name"/>
   <dynamic [name]="name" [html]="dynamicHtml"></dynamic>`
 })
 export class AppComponent implements OnInit {
