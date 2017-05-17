@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
   @Input()selectedComponent: string;
 
   constructor(){
-    this.tag = tag;
   }
   ngOnChanges(changes: any) {
     console.log(changes);
@@ -28,7 +27,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dynamicHtml = this.tag;
+    let tag = document.getElementById('app').getAttribute('tag');
+    //props here too
+    let tagHTML = `<${tag} name="hello"></${tag}>`;
+    this.dynamicHtml = tagHTML;
   }
 }
 

@@ -1,12 +1,14 @@
 export default function({
   webdriverio,
-  options
+  options,
+  url,
+  tag
 }){
   return webdriverio
       .remote(options)
       .init()
-      .url('http://www.google.com')
-      .getTitle().then(function(title) {
+      .url(url)
+      .getHTML(tag).then(function(title) {
           console.log('Title was: ' + title);
           return title;
       })

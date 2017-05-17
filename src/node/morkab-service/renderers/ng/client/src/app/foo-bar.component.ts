@@ -6,10 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FooBarComponent implements OnInit {
 
-    name: string;
+    @Input()name: string;
     @Input()test:string;
     ngOnInit() {
-        console.log(this.test);
-        this.name = 'Bar';
+        console.log(this.name);
     }
 }
