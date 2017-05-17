@@ -138,8 +138,8 @@ export class Morkab {
       if(err){
         console.log("err: ",err);
       }
-      let html = JSON.parse(res.text);
-      console.log(html);
+      let response = JSON.parse(res.text);
+      comp.externalHTML = response.html;
     }));
   }
 

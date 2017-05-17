@@ -50,7 +50,7 @@ export default function({
               let response = angularRenderer({webdriverio,options,url,tag});
               response.then((data)=>{
                 console.log("RESPONSE:",data);
-                res.send(data);
+                res.send({html:data});
               })
             });
           });
