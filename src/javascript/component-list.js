@@ -2,6 +2,7 @@ import React from 'react';
 import * as Material from 'material-ui';
 import * as Layout from './Library/Layout.js';
 import {Animation} from './Library/Animation';
+import {External} from './Library/External';
 
 const docWebsite = "http://www.material-ui.com/#/components/";
 
@@ -17,6 +18,18 @@ const iconData = [
 ]
 
 export default [
+  {
+    "element":External,
+    "title":"External",
+    "link":`${docWebsite}toolbar`,
+    "externalHTML":"",
+    "serverLink":'angular',
+    "tag":"foo-bar",
+    "properties":{
+      name:"hello"
+    },
+    subChildren:[]
+  },
   {
     "element":Animation,
     "title":"Animation",

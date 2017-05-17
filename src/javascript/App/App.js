@@ -150,7 +150,7 @@ injectTapEventPlugin();
   let morkabStore = new Morkab();
 
   data.map((x,index)=>{
-    let comp = new Component(x.element,x.link,x.properties,x.title);
+    let comp = new Component(x.element,x.link,x.properties,x.title,x.serverLink,x.externalHTML,x.tag);
     morkabStore.componentList.push(comp);
   })
 
