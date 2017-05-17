@@ -36,22 +36,22 @@ export default [
   },
   {
     "element":Layout.Row,
-    "title":"Row",
+    "title":"Column",
     "link":`${docWebsite}toolbar`,
     "properties":{
       children:[],
-      direction:'row',
+      direction:'column',
       level:0
     },
     subChildren:[]
   },
   {
     "element":Layout.Row,
-    "title":"Column",
+    "title":"Row",
     "link":`${docWebsite}toolbar`,
     "properties":{
       children:[],
-      direction:'column',
+      direction:'row',
       level:0
     },
     subChildren:[]
@@ -172,133 +172,133 @@ export default [
           primaryText={x}
           leftIcon={<Material.FontIcon className="material-icons">{x} </Material.FontIcon>}
         />
-        )
-      }
-    },
-    {
-      "element":Material.IconMenu,
-      "link":`${docWebsite}icon-menu`,
-      "properties":{
-        iconButtonElement:<Material.FontIcon className="material-icons">add</Material.FontIcon>,
-        anchorOrigin:{horizontal: 'left', vertical: 'top'},
-        targetOrigin:{horizontal: 'left', vertical: 'top'},
-        children:listData.map((x,index) => <Material.MenuItem primaryText={x} />)
-      }
-    },
-    {
-      "element":Material.DropDownMenu,
-      "link":`${docWebsite}dropdown-menu`,
-      "properties":{
-        value:1,
-        children:listData.map((x,index) => <Material.MenuItem value={index} primaryText={x} />)
-      }
-    },
-    {
-      "element":Material.CircularProgress,
-      "link":`${docWebsite}circular-progress`,
-      "properties":{
-        "title":"hello"
-      }
-    },
-    {
-      "element":Material.SelectField,
-      "link":`${docWebsite}select-field`,
-      "properties":{
-        floatingLabelText:"floatingLabelText",
-        value:1,
-        children:listData.map((x,index) => <Material.MenuItem value={index} primaryText={x} />)
-      }
-    },
-    {
-      "element":Material.Slider,
-      "link":`${docWebsite}slider`,
-      "properties":{
-        "title":"hello"
-      }
-    },
-    {
-      "element":Material.Checkbox,
-      "link":`${docWebsite}checkbox`,
-      "properties":{
-        "title":"hello"
-      }
-    },
-    {
-      "element":Material.Stepper,
-      "link":`${docWebsite}stepper`,
-      "properties":{
-        activeStep:1,
-        children:listData.map((x,index)=><Material.Step><Material.StepLabel>{x}</Material.StepLabel></Material.Step>)
-      }
-    },
-    {
-      "element":Material.Table,
-      "link":`${docWebsite}table`,
-      "library":"Material",
-      "elementString":"Table",
-      "properties":{
-        children:[
-          (<Material.TableHeader>
-            <Material.TableRow>
-              <Material.TableHeaderColumn>ID</Material.TableHeaderColumn>
-              <Material.TableHeaderColumn>Name</Material.TableHeaderColumn>
-              <Material.TableHeaderColumn>Status</Material.TableHeaderColumn>
-            </Material.TableRow>
-          </Material.TableHeader>
-        ),
-        (
-          <Material.TableBody>
-            <Material.TableRow>
-              <Material.TableRowColumn>1</Material.TableRowColumn>
-              <Material.TableRowColumn>John Smith</Material.TableRowColumn>
-              <Material.TableRowColumn>Employed</Material.TableRowColumn>
-            </Material.TableRow>
-            <Material.TableRow>
-              <Material.TableRowColumn>2</Material.TableRowColumn>
-              <Material.TableRowColumn>Randal White</Material.TableRowColumn>
-              <Material.TableRowColumn>Unemployed</Material.TableRowColumn>
-            </Material.TableRow>
-            <Material.TableRow>
-              <Material.TableRowColumn>3</Material.TableRowColumn>
-              <Material.TableRowColumn>Stephanie Sanders</Material.TableRowColumn>
-              <Material.TableRowColumn>Employed</Material.TableRowColumn>
-            </Material.TableRow>
-            <Material.TableRow>
-              <Material.TableRowColumn>4</Material.TableRowColumn>
-              <Material.TableRowColumn>Steve Brown</Material.TableRowColumn>
-              <Material.TableRowColumn>Employed</Material.TableRowColumn>
-            </Material.TableRow>
-          </Material.TableBody>
-        )
-      ]
+      )
     }
   },
   {
-    "element":Material.Tabs,
-    "link":`${docWebsite}tabs`,
+    "element":Material.IconMenu,
+    "link":`${docWebsite}icon-menu`,
     "properties":{
-      children:listData.map((x,index) => <Material.Tab label={x} >
-      </Material.Tab>)
+      iconButtonElement:<Material.FontIcon className="material-icons">add</Material.FontIcon>,
+      anchorOrigin:{horizontal: 'left', vertical: 'top'},
+      targetOrigin:{horizontal: 'left', vertical: 'top'},
+      children:listData.map((x,index) => <Material.MenuItem primaryText={x} />)
     }
   },
   {
-    "element":Material.TextField,
-    "link":`${docWebsite}text-field`,
+    "element":Material.DropDownMenu,
+    "link":`${docWebsite}dropdown-menu`,
+    "properties":{
+      value:1,
+      children:listData.map((x,index) => <Material.MenuItem value={index} primaryText={x} />)
+    }
+  },
+  {
+    "element":Material.CircularProgress,
+    "link":`${docWebsite}circular-progress`,
     "properties":{
       "title":"hello"
     }
   },
   {
-    "element":Material.TimePicker,
-    "link":`${docWebsite}time-picker`,
+    "element":Material.SelectField,
+    "link":`${docWebsite}select-field`,
+    "properties":{
+      floatingLabelText:"floatingLabelText",
+      value:1,
+      children:listData.map((x,index) => <Material.MenuItem value={index} primaryText={x} />)
+    }
+  },
+  {
+    "element":Material.Slider,
+    "link":`${docWebsite}slider`,
     "properties":{
       "title":"hello"
     }
   },
   {
-    "element":Material.Toolbar,
-    "link":`${docWebsite}toolbar`,
+    "element":Material.Checkbox,
+    "link":`${docWebsite}checkbox`,
     "properties":{
+      "title":"hello"
     }
+  },
+  {
+    "element":Material.Stepper,
+    "link":`${docWebsite}stepper`,
+    "properties":{
+      activeStep:1,
+      children:listData.map((x,index)=><Material.Step><Material.StepLabel>{x}</Material.StepLabel></Material.Step>)
+    }
+  },
+  {
+    "element":Material.Table,
+    "link":`${docWebsite}table`,
+    "library":"Material",
+    "elementString":"Table",
+    "properties":{
+      children:[
+        (<Material.TableHeader>
+          <Material.TableRow>
+            <Material.TableHeaderColumn>ID</Material.TableHeaderColumn>
+            <Material.TableHeaderColumn>Name</Material.TableHeaderColumn>
+            <Material.TableHeaderColumn>Status</Material.TableHeaderColumn>
+          </Material.TableRow>
+        </Material.TableHeader>
+      ),
+      (
+        <Material.TableBody>
+          <Material.TableRow>
+            <Material.TableRowColumn>1</Material.TableRowColumn>
+            <Material.TableRowColumn>John Smith</Material.TableRowColumn>
+            <Material.TableRowColumn>Employed</Material.TableRowColumn>
+          </Material.TableRow>
+          <Material.TableRow>
+            <Material.TableRowColumn>2</Material.TableRowColumn>
+            <Material.TableRowColumn>Randal White</Material.TableRowColumn>
+            <Material.TableRowColumn>Unemployed</Material.TableRowColumn>
+          </Material.TableRow>
+          <Material.TableRow>
+            <Material.TableRowColumn>3</Material.TableRowColumn>
+            <Material.TableRowColumn>Stephanie Sanders</Material.TableRowColumn>
+            <Material.TableRowColumn>Employed</Material.TableRowColumn>
+          </Material.TableRow>
+          <Material.TableRow>
+            <Material.TableRowColumn>4</Material.TableRowColumn>
+            <Material.TableRowColumn>Steve Brown</Material.TableRowColumn>
+            <Material.TableRowColumn>Employed</Material.TableRowColumn>
+          </Material.TableRow>
+        </Material.TableBody>
+      )
+    ]
   }
+},
+{
+  "element":Material.Tabs,
+  "link":`${docWebsite}tabs`,
+  "properties":{
+    children:listData.map((x,index) => <Material.Tab label={x} >
+    </Material.Tab>)
+  }
+},
+{
+  "element":Material.TextField,
+  "link":`${docWebsite}text-field`,
+  "properties":{
+    "title":"hello"
+  }
+},
+{
+  "element":Material.TimePicker,
+  "link":`${docWebsite}time-picker`,
+  "properties":{
+    "title":"hello"
+  }
+},
+{
+  "element":Material.Toolbar,
+  "link":`${docWebsite}toolbar`,
+  "properties":{
+  }
+}
 ];
