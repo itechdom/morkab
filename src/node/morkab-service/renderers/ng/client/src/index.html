@@ -9,6 +9,9 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <my-app [name]="hello">Loading AppComponent content here ...</my-app>
+  <script type="text/javascript">
+    window.tag = "foo-bar";
+  </script>
+  <my-app [tag]="foo-bar">Loading AppComponent content here ...</my-app>
 </body>
 </html>

@@ -8,10 +8,13 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  @Input()name:string;
+  @Input()tag:string;
   @Input()dynamicHtml : string;
   @Input()selectedComponent: string;
 
+  constructor(){
+    this.tag = tag;
+  }
   ngOnChanges(changes: any) {
     console.log(changes);
   }
@@ -25,8 +28,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('loading dynamic html');
-    this.dynamicHtml = '<foo-bar></foo-bar>';
+    this.dynamicHtml = this.tag;
   }
 }
 
