@@ -43,6 +43,8 @@ function collect(connect, monitor) {
       store={store}
       subChildren={subChildren}
       comp={comp}
+      serverLink={serverLink}
+      externalHTML={externalHTML}
     />
     </div>);
 }
@@ -61,7 +63,9 @@ const DraggableComponent = ({
   store,
   subChildren,
   title,
-  comp
+  comp,
+  serverLink,
+  externalHTML
 }) => {
     if(isDragging){
       handleComponentDrag(id,'generalcomponent');
@@ -80,6 +84,8 @@ const DraggableComponent = ({
               id={id}
               subChildren={subChildren}
               comp={comp}
+              serverLink={serverLink}
+              externalHTML={externalHTML}
             />
           </div>
         )

@@ -105,6 +105,8 @@ injectTapEventPlugin();
                           handleComponentDrag={(id,type)=>this.props.store.setDraggedComponent(id,type)}
                           store={this.props.store}
                           comp={comp}
+                          externalHTML={comp.externalHTML}
+                          serverLink={comp.serverLink}
                         />
                       </div>
                     })

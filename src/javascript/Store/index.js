@@ -125,7 +125,7 @@ export class Morkab {
 
   @action addItemToComponent(item,comp){
     let newProp = Object.assign({},item.properties);
-    let childComponent = new Component(item.element,item.link,newProp,item.title);
+    let childComponent = new Component(item.element,item.link,newProp,item.title,item.serverLink,item.externalHTML,item.tag);
     comp.properties.children.push(childComponent);
     comp.subChildren.push(childComponent);
     this.page.remove(item);

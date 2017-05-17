@@ -46,6 +46,8 @@ function collect(connect, monitor) {
       store={store}
       subChildren={subChildren}
       comp={comp}
+      serverLink={serverLink}
+      externalHTML={externalHTML}
     />
   </div>;
 }
@@ -67,6 +69,8 @@ const DraggableComponent = ({
   subChildren,
   title,
   comp,
+  externalHTML,
+  serverLink
 }) => {
   if(isDragging){
     handleComponentDrag(id,'pagecomponent');
@@ -88,6 +92,8 @@ const DraggableComponent = ({
           subChildren={subChildren}
           handleComponentEdit={handleComponentEdit}
           comp={comp}
+          externalHTML={externalHTML}
+          serverLink={serverLink}
         />
         <RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(comp)} />
       </div>
