@@ -25,7 +25,6 @@ export default function({
     //we are sending the component instance here
     let response = angularRenderer({webdriverio,options});
     response.then((data)=>{
-      console.log(data);
       res.send(data);
     })
   });
