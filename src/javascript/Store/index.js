@@ -133,12 +133,13 @@ export class Morkab {
 
   @action getServerComponent(comp){
     this.pendingRequestCount++;
-    let req = superagent.get(`${HOST}/api/v1/angular`);
+    let req = superagent.get(`${HOST}/api/v1/react`);
     req.end(action("getAngular-callback",(err,res)=>{
       if(err){
         console.log("err: ",err);
       }
       let response = JSON.parse(res.text);
+      this.pendingRequestCount--;
       comp.externalHTML = response.html;
     }));
   }

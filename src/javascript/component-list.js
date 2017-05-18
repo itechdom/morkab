@@ -19,6 +19,18 @@ const iconData = [
 
 export default [
   {
+    "element":External,
+    "title":"External",
+    "link":`${docWebsite}toolbar`,
+    "externalHTML":"",
+    "serverLink":'angular',
+    "tag":"foo-bar",
+    "properties":{
+      name:"hello"
+    },
+    subChildren:[]
+  },
+  {
     "element":Animation,
     "title":"Animation",
     "link":`${docWebsite}toolbar`,

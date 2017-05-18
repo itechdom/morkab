@@ -51,8 +51,8 @@ export default function({
   });
 
   apiRoutes.get('/react',function(req,res){
-    reactRenderer({componentList})
-    res.send({"hello":"hi"});
+    let renderedComp = reactRenderer({componentList});
+    res.send({html:renderedComp[0]});
   });
 
   app.use('/ng', express.static(distFolder));
