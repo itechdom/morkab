@@ -2,6 +2,7 @@ import React from 'react';
 import * as Material from 'material-ui';
 import * as Layout from './Library/Layout.js';
 import {Animation} from './Library/Animation';
+import {AngularWrapper} from './Library/AngularWrapper';
 
 const docWebsite = "http://www.material-ui.com/#/components/";
 
@@ -17,6 +18,15 @@ const iconData = [
 ]
 
 export default [
+  {
+    "element":AngularWrapper,
+    "title":"AngularWrapper",
+    "link":`${docWebsite}toolbar`,
+    "properties":{
+      selector:"<foo-bar></foo-bar>",
+      externalHTML:""
+    }
+  },
   {
     "element":Animation,
     "title":"Animation",

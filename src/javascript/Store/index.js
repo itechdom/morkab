@@ -111,7 +111,7 @@ export class Morkab {
   }
 
   @action addComponentToPage(dragType){
-    let {element,link,properties,dropped,title} = this.draggedComponent;
+    let {element,link,properties,dropped,title,external} = this.draggedComponent;
     //to prevent properties from being updated
     let newProp = Object.assign({},properties);
     if(dragType === 'generalcomponent'){
