@@ -2,8 +2,7 @@ const express = require('express');
 import {download} from './builder';
 var apiRoutes = express.Router();
 import uiLibraries from './libraries';
-let angularRenderer = require('./renderers/ng');
-import generateIndexFile from './generateIndexFile';
+let {angularRenderer,generateIndexFile} = require('./renderers/ng');
 let webdriverio = require('webdriverio');
 let fs = require('fs');
 var path = require('path');
@@ -41,7 +40,6 @@ export default function({
     let indexFile = generateIndexFile(tag,distFolder);
     fs.writeFile(`${distFolder}/index.html`, indexFile, (err) => {
       if (err) throw err;
-      console.log('The file has been saved!');
       let response = angularRenderer({webdriverio,options,url,tag});
       response.then((data)=>{
         console.log("RESPONSE:",data);
