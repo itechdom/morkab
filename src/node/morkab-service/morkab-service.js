@@ -8,7 +8,7 @@ import {install} from './utils/install.js';
 let webdriverio = require('webdriverio');
 let fs = require('fs');
 var path = require('path');
-import componentList from './component-list.js';
+import {materialUI} from './component-list.js';
 const distFolder = path.join(__dirname, 'renderers/ng/client/dist/');
 
 export default function({
@@ -52,6 +52,7 @@ export default function({
   });
 
   apiRoutes.get('/react',function(req,res){
+    let componentList = materialUI;
     let renderedComp = reactRenderer({componentList});
     res.send({html:renderedComp[0]});
   });
