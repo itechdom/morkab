@@ -7,6 +7,8 @@ export function reactRenderer({
   componentList
 }){
   return componentList.map((comp)=>{
+    //if the library isn't installed, install it?
+    //installLibrary()
     let Comp = comp.element;
     return ReactDOMServer.renderToString(
       <MuiThemeProvider muiTheme={getMuiTheme()}>

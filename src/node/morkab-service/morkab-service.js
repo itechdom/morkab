@@ -4,6 +4,7 @@ var apiRoutes = express.Router();
 import uiLibraries from './libraries';
 let {angularRenderer,generateIndexFile} = require('./renderers/ng');
 let {reactRenderer} = require('./renderers/react');
+import {install} from './utils/install.js';
 let webdriverio = require('webdriverio');
 let fs = require('fs');
 var path = require('path');
@@ -53,6 +54,11 @@ export default function({
   apiRoutes.get('/react',function(req,res){
     let renderedComp = reactRenderer({componentList});
     res.send({html:renderedComp[0]});
+  });
+
+  apiRoutes.post('/react/install',function(req,res){
+    //install all libraries in a folder
+    install("");
   });
 
   app.use('/ng', express.static(distFolder));
