@@ -1,5 +1,7 @@
 import React from 'react';
 import * as Material from 'material-ui';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const docWebsite = "http://www.material-ui.com/#/components/";
 
@@ -14,7 +16,9 @@ const iconData = [
   "favorite"
 ]
 
-export default [
+export const wrapper = ({children})=>{return<MuiThemeProvider muiTheme={getMuiTheme()}>{children}</MuiThemeProvider>};
+
+export const componentList = [
   {
     "element":Material.AppBar,
     "link":`${docWebsite}app-bar`,

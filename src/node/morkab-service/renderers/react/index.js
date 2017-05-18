@@ -1,19 +1,19 @@
 let ReactDOMServer = require('react-dom/server');
 import React from 'react';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export function reactRenderer({
-  componentList
+  componentList,
+  wrapper
 }){
   return componentList.map((comp)=>{
     //if the library isn't installed, install it?
     //installLibrary()
     let Comp = comp.element;
+    let Wrapper = wrapper;
     return ReactDOMServer.renderToString(
-      <MuiThemeProvider muiTheme={getMuiTheme()}>
+      <Wrapper>
         <Comp {...comp.properties} />
-      </MuiThemeProvider>
+      </Wrapper>
     );
   })
 }
