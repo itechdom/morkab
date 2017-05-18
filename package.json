@@ -35,6 +35,7 @@
     "google-spreadsheets": "^0.5.1",
     "googleapis": "^18.0.0",
     "graphql": "^0.9.1",
+    "hypernova": "^2.0.0",
     "jsonwebtoken": "^7.2.1",
     "material-ui": "^0.16.7",
     "mobx": "^3.1.5",
