@@ -54,7 +54,7 @@ export default function({
     componentList.map((comp)=>{
       renderedComp = reactRenderer({componentList:comp.componentList,wrapper:comp.wrapper});
     })
-    res.send({html:renderedComp[0]});
+    res.send({html:renderedComp[15]});
   });
 
   apiRoutes.post('/react/install',function(req,res){
