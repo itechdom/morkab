@@ -1,8 +1,5 @@
 import React from 'react';
 import * as Material from 'material-ui';
-import * as Layout from './Library/Layout.js';
-import {Animation} from './Library/Animation';
-import {External} from './Library/External';
 
 const docWebsite = "http://www.material-ui.com/#/components/";
 
@@ -18,45 +15,6 @@ const iconData = [
 ]
 
 export default [
-  {
-    "element":Animation,
-    "title":"Animation",
-    "link":`${docWebsite}toolbar`,
-    "properties":{
-      children:[],
-      enter:"fadeIn",
-      enterActive:"fadeIn",
-      leave:"fadeOut",
-      leaveActive:"fadeOut",
-      appear:"bounce",
-      appearActive:"bounce",
-      transitionEnterTimeout:500,
-      transitionLeaveTimeout:500
-    },
-    subChildren:[]
-  },
-  {
-    "element":Layout.Row,
-    "title":"Column",
-    "link":`${docWebsite}toolbar`,
-    "properties":{
-      children:[],
-      direction:'column',
-      level:0
-    },
-    subChildren:[]
-  },
-  {
-    "element":Layout.Row,
-    "title":"Row",
-    "link":`${docWebsite}toolbar`,
-    "properties":{
-      children:[],
-      direction:'row',
-      level:0
-    },
-    subChildren:[]
-  },
   {
     "element":Material.AppBar,
     "link":`${docWebsite}app-bar`,
