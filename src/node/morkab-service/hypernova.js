@@ -4,8 +4,8 @@ hypernova({
   devMode: true,
 
   getComponent(name) {
-    if (name === 'MyComponent.js') {
-      return require('./MyComponent.js');
+    if (name === 'MyComponent') {
+      return require('./myComponent.js');
     }
     return null;
   },
