@@ -29,8 +29,6 @@ export default function({
     res.send('Hello! this is morkab backend!');
   });
 
-
-
   apiRoutes.get('/', function(req, res) {
     //download("https://github.com/callemall/material-ui","./data/material-ui");
     res.send('Hello! this is budgetqt backend!');
@@ -58,7 +56,7 @@ export default function({
   });
 
   apiRoutes.post('/react/install',function(req,res){
-    //install all libraries in a folder
+    //npm install libs and extensions to the right renderer
     install("");
   });
 
