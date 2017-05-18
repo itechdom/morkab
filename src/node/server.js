@@ -52,8 +52,8 @@ app.use(morgan('dev'));
 // ==========
 
 //app.use('/', authApi);
-app.use('/hello',helloApi);
-app.use('/',passportApi);
+//app.use('/hello',helloApi);
+//app.use('/',passportApi);
 app.use('/api/v1',morkabApi);
 
 // =================================================================
