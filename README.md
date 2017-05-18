@@ -2,9 +2,11 @@
 ```sh
 npm install
 ```
-```sh
-cp babelrc .babelrc
-```
+## Start Client:
 ```sh
 npm run start:frontend
+```
+## Start Server in Dev:
+```sh
+npm run start:node:dev
 ```
