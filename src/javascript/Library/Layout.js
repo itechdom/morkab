@@ -49,7 +49,7 @@ const boardTarget = {
     // Obtain the dragged item
     const item = monitor.getItem();
     const itemType = monitor.getItemType();
-    
+
     props.store.addItemToComponent(item,props.comp);
 
     // You can also do nothing and return a drop result,

@@ -38,7 +38,7 @@ import passportService from './passport-service/passport-service.js'
 const passportApi = passportService({app,config});
 
 import morkabService from './morkab-service/morkab-service.js';
-const morkabApi = morkabService({app});
+const morkabApi = morkabService({app,config});
 
 // use body parser so we can get info from POST and/or URL parameters
 app.use(bodyParser.urlencoded({ extended: false }));

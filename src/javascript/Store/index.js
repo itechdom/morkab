@@ -3,9 +3,10 @@ import * as colors from 'material-ui/styles/colors';
 import uuidV4 from 'uuid/v4';
 import React from 'react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-
 import {jsxToString} from '../Export';
 import reactElementToJSXString from 'react-element-to-jsx-string';
+import superagent from 'superagent';
+import {HOST} from  "../.config.js";
 
 export class Morkab {
 
@@ -111,11 +112,11 @@ export class Morkab {
   }
 
   @action addComponentToPage(dragType){
-    let {element,link,properties,dropped,title,external} = this.draggedComponent;
+    let {element,link,properties,dropped,title,serverLink,externalHTML,tag} = this.draggedComponent;
     //to prevent properties from being updated
     let newProp = Object.assign({},properties);
     if(dragType === 'generalcomponent'){
-      this.page.push(new Component(element,link,newProp,title,true));
+      this.page.push(new Component(element,link,newProp,title,serverLink,externalHTML,tag));
     }
     else if(dragType === 'pagecomponent'){
       this.applyDraggedComponentPosition();
@@ -124,10 +125,22 @@ export class Morkab {
 
   @action addItemToComponent(item,comp){
     let newProp = Object.assign({},item.properties);
-    let childComponent = new Component(item.element,item.link,newProp,item.title,true);
+    let childComponent = new Component(item.element,item.link,newProp,item.title,item.serverLink,item.externalHTML,item.tag);
     comp.properties.children.push(childComponent);
     comp.subChildren.push(childComponent);
     this.page.remove(item);
+  }
+
+  @action getServerComponent(comp){
+    this.pendingRequestCount++;
+    let req = superagent.get(`${HOST}/api/v1/angular`);
+    req.end(action("getAngular-callback",(err,res)=>{
+      if(err){
+        console.log("err: ",err);
+      }
+      let response = JSON.parse(res.text);
+      comp.externalHTML = response.html;
+    }));
   }
 
   recursiveDelete(comp,removedComponent){
@@ -149,14 +162,19 @@ export class Component {
   link;
   properties;
   subChildren;
-  constructor(element,link,properties={},title,dropped=false,subChildren=[]){
+  @observable externalHTML;
+  serverLink;
+  tag;
+  constructor(element,link,properties={},title,serverLink,externalHTML,tag,subChildren=[]){
     this.id = uuidV4();
     this.position = {};
     this.element = element;
     this.link = link;
     this.properties = properties;
-    this.dropped = dropped;
     this.subChildren = subChildren;
     this.title = title;
+    this.serverLink= serverLink;
+    this.externalHTML = externalHTML;
+    this.tag = tag;
   }
 }

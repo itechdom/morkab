@@ -105,6 +105,8 @@ injectTapEventPlugin();
                           handleComponentDrag={(id,type)=>this.props.store.setDraggedComponent(id,type)}
                           store={this.props.store}
                           comp={comp}
+                          externalHTML={comp.externalHTML}
+                          serverLink={comp.serverLink}
                         />
                       </div>
                     })
@@ -150,7 +152,7 @@ injectTapEventPlugin();
   let morkabStore = new Morkab();
 
   data.map((x,index)=>{
-    let comp = new Component(x.element,x.link,x.properties,x.title);
+    let comp = new Component(x.element,x.link,x.properties,x.title,x.serverLink,x.externalHTML,x.tag);
     morkabStore.componentList.push(comp);
   })
 
