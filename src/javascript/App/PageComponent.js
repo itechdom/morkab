@@ -29,7 +29,7 @@ function collect(connect, monitor) {
   }
 
   render(){
-    const { store, connectDragSource, connectDragPreview, isDragging, element, properties, link, handleComponentDrag, handleComponentEdit, tempPosition, id, position, subChildren, title, comp, serverLink, externalHTML} = this.props;
+    const { store, connectDragSource, connectDragPreview, isDragging, element, properties, link, handleComponentDrag, handleComponentEdit, tempPosition, id, position, subChildren, title, comp, serverLink, externalHTML, previewMode} = this.props;
     return <div><DraggableComponent
       id={id}
       key={id}
@@ -48,6 +48,7 @@ function collect(connect, monitor) {
       comp={comp}
       serverLink={serverLink}
       externalHTML={externalHTML}
+      previewMode={previewMode}
     />
   </div>;
 }
@@ -70,7 +71,8 @@ const DraggableComponent = ({
   title,
   comp,
   externalHTML,
-  serverLink
+  serverLink,
+  previewMode
 }) => {
   if(isDragging){
     handleComponentDrag(id,'pagecomponent');
@@ -94,8 +96,11 @@ const DraggableComponent = ({
           comp={comp}
           externalHTML={externalHTML}
           serverLink={serverLink}
+          previewMode={previewMode}
         />
-        <RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(comp)} />
+        {
+          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(comp)} />
+        }
       </div>
     )
   }

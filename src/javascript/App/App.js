@@ -82,6 +82,9 @@ injectTapEventPlugin();
               title={
                 <div>
                   <RaisedButton label="Export Theme" onClick={()=>this.props.store.exportPage()} />
+                  {
+                    (this.props.store.previewMode)?<RaisedButton label="Preview On" secondary={true} onClick={()=>this.props.store.togglePreviewMode()} />:<RaisedButton label="Preview Off" onClick={()=>this.props.store.togglePreviewMode()} />
+                  }
                   <h1 className="title">Morkab</h1>
               </div>}
             />
@@ -120,6 +123,7 @@ injectTapEventPlugin();
                     handleComponentDrop={(type)=>this.props.store.addComponentToPage(type)}
                     handleComponentEdit={(id,parentId)=>this.props.store.editComponent(id,parentId)}
                     store={this.props.store}
+                    previewMode={this.props.store.previewMode}
                   />
                 </div>
               </div>

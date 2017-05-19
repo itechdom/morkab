@@ -22,6 +22,7 @@ export class Morkab {
   @observable themeValues = {};
   @observable toolboxOpen = 'none';
   @observable libraryList = [];
+  @observable previewMode = false;
   @observable levelColors = [
     "#00ff00",
     "#9966ff",
@@ -129,6 +130,10 @@ export class Morkab {
     comp.properties.children.push(childComponent);
     comp.subChildren.push(childComponent);
     this.page.remove(item);
+  }
+
+  @action togglePreviewMode(){
+    this.previewMode = !this.previewMode;
   }
 
   @action getServerComponent(comp){
