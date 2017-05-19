@@ -93,13 +93,13 @@ export class Morkab {
     this.editDialogOpen = true;
   }
 
-  @action deleteComponent(){
-    let removed = this.page.remove(this.edittedComponent);
-    if(!removed){
-      this.page.map((comp)=>{
-        this.recursiveDelete(comp,this.edittedComponent);
-      })
+  //parent and child
+  @action deleteComponent(comp,parent){
+    if(!parent){
+      let removed = this.page.remove(comp);
+      return removed;
     }
+    return parent.subChildren.splice(parent.subChildren.indexOf(comp),1);
   }
 
   @action applyPropertiesUpdate(key,value){
@@ -149,13 +149,6 @@ export class Morkab {
     }));
   }
 
-  recursiveDelete(comp,removedComponent){
-    let removed = comp.subChildren.splice(comp.subChildren.indexOf(removedComponent),1);
-    if(!removed){
-      return this.recursiveDelete(nextComp);
-    }
-  }
-
 }
 
 export class Component {
@@ -167,7 +160,7 @@ export class Component {
   element;
   link;
   properties;
-  subChildren;
+  @observable subChildren;
   @observable externalHTML;
   serverLink;
   tag;

@@ -29,7 +29,7 @@ function collect(connect, monitor) {
   }
 
   render(){
-    const { store, connectDragSource, connectDragPreview, isDragging, element, properties, link, handleComponentDrag, handleComponentEdit, tempPosition, id, position, subChildren, title, comp, serverLink, externalHTML, previewMode} = this.props;
+    const { store, connectDragSource, connectDragPreview, isDragging, element, properties, link, handleComponentDrag, handleComponentEdit, tempPosition, id, position, subChildren, title, comp, serverLink, externalHTML, previewMode, parent, handleComponentDelete} = this.props;
     return <div><DraggableComponent
       id={id}
       key={id}
@@ -40,6 +40,7 @@ function collect(connect, monitor) {
       isDragging={isDragging}
       handleComponentDrag={handleComponentDrag}
       handleComponentEdit={handleComponentEdit}
+      handleComponentDelete={handleComponentDelete}
       tempPosition={tempPosition}
       position={position}
       connectDragPreview={connectDragPreview}
@@ -49,6 +50,7 @@ function collect(connect, monitor) {
       serverLink={serverLink}
       externalHTML={externalHTML}
       previewMode={previewMode}
+      parent={parent}
     />
   </div>;
 }
@@ -64,6 +66,7 @@ const DraggableComponent = ({
   isDragging,
   handleComponentDrag,
   handleComponentEdit,
+  handleComponentDelete,
   position,
   connectDragPreview,
   store,
@@ -72,7 +75,8 @@ const DraggableComponent = ({
   comp,
   externalHTML,
   serverLink,
-  previewMode
+  previewMode,
+  parent
 }) => {
   if(isDragging){
     handleComponentDrag(id,'pagecomponent');
@@ -93,6 +97,7 @@ const DraggableComponent = ({
           id={id}
           subChildren={subChildren}
           handleComponentEdit={handleComponentEdit}
+          handleComponentDelete={handleComponentDelete}
           comp={comp}
           externalHTML={externalHTML}
           serverLink={serverLink}
@@ -100,6 +105,9 @@ const DraggableComponent = ({
         />
         {
           (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(comp)} />
+        }
+        {
+          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} secondary={true} label="Delete" onClick={()=>handleComponentDelete(comp,parent)} />
         }
       </div>
     )

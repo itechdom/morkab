@@ -122,6 +122,7 @@ injectTapEventPlugin();
                     handleComponentHover={(position)=>this.props.store.updateDraggedComponentPosition(position)}
                     handleComponentDrop={(type)=>this.props.store.addComponentToPage(type)}
                     handleComponentEdit={(id,parentId)=>this.props.store.editComponent(id,parentId)}
+                    handleComponentDelete={(comp,parent)=>this.props.store.deleteComponent(comp,parent)}
                     store={this.props.store}
                     previewMode={this.props.store.previewMode}
                   />

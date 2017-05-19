@@ -105,6 +105,7 @@ export class Animation extends React.Component{
           store={store}
           comp={Child}
           handleComponentEdit={handleComponentEdit}
+          parent={comp}
         />
         <RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(Child)} />
       </div>

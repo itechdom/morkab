@@ -8,9 +8,9 @@ import {
 from "mobx-react";
 
 /**
- * Specifies the drop target contract.
- * All methods are optional.
- */
+* Specifies the drop target contract.
+* All methods are optional.
+*/
 const boardTarget = {
   canDrop(props, monitor) {
     // You can disallow drop based on props or item
@@ -81,9 +81,8 @@ export class Row extends React.Component{
     super(props);
   }
   render(){
-    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, direction, justifyContent, store, comp, level, previewMode} = this.props;
+    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, handleComponentDelete, children, id, subChildren, direction, justifyContent, store, comp, level, previewMode} = this.props;
     let minHeight;
-    console.log(previewMode);
     let border = (previewMode)?`none`:`2px solid ${store.levelColors[level]}`;
     let Arr = subChildren.map((Child,index)=>{
       let flexStyle = (Child.properties.style && Child.properties.style.flex)?Child.properties.style.flex:0;
@@ -98,9 +97,13 @@ export class Row extends React.Component{
           handleComponentEdit={handleComponentEdit}
           level={level+1}
           previewMode={previewMode}
+          parent={comp}
         />
         {
           (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(Child)} />
+        }
+        {
+          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} secondary={true} label="Delete" onClick={()=>handleComponentDelete(Child,comp)} />
         }
       </div>
     });
