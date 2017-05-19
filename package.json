@@ -83,6 +83,8 @@
     "babel-register": "^6.22.0",
     "css-loader": "^0.26.1",
     "file-loader": "^0.10.0",
+    "grommet": "^1.4.0",
+    "grommet-cli": "^3.1.1",
     "json-loader": "^0.5.4",
     "mobx-react-devtools": "^4.2.11",
     "node-sass": "^4.5.1",
