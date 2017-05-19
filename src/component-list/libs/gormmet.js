@@ -1,7 +1,7 @@
 import React from 'react';
-import * as Material from 'material-ui';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import * as Grommet from 'grommet/components';
+//there are other themes here ...
+require('grommet/scss/vanilla/index.scss');
 
 const docWebsite = "https://grommet.github.io/docs/";
 
@@ -16,7 +16,8 @@ const iconData = [
   "favorite"
 ]
 
-export const wrapper = ({children})=>{return<MuiThemeProvider muiTheme={getMuiTheme()}>{children}</MuiThemeProvider>};
+export const wrapper = ({children})=>{return<div></div>};
 
 export const componentList = [
+  
 ];
