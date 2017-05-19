@@ -85,7 +85,7 @@ const DraggableComponent = ({
   }}>
   {
     connectDragPreview(
-      <div>
+      <div style={{display:'relative'}}>
         <Element
           {...properties}
           key={id}
