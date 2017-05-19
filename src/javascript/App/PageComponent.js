@@ -29,7 +29,7 @@ function collect(connect, monitor) {
   }
 
   render(){
-    const { store, connectDragSource, connectDragPreview, isDragging, element, properties, link, handleComponentDrag, handleComponentEdit, tempPosition, id, position, subChildren, title, comp, serverLink, externalHTML, previewMode, parent, handleComponentDelete} = this.props;
+    const { store, connectDragSource, connectDragPreview, isDragging, element, properties, link, handleComponentDrag, handleComponentEdit, handleComponentDelete, tempPosition, id, position, subChildren, title, comp, serverLink, externalHTML, previewMode, parent} = this.props;
     return <div><DraggableComponent
       id={id}
       key={id}
@@ -85,6 +85,7 @@ const DraggableComponent = ({
     opacity: isDragging ? 0.2 : 1,
     top:position.y,
     left:position.x,
+    position:'relative',
     width:'100%'
   }}>
   {
@@ -104,10 +105,10 @@ const DraggableComponent = ({
           previewMode={previewMode}
         />
         {
-          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(comp)} />
+          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} secondary={true} label="X" onClick={()=>handleComponentDelete(comp,parent)} />
         }
         {
-          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} secondary={true} label="Delete" onClick={()=>handleComponentDelete(comp,parent)} />
+          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(comp)} />
         }
       </div>
     )

@@ -1,6 +1,7 @@
 import React from 'react';
 import { DropTarget } from 'react-dnd';
 import {RaisedButton} from 'material-ui';
+import PageComponent from '../App/PageComponent';
 import PropTypes from 'prop-types';
 import {
   observer
@@ -87,24 +88,23 @@ export class Row extends React.Component{
     let Arr = subChildren.map((Child,index)=>{
       let flexStyle = (Child.properties.style && Child.properties.style.flex)?Child.properties.style.flex:0;
       return <div style={{flex:flexStyle}}>
-        <Child.element
-          key={Child.id}
+        <PageComponent
           id={Child.id}
-          {...Child.properties}
+          title={Child.title}
+          element={Child.element}
+          properties={Child.properties}
+          position={Child.position}
           subChildren={Child.subChildren}
+          handleComponentDrag={handlePageComponentDrag}
+          handleComponentEdit={handleComponentEdit}
+          handleComponentDelete={handleComponentDelete}
           store={store}
           comp={Child}
-          handleComponentEdit={handleComponentEdit}
-          level={level+1}
-          previewMode={previewMode}
           parent={comp}
+          externalHTML={Child.externalHTML}
+          serverLink={Child.serverLink}
+          previewMode={previewMode}
         />
-        {
-          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(Child)} />
-        }
-        {
-          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} secondary={true} label="Delete" onClick={()=>handleComponentDelete(Child,comp)} />
-        }
       </div>
     });
     (subChildren.length>0)?minHeight="0px":minHeight="100px";

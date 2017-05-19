@@ -1,6 +1,7 @@
 import React from 'react';
 import { DropTarget } from 'react-dnd';
 import {RaisedButton} from 'material-ui';
+import PageComponent from '../App/PageComponent';
 import PropTypes from 'prop-types';
 import animateCSS from 'animate.css/animate.css';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
@@ -94,28 +95,29 @@ export class Animation extends React.Component{
   render(){
     const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, handleComponentDelete, children, id, subChildren, store, comp, enter, enterActive, leave, leaveActive, appear, appearActive, transitionEnterTimeout, transitionLeaveTimeout, previewMode} = this.props;
     let minHeight;
+    (subChildren.length>0)?minHeight="0px":minHeight="100px";
     let Arr = subChildren.map((Child,index)=>{
       let flexStyle = (Child.properties.style && Child.properties.style.flex)?Child.properties.style.flex:0;
       return <div style={{flex:flexStyle,animationDuration: "1s",animationFillMode: "both"}}>
-        <Child.element
-          key={Child.id}
+        <PageComponent
           id={Child.id}
-          {...Child.properties}
+          title={Child.title}
+          element={Child.element}
+          properties={Child.properties}
+          position={Child.position}
           subChildren={Child.subChildren}
+          handleComponentDrag={handlePageComponentDrag}
+          handleComponentEdit={handleComponentEdit}
+          handleComponentDelete={handleComponentDelete}
+          parent={comp}
           store={store}
           comp={Child}
-          handleComponentEdit={handleComponentEdit}
-          parent={comp}
+          externalHTML={Child.externalHTML}
+          serverLink={Child.serverLink}
+          previewMode={previewMode}
         />
-        {
-          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(Child)} />
-        }
-        {
-          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} secondary={true} label="Delete" onClick={()=>handleComponentDelete(Child,comp)} />
-        }
       </div>
     });
-    (subChildren.length>0)?minHeight="0px":minHeight="100px";
     return connectDropTarget(<div key={id} style={{display:'flex', flexDirection:'column', border:`2px solid black`, minHeight:`${minHeight}`}}>
       <CSSTransitionGroup
         transitionName={{

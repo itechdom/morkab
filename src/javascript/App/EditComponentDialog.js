@@ -28,11 +28,6 @@ export default class EditComponentDialog extends React.Component{
           secondary={true}
           onClick={this.props.handleToggle}
         />
-        <RaisedButton
-          label="Delete Component"
-          secondary={true}
-          onClick={this.props.handleDelete}
-        />
         <h3>
           {
             (comp.title)?comp.title:""
