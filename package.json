@@ -24,6 +24,7 @@
   "homepage": "https://github.com/itechdom/playground#readme",
   "dependencies": {
     "animate.css": "^3.5.2",
+    "antd": "^2.10.1",
     "body-parser": "^1.16.0",
     "config": "^1.25.1",
     "connect-busboy": "0.0.2",
