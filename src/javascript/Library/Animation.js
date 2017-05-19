@@ -92,7 +92,7 @@ export class Animation extends React.Component{
   animationStyle(){
   }
   render(){
-    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, children, id, subChildren, store, comp, enter, enterActive, leave, leaveActive, appear, appearActive, transitionEnterTimeout, transitionLeaveTimeout, previewMode} = this.props;
+    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, handleComponentDelete, children, id, subChildren, store, comp, enter, enterActive, leave, leaveActive, appear, appearActive, transitionEnterTimeout, transitionLeaveTimeout, previewMode} = this.props;
     let minHeight;
     let Arr = subChildren.map((Child,index)=>{
       let flexStyle = (Child.properties.style && Child.properties.style.flex)?Child.properties.style.flex:0;
@@ -107,7 +107,12 @@ export class Animation extends React.Component{
           handleComponentEdit={handleComponentEdit}
           parent={comp}
         />
-        <RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(Child)} />
+        {
+          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(Child)} />
+        }
+        {
+          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} secondary={true} label="Delete" onClick={()=>handleComponentDelete(Child,comp)} />
+        }
       </div>
     });
     (subChildren.length>0)?minHeight="0px":minHeight="100px";
@@ -125,7 +130,7 @@ export class Animation extends React.Component{
         transitionLeaveTimeout={transitionLeaveTimeout}
         transitionAppear={true}
         >
-            {Arr}
+          {Arr}
         </CSSTransitionGroup>
       </div>);
     }
