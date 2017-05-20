@@ -73,7 +73,7 @@ const DraggableComponent = ({
     return <div style={{
         opacity: isDragging ? 0.2 : 1
       }}>
-      <h4><a target="_blank" href={link}>{(title)?title:Element.name}</a></h4>
+      <h4><a target="_blank" href={link}>{title}</a></h4>
       {
         connectDragPreview(
           <div>

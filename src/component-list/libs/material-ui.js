@@ -16,6 +16,34 @@ const iconData = [
   "favorite"
 ]
 
+function isFunction(functionToCheck) {
+ var getType = {};
+ return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+}
+
+
+// export const componentList = Object.keys(Material).map((key)=>{
+//   if(key === 'AutoComplete'){
+//     return {
+//       element:Material[key],
+//       title:key,
+//       properties:{
+//         "dataSource":["Anas","Becky","Chaim David","David","Evalyn","Fouad"]
+//       }
+//     }
+//   }
+//   return {
+//     element:Material[key],
+//     title:key,
+//     properties:{
+//
+//     }
+//   }
+// }).filter((comp)=>{
+//   console.log(comp.title);
+//   return isFunction(comp.element) && comp.title.indexOf('Icon') === -1 && comp.title !== "default" && comp.title !== "makeSelectable" && comp.title !== "BottomNavigationItem" && comp.title !== "MuiThemeProvider" && comp.title.indexOf("Step") === -1;
+// })
+
 export const wrapper = ({children})=>{return<MuiThemeProvider muiTheme={getMuiTheme()}>{children}</MuiThemeProvider>};
 
 export const componentList = [

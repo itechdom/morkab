@@ -8,9 +8,9 @@ export default [
     componentList:materialUI,
     wrapper:materialUIWrapper
   },
-  {
-    name:"grommet",
-    componentList:grommetUI,
-    wrapper:grommetWrapper
-  }
+  // {
+  //   name:"grommet",
+  //   componentList:grommetUI,
+  //   wrapper:grommetWrapper
+  // }
 ]

@@ -1,7 +1,7 @@
 import React from 'react';
 import { DropTarget } from 'react-dnd';
 import {RaisedButton} from 'material-ui';
-import PageComponent from '../App/PageComponent';
+import PageComponent from '../../../javascript/App/PageComponent';
 import PropTypes from 'prop-types';
 import animateCSS from 'animate.css/animate.css';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
