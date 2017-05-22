@@ -1,6 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
-import schema from './graphql-service/schema';
+import schema from './schema';
 import { graphql } from 'graphql';
 var bodyParser  = require('body-parser');
 
@@ -18,13 +18,14 @@ export default function auth({
         type: 'application/graphql'
     }));
 
-    apiRoutes.post('/graphql', (req, res) => {
+    apiRoutes.get('/', (req, res) => {
         // execute GraphQL!
-        graphql(schema, req.body)
+        var query = '{ count }';
+        graphql(schema, query)
             .then((result) => {
                 res.send(JSON.stringify(result, null, 2));
             });
     });
-    
+
     return apiRoutes;
 }

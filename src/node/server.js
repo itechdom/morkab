@@ -40,6 +40,9 @@ const passportApi = passportService({app,config});
 import morkabService from './morkab-service/morkab-service.js';
 const morkabApi = morkabService({app,config});
 
+import graphqlService from './graphql-service/graphql-service.js';
+const graphqlApi = graphqlService({app,config});
+
 // use body parser so we can get info from POST and/or URL parameters
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -54,6 +57,7 @@ app.use(morgan('dev'));
 //app.use('/', authApi);
 //app.use('/hello',helloApi);
 //app.use('/',passportApi);
+app.use('/graphql',graphqlApi);
 app.use('/api/v1',morkabApi);
 
 // =================================================================
