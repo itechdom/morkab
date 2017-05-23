@@ -5,5 +5,5 @@ export default function testPluginServer({
     graphql,
     apiRoutes
 }){
-    
+    //return some side effect?
 }
