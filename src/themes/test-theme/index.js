@@ -1,0 +1,1 @@
+//we pass the App component and expect a wrapper and a list of compoennts for React?

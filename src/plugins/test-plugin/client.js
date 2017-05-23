@@ -1,10 +1,9 @@
 //import other libs here?
-import React from 'react';
-
 export default function testPluginClient({
-    renderer
+    reactRenderer,
+    Material,
+    MaterialWrapper
 }){
-    //write your view here and call the appropriate renderer: React, Angular, Vue ... etc
-    //we will use React for now
+    //you can specify which section will be rendered here and which one is going to be rendered on the client
     return <div>hello</div>;
 }
