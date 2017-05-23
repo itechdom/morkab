@@ -4,7 +4,7 @@
   "description": "A way to get up and running quickly with any programming task.",
   "main": "src/javascript/index.js",
   "scripts": {
-    "start:node": "node ./src/node/index.js",
+    "start:node": "node ./src/server/index.js",
     "start:mongo": "./scripts/run-mongo.sh",
     "start:node:dev": "nodemon ./src/node",
     "start:frontend": "node_modules/.bin/webpack-dev-server",
