@@ -31,9 +31,6 @@ app.use(function(req, res, next) {
 import authService from './auth-service/auth-service.js'
 const authApi = authService({app});
 
-import helloService from './hello-service/hello-service.js'
-const helloApi = helloService({app});
-
 import passportService from './passport-service/passport-service.js'
 const passportApi = passportService({app,config});
 
@@ -55,7 +52,6 @@ app.use(morgan('dev'));
 // ==========
 
 //app.use('/', authApi);
-//app.use('/hello',helloApi);
 //app.use('/',passportApi);
 app.use('/graphql',graphqlApi);
 app.use('/api/v1',morkabApi);
