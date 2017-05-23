@@ -21,15 +21,7 @@ export default function({
   };
 
   apiRoutes.get('/', function(req, res) {
-    // uiLibraries.map((lib)=>{
-    //   download(lib.url,`./data/${lib.name}`);
-    // });
     res.send('Hello! this is morkab backend!');
-  });
-
-  apiRoutes.get('/', function(req, res) {
-    //download("https://github.com/callemall/material-ui","./data/material-ui");
-    res.send('Hello! this is budgetqt backend!');
   });
 
   apiRoutes.get('/angular',function(req,res){
