@@ -40,7 +40,7 @@ const renderView = (req, appstate) => {
     config,
     apiRoutes
   }){
-    apiRoutes.get('/:route',(req,res)=>{
+    apiRoutes.get('/*',(req,res)=>{
       if(req.url === '/bundle.js') {
         res.writeHead(200, {'Content-Type': 'text/javascript'});
         fs.createReadStream(path.resolve(__dirname, '../../dist/bundle.js')).pipe(res);
