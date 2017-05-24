@@ -1,5 +1,5 @@
 //import other plugins here if you would like
-export default function testPluginServer({
+export default function testPlugin({
     config,
     db,
     graphql,
@@ -9,15 +9,26 @@ export default function testPluginServer({
     Grommet
 }){
     //return some side effect?
-    actions.afterLogin((user,id)=>{
+    actions.afterLogin((user,store)=>{
       //perform some actions here
+      db.getUsers().then((users)=>{
+        console.log(users);
+      })
     });
 
-    actions.renderHeader((store)=>{
+    actions.renderHeader((Header,store)=>{
+      let oldHeader = Header;
+      console.log(oldHeader);
       return <div>hello header</div>
     });
 
-    actions.renderFooter((store)=>{
+    actions.renderFooter((Footer,store)=>{
       return <Grommet.Footer></Grommet.Footer>
     });
+
+    apiRoutes.get('/test',(req,res)=>{
+      res.send('test plugin');
+    })
+
+    return apiRoutes;
 }
