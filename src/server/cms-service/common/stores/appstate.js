@@ -4,6 +4,8 @@ export default class AppState {
 
     @observable items= [];
     @observable renderHeader;
+    @observable componentList;
+    @observable theme;
 
     constructor(initialState) {
         this.items = initialState && initialState.appstate && initialState.appstate.items ? initialState.appstate.items : [];

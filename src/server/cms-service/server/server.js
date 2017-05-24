@@ -48,9 +48,15 @@ const renderView = (req, appstate) => {
 
         if(routes.has(req.url)) {
           const appstate = new AppState();
-          appstate.renderHeader = () => <div>hello</div>
           appstate.addItem('foo');
           appstate.addItem('bar');
+
+          //import plugins here?
+          let testPlugin = require('../../../plugins/test-plugin');
+          testPlugin({
+            appstate
+          });
+
           res.write(renderView(req, appstate));
           res.end();
 
