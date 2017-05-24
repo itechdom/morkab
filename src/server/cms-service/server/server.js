@@ -40,14 +40,13 @@ const renderView = (req, appstate) => {
     config,
     apiRoutes
   }){
-    apiRoutes.get('/',(req,res)=>{
+    apiRoutes.get('/:route',(req,res)=>{
       if(req.url === '/bundle.js') {
         res.writeHead(200, {'Content-Type': 'text/javascript'});
         fs.createReadStream(path.resolve(__dirname, '../../dist/bundle.js')).pipe(res);
       } else {
 
         if(routes.has(req.url)) {
-
           const appstate = new AppState();
           appstate.addItem('foo');
           appstate.addItem('bar');
