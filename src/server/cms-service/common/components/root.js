@@ -1,4 +1,3 @@
-/* @flow */
 import React, { Component } from 'react';
 import { observer, inject } from "mobx-react";
 import AppState from '../stores/appstate';
@@ -21,7 +20,6 @@ export default class Root extends Component {
 
     constructor(props: Props) {
         super(props);
-
         console.log(typeof window === 'object' ? 'client-side' : 'server-side');
     }
 

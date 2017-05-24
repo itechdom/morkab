@@ -1,4 +1,3 @@
-/* @flow */
 import React from 'react';
 import Root from './components/root';
 import Admin from './components/admin';
