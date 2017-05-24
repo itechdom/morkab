@@ -6,23 +6,24 @@ export default function testPlugin({
     apiRoutes,
     actions,
     Material,
-    Grommet
+    Grommet,
+    appState
 }){
     //return some side effect?
-    actions.afterLogin((user,store)=>{
+    actions.afterLogin((user)=>{
       //perform some actions here
-      db.getUsers().then((users)=>{
-        console.log(users);
-      })
+      db.getID().then((id)=>{
+        console.log(id);
+      });
     });
 
-    actions.renderHeader((Header,store)=>{
+    actions.renderHeader.subscribe((Header,props)=>{
       let oldHeader = Header;
       console.log(oldHeader);
       return <div>hello header</div>
     });
 
-    actions.renderFooter((Footer,store)=>{
+    actions.renderFooter.subscribe((Footer,props)=>{
       return <Grommet.Footer></Grommet.Footer>
     });
 
