@@ -2,8 +2,6 @@
 export default function testPlugin({
     config,
     db,
-    graphql,
-    apiRoutes,
     actions,
     Material,
     Grommet,
@@ -26,10 +24,4 @@ export default function testPlugin({
     actions.renderFooter.subscribe((Footer,props)=>{
       return <Grommet.Footer></Grommet.Footer>
     });
-
-    apiRoutes.get('/test',(req,res)=>{
-      res.send('test plugin');
-    })
-
-    return apiRoutes;
 }
