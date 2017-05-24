@@ -3,6 +3,7 @@ import { observable, action } from 'mobx';
 export default class AppState {
 
     @observable items= [];
+    @observable renderHeader;
 
     constructor(initialState) {
         this.items = initialState && initialState.appstate && initialState.appstate.items ? initialState.appstate.items : [];

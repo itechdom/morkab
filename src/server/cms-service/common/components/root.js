@@ -28,11 +28,11 @@ export default class Root extends Component {
     render() {
 
         const { appstate } = this.props;
-
         return (
             <div>
                 <button onClick={ this.addItem }>foobar</button>
                 <ul>
+                    {appstate.renderHeader()}
                     { appstate.items.map((item, key) => <li key={ key }>{ item }</li>) }
                 </ul>
             </div>

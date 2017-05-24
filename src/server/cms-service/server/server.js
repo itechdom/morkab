@@ -48,9 +48,9 @@ const renderView = (req, appstate) => {
 
         if(routes.has(req.url)) {
           const appstate = new AppState();
+          appstate.renderHeader = () => <div>hello</div>
           appstate.addItem('foo');
           appstate.addItem('bar');
-
           res.write(renderView(req, appstate));
           res.end();
 
