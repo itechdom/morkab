@@ -5,7 +5,19 @@ export default function testPluginServer({
     graphql,
     apiRoutes,
     actions,
-    view
+    Material,
+    Grommet
 }){
     //return some side effect?
+    actions.afterLogin((user,id)=>{
+      //perform some actions here
+    });
+
+    actions.renderHeader((store)=>{
+      return <div>hello header</div>
+    });
+
+    actions.renderFooter((store)=>{
+      return <Grommet.Footer></Grommet.Footer>
+    });
 }
