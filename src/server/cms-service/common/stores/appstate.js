@@ -1,11 +1,10 @@
-/* @flow */
 import { observable, action } from 'mobx';
 
-export default class AppState<Item> {
+export default class AppState {
 
-    @observable items: Array<Item> = [];
+    @observable items= [];
 
-    constructor(initialState?: { appstate: AppState<Item> }) {
+    constructor(initialState) {
         this.items = initialState && initialState.appstate && initialState.appstate.items ? initialState.appstate.items : [];
     }
 

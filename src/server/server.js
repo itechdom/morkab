@@ -37,6 +37,10 @@ const passportApi = passportService({app,config});
 import morkabService from './morkab-service/morkab-service.js';
 const morkabApi = morkabService({app,config});
 
+import cmsService from './cms-service';
+let apiRoutes = express.Router();
+const cmsApi = cmsService({app,config,apiRoutes});
+
 import graphqlService from './graphql-service/graphql-service.js';
 const graphqlApi = graphqlService({app,config});
 
@@ -53,6 +57,7 @@ app.use(morgan('dev'));
 
 //app.use('/', authApi);
 //app.use('/',passportApi);
+app.use('/cms',cmsApi);
 app.use('/graphql',graphqlApi);
 app.use('/api/v1',morkabApi);
 

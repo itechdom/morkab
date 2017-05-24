@@ -6,7 +6,7 @@ type Props = {
     path?: string
 };
 
-export const routes: Map<string, React$Element<*>> = new Map();
+export const routes = new Map();
 routes.set('/', <Root />);
 
 export default function router(props: Props) {

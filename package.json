@@ -6,7 +6,7 @@
   "scripts": {
     "start:node": "node ./src/server/index.js",
     "start:mongo": "./scripts/run-mongo.sh",
-    "start:node:dev": "nodemon ./src/node",
+    "start:node:dev": "nodemon ./src/server",
     "start:frontend": "node_modules/.bin/webpack-dev-server",
     "start:frontend:cloud9": "node_modules/.bin/webpack-dev-server --port $PORT --host $IP",
     "mindmup": "node ./build/mindmup",
