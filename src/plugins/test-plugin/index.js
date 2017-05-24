@@ -8,5 +8,5 @@ export default function testPlugin({
     Grommet,
     appstate
 }){
-  appstate.renderHeader = () => <div>Heyo</div>;
+  appstate.renderHeader = (Header,props) => <div>Heyo</div>;
 }

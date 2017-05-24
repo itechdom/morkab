@@ -8,6 +8,14 @@ import { Provider } from 'mobx-react';
 import Router, { routes } from '../common/router';
 import AppState from '../common/stores/appstate';
 
+const getCurrentTheme = ()=>{
+
+}
+
+const getComponentList = ()=>{
+
+}
+
 const renderView = (req, appstate) => {
 
   const componentHTML = renderToString(

@@ -4,6 +4,9 @@ export default class AppState {
 
     @observable items= [];
     @observable renderHeader;
+    @observable renderFooter;
+    @observable renderBody;
+    @observable renderSideMenu;
     @observable componentList;
     @observable theme;
 
