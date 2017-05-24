@@ -3,7 +3,9 @@ export default function testPluginServer({
     config,
     db,
     graphql,
-    apiRoutes
+    apiRoutes,
+    actions,
+    view
 }){
     //return some side effect?
 }
