@@ -11,4 +11,4 @@ npm run start:frontend
 npm run start:node:dev
 ```
 
-### MIT License
+### GPL 3 License
