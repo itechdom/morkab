@@ -10,6 +10,7 @@ export default class AppState {
 
     @action
     addItem(item: Item) {
+        //this is an action yo
         this.items.push(item);
     }
 
