@@ -17,5 +17,37 @@ const iconData = [
 export const wrapper = ({children})=>{return<div></div>};
 
 export const componentList = [
-
+  {
+    "element":Layout.Row,
+    "title":"Column",
+    "properties":{
+      "children":[],
+      "direction":"column"
+    },
+    "subChildren":[]
+  },
+  {
+    "element":Layout.Row,
+    "title":"Row",
+    "properties":{
+      "children":[],
+      "direction":"row"
+    },
+    "subChildren":[]
+  },
+  {
+    "element":Animation,
+    "properties":{
+      children:[],
+      enter:"fadeIn",
+      enterActive:"fadeIn",
+      leave:"fadeOut",
+      leaveActive:"fadeOut",
+      appear:"bounce",
+      appearActive:"bounce",
+      transitionEnterTimeout:500,
+      transitionLeaveTimeout:500
+    },
+    "subChildren":[]
+  },
 ];

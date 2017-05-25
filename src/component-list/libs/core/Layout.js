@@ -1,7 +1,7 @@
 import React from 'react';
 import { DropTarget } from 'react-dnd';
 import {RaisedButton} from 'material-ui';
-import PageComponent from '../../../javascript/App/PageComponent';
+import PageComponent from '../../../client/App/PageComponent';
 import PropTypes from 'prop-types';
 import {
   observer

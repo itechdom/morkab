@@ -157,11 +157,12 @@ injectTapEventPlugin();
   let morkabStore = new Morkab();
 
   data.map((lib,index)=>{
-    lib.componentList.map((comp)=>{
-      let newComponent = new Component(comp.element,comp.link,comp.properties,comp.title,comp.serverLink,comp.externalHTML,comp.tag);
-      morkabStore.componentList.push(newComponent);
-    })
-  })
+    lib.componentList = lib.componentList.map((comp)=>{
+      return new Component(comp.element,comp.link,comp.properties,comp.title,comp.serverLink,comp.externalHTML,comp.tag);
+    });
+    morkabStore.componentList.push(...lib.componentList);
+    morkabStore.library.push(lib);
+  });
 
   ReactDOM.render(
     <Provider userStore={morkabStore}>

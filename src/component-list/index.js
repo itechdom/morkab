@@ -4,7 +4,12 @@ import {componentList as coreUI, wrapper as coreWrapper} from './libs/core';
 
 export default [
   {
-    name:"material",
+    name:"Core",
+    componentList:coreUI,
+    wrapper:coreWrapper
+  },
+  {
+    name:"Material",
     componentList:materialUI,
     wrapper:materialUIWrapper
   },

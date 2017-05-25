@@ -11,6 +11,7 @@ import {HOST} from  "../.config.js";
 export class Morkab {
 
   @observable componentList = [];
+  @observable library = [];
   @observable page = [];
   @observable exportedPage = "";
   @observable exportedPageDialog = false;
