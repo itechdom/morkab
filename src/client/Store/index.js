@@ -1,4 +1,4 @@
-import {observable, computed, autorun, action, reaction} from 'mobx';
+import {observable, computed, autorun, action, reaction, toJS} from 'mobx';
 import * as colors from 'material-ui/styles/colors';
 import uuidV4 from 'uuid/v4';
 import React from 'react';
@@ -67,7 +67,7 @@ export class Morkab {
     let exportedPage = this.page.map((comp)=>{
       return jsxToString(comp);
     });
-    this.exportedPage = reactElementToJSXString(exportedPage[0]);
+    this.exportedPage = reactElementToJSXString(<div>{exportedPage.map(el=>el)}</div>);
   }
 
   @action updateTheme(key,value){
@@ -116,7 +116,7 @@ export class Morkab {
   @action addComponentToPage(dragType){
     let {element,tag,link,properties,serverLink,externalHTML} = this.draggedComponent;
     //to prevent properties from being updated
-    let newProp = Object.assign({},properties);
+    let newProp = toJS(properties);
     if(dragType === 'generalcomponent'){
       this.page.push(new Component(element,tag,link,newProp,serverLink,externalHTML));
     }
@@ -126,7 +126,7 @@ export class Morkab {
   }
 
   @action addItemToComponent(item,comp){
-    let newProp = Object.assign({},item.properties);
+    let newProp = toJS(item.properties);
     let childComponent = new Component(item.element,item.tag,item.link,newProp,item.serverLink,item.externalHTML);
     comp.properties.children.push(childComponent);
     this.page.remove(item);
