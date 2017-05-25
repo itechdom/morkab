@@ -100,7 +100,7 @@ export class Morkab {
       let removed = this.page.remove(comp);
       return removed;
     }
-    return parent.subChildren.splice(parent.subChildren.indexOf(comp),1);
+    return parent.properties.children.splice(parent.properties.children.indexOf(comp),1);
   }
 
   @action applyPropertiesUpdate(key,value){
@@ -114,11 +114,11 @@ export class Morkab {
   }
 
   @action addComponentToPage(dragType){
-    let {element,link,properties,dropped,title,serverLink,externalHTML,tag} = this.draggedComponent;
+    let {element,tag,link,properties,serverLink,externalHTML} = this.draggedComponent;
     //to prevent properties from being updated
     let newProp = Object.assign({},properties);
     if(dragType === 'generalcomponent'){
-      this.page.push(new Component(element,link,newProp,title,serverLink,externalHTML,tag));
+      this.page.push(new Component(element,tag,link,newProp,serverLink,externalHTML));
     }
     else if(dragType === 'pagecomponent'){
       this.applyDraggedComponentPosition();
@@ -127,9 +127,8 @@ export class Morkab {
 
   @action addItemToComponent(item,comp){
     let newProp = Object.assign({},item.properties);
-    let childComponent = new Component(item.element,item.link,newProp,item.title,item.serverLink,item.externalHTML,item.tag);
+    let childComponent = new Component(item.element,item.tag,item.link,newProp,item.serverLink,item.externalHTML);
     comp.properties.children.push(childComponent);
-    comp.subChildren.push(childComponent);
     this.page.remove(item);
   }
 
@@ -154,27 +153,23 @@ export class Morkab {
 
 export class Component {
   id;
-  title;
+  tag;
   tempPosition;
   @observable position;
   library;
   element;
   link;
-  properties;
-  @observable subChildren;
+  @observable properties;
   @observable externalHTML;
   serverLink;
-  tag;
-  constructor(element,link,properties={},title,serverLink,externalHTML,tag,subChildren=[]){
+  constructor(element,tag,link,properties,serverLink,externalHTML){
     this.id = uuidV4();
-    this.position = {};
-    this.element = element;
+    this.tag = tag;
     this.link = link;
     this.properties = properties;
-    this.subChildren = subChildren;
-    this.title = title;
+    this.element = element;
     this.serverLink= serverLink;
     this.externalHTML = externalHTML;
-    this.tag = tag;
+    this.position = {};
   }
 }

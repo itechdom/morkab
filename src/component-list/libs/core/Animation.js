@@ -93,10 +93,10 @@ export class Animation extends React.Component{
   animationStyle(){
   }
   render(){
-    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, handleComponentDelete, children, id, subChildren, store, comp, enter, enterActive, leave, leaveActive, appear, appearActive, transitionEnterTimeout, transitionLeaveTimeout, previewMode} = this.props;
+    const { isOver, canDrop, connectDropTarget, componentList, itemType, handlePageComponentDrag, handleComponentEdit, handleComponentDelete, children, id, store, comp, enter, enterActive, leave, leaveActive, appear, appearActive, transitionEnterTimeout, transitionLeaveTimeout, previewMode} = this.props;
     let minHeight;
-    (subChildren.length>0)?minHeight="0px":minHeight="100px";
-    let Arr = subChildren.map((Child,index)=>{
+    (children.length>0)?minHeight="0px":minHeight="100px";
+    let Arr = children.map((Child,index)=>{
       let flexStyle = (Child.properties.style && Child.properties.style.flex)?Child.properties.style.flex:0;
       return <div style={{flex:flexStyle,animationDuration: "1s",animationFillMode: "both"}}>
         <PageComponent
@@ -105,7 +105,6 @@ export class Animation extends React.Component{
           element={Child.element}
           properties={Child.properties}
           position={Child.position}
-          subChildren={Child.subChildren}
           handleComponentDrag={handlePageComponentDrag}
           handleComponentEdit={handleComponentEdit}
           handleComponentDelete={handleComponentDelete}

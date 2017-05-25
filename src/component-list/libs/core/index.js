@@ -19,25 +19,23 @@ export const wrapper = ({children})=>{return<div></div>};
 export const componentList = [
   {
     "element":Layout.Row,
-    "title":"Column",
+    "tag":"Column",
     "properties":{
       "children":[],
       "direction":"column"
-    },
-    "subChildren":[]
+    }
   },
   {
     "element":Layout.Row,
-    "title":"Row",
+    "tag":"Row",
     "properties":{
       "children":[],
       "direction":"row"
-    },
-    "subChildren":[]
+    }
   },
   {
     "element":Animation,
-    "title":"Animation",
+    "tag":"Animation",
     "properties":{
       children:[],
       enter:"fadeIn",
@@ -48,7 +46,6 @@ export const componentList = [
       appearActive:"bounce",
       transitionEnterTimeout:500,
       transitionLeaveTimeout:500
-    },
-    "subChildren":[]
+    }
   },
 ];

@@ -15,7 +15,7 @@ export class External extends React.Component{
     super(props);
   }
   render(){
-    const { handlePageComponentDrag, handleComponentEdit, children, id, subChildren, store, comp} = this.props;
+    const { handlePageComponentDrag, handleComponentEdit, children, id, store, comp} = this.props;
     if(comp.serverLink && comp.externalHTML===""){
       store.getServerComponent(comp);
     }
