@@ -157,7 +157,6 @@ injectTapEventPlugin();
 
   data.map((lib,index)=>{
     lib.componentList = lib.componentList.map((comp)=>{
-      console.log(comp.tag);
       return new Component(comp.element,comp.tag,comp.link,comp.properties,comp.title,comp.serverLink,comp.externalHTML,comp.tag);
     });
     morkabStore.componentList.push(...lib.componentList);
