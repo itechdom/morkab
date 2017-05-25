@@ -153,15 +153,15 @@ export class Morkab {
 
 export class Component {
   id;
-  tag;
-  tempPosition;
-  @observable position;
-  library;
   element;
+  tag;
   link;
   @observable properties;
-  @observable externalHTML;
   serverLink;
+  @observable externalHTML;
+  library;
+  tempPosition;
+  @observable position;
   constructor(element,tag,link,properties,serverLink,externalHTML){
     this.id = uuidV4();
     this.tag = tag;
