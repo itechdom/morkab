@@ -1,7 +1,5 @@
 import React from 'react';
 
-let count = 0;
-
 export let jsxToString = (comp) => {
     if(comp.properties.children && comp.properties.children.length > 0){
       let Layout = comp.tag;
