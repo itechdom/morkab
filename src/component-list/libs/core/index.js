@@ -37,6 +37,7 @@ export const componentList = [
   },
   {
     "element":Animation,
+    "title":"Animation",
     "properties":{
       children:[],
       enter:"fadeIn",

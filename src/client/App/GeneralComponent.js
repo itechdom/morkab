@@ -86,6 +86,7 @@ const DraggableComponent = ({
               comp={comp}
               serverLink={serverLink}
               externalHTML={externalHTML}
+              previewMode={false}
             />
           </div>
         )
