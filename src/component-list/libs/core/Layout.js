@@ -94,7 +94,6 @@ export class Row extends React.Component{
           element={Child.element}
           properties={Child.properties}
           position={Child.position}
-          subChildren={Child.subChildren}
           handleComponentDrag={handlePageComponentDrag}
           handleComponentEdit={handleComponentEdit}
           handleComponentDelete={handleComponentDelete}
@@ -107,7 +106,7 @@ export class Row extends React.Component{
         />
       </div>
     });
-    (subChildren.length>0)?minHeight="0px":minHeight="100px";
+    (children.length>0)?minHeight="0px":minHeight="100px";
     return connectDropTarget(<div key={id} style={{display:'flex', flexDirection:`${direction}`, justifyContent:`${justifyContent}`, border:border, minHeight:`${minHeight}`}}>
       {Arr}
     </div>);
