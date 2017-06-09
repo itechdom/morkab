@@ -8,9 +8,9 @@ import {
 from "mobx-react";
 
 /**
- * Specifies the drop target contract.
- * All methods are optional.
- */
+* Specifies the drop target contract.
+* All methods are optional.
+*/
 const boardTarget = {
   canDrop(props, monitor) {
     // You can disallow drop based on props or item
@@ -28,7 +28,7 @@ const boardTarget = {
     const clientOffset = monitor.getClientOffset();
     const componentRect = findDOMNode(component).getBoundingClientRect();
 
-    props.handleComponentHover(clientOffset);
+    props.handleComponentHover(clientOffset,componentRect);
 
     let item = monitor.getItem();
     let itemType = monitor.getItemType();
@@ -50,8 +50,11 @@ const boardTarget = {
     // Obtain the dragged item
     const item = monitor.getItem();
     const itemType = monitor.getItemType();
-
-    props.handleComponentDrop(itemType);
+    const delta = monitor.getDifferenceFromInitialOffset();
+    const left = Math.round(item.left + delta.x);
+    const top = Math.round(item.top + delta.y);
+    console.log(top,left);
+    props.handleComponentDrop(itemType,top,left);
 
     // You can also do nothing and return a drop result,
     // which will be available as monitor.getDropResult()
