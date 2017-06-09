@@ -79,13 +79,18 @@ const DraggableComponent = ({
   if(isDragging){
     handleComponentDrag(id,'pagecomponent');
   }
-  return <div style={{
+  let style = (position.x)?{
     opacity: isDragging ? 0.2 : 1,
     top:position.y,
     left:position.x,
+    position:'absolute',
+    width:'100%'
+  }:{
+    opacity: isDragging ? 0.2 : 1,
     position:'relative',
     width:'100%'
-  }}>
+  };
+  return <div style={style}>
   {
     connectDragPreview(
       <div style={{display:'relative'}}>
