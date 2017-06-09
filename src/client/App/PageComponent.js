@@ -29,7 +29,7 @@ function collect(connect, monitor) {
   }
 
   render(){
-    const { store, connectDragSource, connectDragPreview, isDragging, element, properties, link, handleComponentDrag, handleComponentEdit, handleComponentDelete, tempPosition, id, position, title, comp, serverLink, externalHTML, previewMode, parent} = this.props;
+    const { store, connectDragSource, connectDragPreview, isDragging, element, properties, draggable, link, handleComponentDrag, handleComponentEdit, handleComponentDelete, tempPosition, id, position, title, comp, serverLink, externalHTML, previewMode, parent} = this.props;
     return connectDragSource(<div><DraggableComponent
       id={id}
       key={id}
@@ -43,6 +43,7 @@ function collect(connect, monitor) {
       handleComponentDelete={handleComponentDelete}
       tempPosition={tempPosition}
       position={position}
+      draggable={draggable}
       connectDragPreview={connectDragPreview}
       store={store}
       comp={comp}
@@ -74,12 +75,13 @@ const DraggableComponent = ({
   externalHTML,
   serverLink,
   previewMode,
-  parent
+  parent,
+  draggable
 }) => {
   if(isDragging){
     handleComponentDrag(id,'pagecomponent');
   }
-  let style = (position.x)?{
+  let style = (draggable)?{
     opacity: isDragging ? 0.2 : 1,
     top:position.y,
     left:position.x,

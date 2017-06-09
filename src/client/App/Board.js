@@ -108,6 +108,7 @@ const boardTarget = {
               element={comp.element}
               properties={comp.properties}
               position={comp.position}
+              draggable={comp.draggable}
               handleComponentDrag={handlePageComponentDrag}
               handleComponentEdit={handleComponentEdit}
               handleComponentDelete={handleComponentDelete}

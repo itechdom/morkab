@@ -62,6 +62,10 @@ export class Morkab {
     }
   }
 
+  @action toggleDraggable(comp){
+    comp.draggable = !comp.draggable;
+  }
+
   @action exportPage(){
     this.exportedPageDialog = true;
     let exportedPage = this.page.map((comp)=>{
@@ -169,7 +173,8 @@ export class Component {
   library;
   tempPosition;
   @observable position;
-  constructor(element,tag,link,properties,serverLink,externalHTML){
+  @observable draggable;
+  constructor(element,tag,link,properties,serverLink,externalHTML,draggable=false){
     this.id = uuidV4();
     this.tag = tag;
     this.link = link;
@@ -178,5 +183,6 @@ export class Component {
     this.serverLink= serverLink;
     this.externalHTML = externalHTML;
     this.position = {};
+    this.draggable = draggable;
   }
 }
