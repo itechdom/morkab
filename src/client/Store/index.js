@@ -127,6 +127,13 @@ export class Morkab {
 
   @action addItemToComponent(item,comp){
     let newProp = toJS(item.properties);
+    let pageComponent = this.page.find(x => x.id === item.id);
+
+    //if we already found a page component, remove it
+    if(pageComponent){
+      this.page.remove(pageComponent);
+    }
+
     let childComponent = new Component(item.element,item.tag,item.link,newProp,item.serverLink,item.externalHTML);
     comp.properties.children.push(childComponent);
     this.page.remove(item);

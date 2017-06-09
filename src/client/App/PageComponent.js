@@ -30,7 +30,7 @@ function collect(connect, monitor) {
 
   render(){
     const { store, connectDragSource, connectDragPreview, isDragging, element, properties, link, handleComponentDrag, handleComponentEdit, handleComponentDelete, tempPosition, id, position, title, comp, serverLink, externalHTML, previewMode, parent} = this.props;
-    return <div><DraggableComponent
+    return connectDragSource(<div><DraggableComponent
       id={id}
       key={id}
       title={title}
@@ -51,7 +51,7 @@ function collect(connect, monitor) {
       previewMode={previewMode}
       parent={parent}
     />
-  </div>;
+  </div>);
 }
 
 }
