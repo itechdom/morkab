@@ -122,6 +122,7 @@ injectTapEventPlugin();
                     handleComponentDrop={(type)=>this.props.store.addComponentToPage(type)}
                     handleComponentEdit={(id,parentId)=>this.props.store.editComponent(id,parentId)}
                     handleComponentDelete={(comp,parent)=>this.props.store.deleteComponent(comp,parent)}
+                    toggleDraggable={(comp)=>this.props.store.toggleDraggable(comp)}
                     store={this.props.store}
                     previewMode={this.props.store.previewMode}
                   />

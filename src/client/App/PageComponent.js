@@ -29,7 +29,7 @@ function collect(connect, monitor) {
   }
 
   render(){
-    const { store, connectDragSource, connectDragPreview, isDragging, element, properties, draggable, link, handleComponentDrag, handleComponentEdit, handleComponentDelete, tempPosition, id, position, title, comp, serverLink, externalHTML, previewMode, parent} = this.props;
+    const { store, connectDragSource, connectDragPreview, isDragging, element, properties, draggable, link, handleComponentDrag, handleComponentEdit, handleComponentDelete, toggleDraggable, tempPosition, id, position, title, comp, serverLink, externalHTML, previewMode, parent} = this.props;
     return connectDragSource(<div><DraggableComponent
       id={id}
       key={id}
@@ -41,6 +41,7 @@ function collect(connect, monitor) {
       handleComponentDrag={handleComponentDrag}
       handleComponentEdit={handleComponentEdit}
       handleComponentDelete={handleComponentDelete}
+      toggleDraggable={toggleDraggable}
       tempPosition={tempPosition}
       position={position}
       draggable={draggable}
@@ -67,6 +68,7 @@ const DraggableComponent = ({
   handleComponentDrag,
   handleComponentEdit,
   handleComponentDelete,
+  toggleDraggable,
   position,
   connectDragPreview,
   store,
@@ -86,36 +88,40 @@ const DraggableComponent = ({
     top:position.y,
     left:position.x,
     position:'absolute',
-    width:'100%'
+    width:(properties.width)?properties.width:'100%',
+    height:(properties.height)?properties.height:'auto'
   }:{
     opacity: isDragging ? 0.2 : 1,
     position:'relative',
     width:'100%'
   };
   return <div style={style}>
-  {
-    connectDragPreview(
-      <div style={{display:'relative'}}>
-        <Element
-          {...properties}
-          key={id}
-          store={store}
-          id={id}
-          handleComponentEdit={handleComponentEdit}
-          handleComponentDelete={handleComponentDelete}
-          comp={comp}
-          externalHTML={externalHTML}
-          serverLink={serverLink}
-          previewMode={previewMode}
-        />
-        {
-          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} secondary={true} label="X" onClick={()=>handleComponentDelete(comp,parent)} />
-        }
-        {
-          (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(comp)} />
-        }
-      </div>
-    )
-  }
-</div>
+    {
+      connectDragPreview(
+        <div style={{display:'relative'}}>
+          <Element
+            {...properties}
+            key={id}
+            store={store}
+            id={id}
+            handleComponentEdit={handleComponentEdit}
+            handleComponentDelete={handleComponentDelete}
+            comp={comp}
+            externalHTML={externalHTML}
+            serverLink={serverLink}
+            previewMode={previewMode}
+          />
+          {
+            (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} secondary={true} label="X" onClick={()=>handleComponentDelete(comp,parent)} />
+          }
+          {
+            (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} label="Edit" onClick={()=>handleComponentEdit(comp)} />
+          }
+          {
+            (previewMode)?"":<RaisedButton style={{float:'right',zIndex:999}} label="Drag" onClick={()=>toggleDraggable(comp)} />
+          }
+        </div>
+      )
+    }
+  </div>
 }

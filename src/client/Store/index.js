@@ -66,6 +66,10 @@ export class Morkab {
     comp.draggable = !comp.draggable;
   }
 
+  @action updateProperties(comp,key,value){
+    comp.properties[key] = value;
+  }
+
   @action exportPage(){
     this.exportedPageDialog = true;
     let exportedPage = this.page.map((comp)=>{
