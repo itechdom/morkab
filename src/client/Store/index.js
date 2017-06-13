@@ -93,9 +93,14 @@ export class Morkab {
     this.draggedComponent.tempPosition = position;
   }
 
-  @action applyDraggedComponentPosition(top,left){
-    console.log(top,left);
-    this.draggedComponent.position = {x:left,y:top};
+  @action applyDraggedComponentPosition(delta){
+    if(!delta){
+      console.log("no delta");
+      return;
+    }
+    let currentPosition = this.draggedComponent.position;
+    let newPosition = {x:currentPosition.x + delta.x,y:currentPosition.y + delta.y};
+    this.draggedComponent.position = newPosition;
   }
 
   @action editComponent(comp){
@@ -122,15 +127,16 @@ export class Morkab {
     }
   }
 
-  @action addComponentToPage(dragType,top,left){
+  @action addComponentToPage(dragType,delta){
     let {element,tag,link,properties,serverLink,externalHTML} = this.draggedComponent;
     //to prevent properties from being updated
     let newProp = toJS(properties);
     if(dragType === 'generalcomponent'){
       this.page.push(new Component(element,tag,link,newProp,serverLink,externalHTML));
+      this.applyDraggedComponentPosition({x:0,y:0});
     }
     else if(dragType === 'pagecomponent'){
-      this.applyDraggedComponentPosition(top,left);
+      this.applyDraggedComponentPosition(delta);
     }
   }
 
@@ -187,7 +193,7 @@ export class Component {
     this.element = element;
     this.serverLink= serverLink;
     this.externalHTML = externalHTML;
-    this.position = {};
+    this.position = {x:0,y:0};
     this.draggable = draggable;
   }
 }

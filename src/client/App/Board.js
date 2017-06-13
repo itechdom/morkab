@@ -41,20 +41,22 @@ const boardTarget = {
   },
 
   drop(props, monitor, component) {
-    if (monitor.didDrop()) {
-      // If you want, you can check whether some nested
-      // target already handled drop
-      return;
-    }
-
+    // if (monitor.didDrop()) {
+    //   // If you want, you can check whether some nested
+    //   // target already handled drop
+    //   let item = monitor.getItem();
+    //   console.log(item);
+    //   return;
+    // }
+    
     // Obtain the dragged item
     const item = monitor.getItem();
     const itemType = monitor.getItemType();
     const delta = monitor.getDifferenceFromInitialOffset();
-    const left = Math.round(item.left + delta.x);
-    const top = Math.round(item.top + delta.y);
-    console.log(top,left);
-    props.handleComponentDrop(itemType,top,left);
+    
+    console.log("item and delta",item,delta);
+    
+    props.handleComponentDrop(itemType,delta);
 
     // You can also do nothing and return a drop result,
     // which will be available as monitor.getDropResult()

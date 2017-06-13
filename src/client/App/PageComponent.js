@@ -88,6 +88,7 @@ const DraggableComponent = ({
     top:position.y,
     left:position.x,
     position:'absolute',
+    zIndex:9999,
     width:(properties.width)?properties.width:'100%',
     height:(properties.height)?properties.height:'auto'
   }:{

@@ -119,7 +119,7 @@ injectTapEventPlugin();
                     componentList={this.props.store.page}
                     handlePageComponentDrag={(id,type)=>this.props.store.setDraggedComponent(id,type)}
                     handleComponentHover={(position,rect)=>this.props.store.updateDraggedComponentPosition(position,rect)}
-                    handleComponentDrop={(type)=>this.props.store.addComponentToPage(type)}
+                    handleComponentDrop={(type,delta)=>this.props.store.addComponentToPage(type,delta)}
                     handleComponentEdit={(id,parentId)=>this.props.store.editComponent(id,parentId)}
                     handleComponentDelete={(comp,parent)=>this.props.store.deleteComponent(comp,parent)}
                     toggleDraggable={(comp)=>this.props.store.toggleDraggable(comp)}
