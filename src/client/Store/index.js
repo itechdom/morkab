@@ -37,11 +37,11 @@ export class Morkab {
     this.themeValues = getMuiTheme({appBar:{
       height:150
     }});
-    Object.keys(obj).map((key)=>{
-      Object.keys(obj[key]).map((childKey)=>{
-        this.themeOptions[`${key}.${childKey}`] = "";
-      })
-    });
+    // Object.keys(obj).map((key)=>{
+    //   Object.keys(obj[key]).map((childKey)=>{
+    //     this.themeOptions[`${key}.${childKey}`] = "";
+    //   })
+    // });
   }
 
   @action setDraggedComponent(id,dragType){
